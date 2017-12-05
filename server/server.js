@@ -7,6 +7,8 @@ const express = require("express"),
     axios = require("axios"),
     passport = require("passport"),
     Auth0Strategy = require("passport-auth0"),
+    decksCtrl = require('./controllers/decks_controller'),
+    cardsCtrl = require('./controllers/cards_controller'),
     app = express(),
     PORT = 8080;
 
@@ -24,6 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 massive(process.env.CONNECTION_STRING).then((db) => {
+    console.log('db is connected');
     app.set('db', db);
 });
 
@@ -84,10 +87,16 @@ app.get('/auth/logout', (req, res) => {
 })
 
 
+//endpoints by erin tues 12-5
+//.get
+app.get('/api/decks', decksCtrl.allParentDecks);
+// app.get()
 
+//.put
 
+//.post
 
-
+//.delete
 
 
 
