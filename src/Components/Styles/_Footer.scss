@@ -1,12 +1,21 @@
 .footer{
-    height: 100px;
+    height: 20vh;
+    line-height: 70px;
     background-color: $darkShade;
     display: flex;
     color: $highlight;
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
+    align-items: center;
+    .social-links{
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        justify-content: space-around;
+    }
     .contact{
         color: $accent;
+        font-size: $footerFontSize;
     }
   }
