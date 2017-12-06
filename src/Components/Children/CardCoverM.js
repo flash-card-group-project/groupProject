@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 
 class CardCoverM extends Component {
 
@@ -6,10 +8,10 @@ class CardCoverM extends Component {
         super(props)
 
         this.state = {
-            card_title = 'Some Deck',
-            card_category = 'Some Category',
-            deck_number = this.props.match.params.number,
-            card_info =[]
+            card_title : 'Some Deck',
+            card_category : 'Some Category',
+            deck_number : this.props.match.params.number,
+            card_info : []
         };
     };
 

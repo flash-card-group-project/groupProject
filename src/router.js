@@ -8,6 +8,7 @@ import Landing from './Components/View/Landing';
 import Home from './Components/View/Home';
 import MyDecks from './Components/View/MyDecks';
 import Search from './Components/View/Search';
+import DeckCoverM from './Components/Children/DeckCoverM';
 
 export default(
     <div>
@@ -17,6 +18,7 @@ export default(
             <Route path='/my_decks' component={MyDecks}/>
             <Route path='/favorites' component={Favorites}/>
             <Route path='/search' component={Search}/>
+            <Route path='/test' component={DeckCoverM}/>
             {/* <Route path='' component={}/>
             <Route path='' component={}/>
             <Route path='' component={}/> */}
