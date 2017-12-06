@@ -39,9 +39,9 @@ passport.use(new Auth0Strategy({
     const userData = profile._json;
     db.find_user([userData.identities[0].user_id])
         .then((user) => {
-            // console.log(user)
+            console.log(user)
             if (user[0]) {
-                return done(null, user[0].user_id);
+                return done(null, user[0].id);
             } else {
                 db.create_user([
                     userData.given_name,
@@ -50,14 +50,15 @@ passport.use(new Auth0Strategy({
                     userData.identities[0].user_id
                 ]).then((user) => {
                     return done(null, user[0].user_id);
-                })
+                }).catch(err => console.log('create', err))
             }
             console.log(req.user)
-        });
+        }).catch(err => console.log('find', err));
 }));
 
 passport.serializeUser(function (id, done) {
-    done(null, id);
+    console.log('serializing');
+    return done(null, id);
     // console.log(id);
 })
 passport.deserializeUser(function (id, done) {
@@ -68,7 +69,7 @@ passport.deserializeUser(function (id, done) {
 })
 
 app.get('/auth', passport.authenticate('auth0'));
-console.log(passport);
+// console.log(passport);
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: process.env.SUCCESSFUL_REDIRECT,
     failureRedirect: process.env.FAILURE_REDIRECT
@@ -83,7 +84,7 @@ app.get('/auth/me', (req, res) => {
     }
 })
 
-app.get('/logout', (req, res) => {
+app.get('/auth/logout', (req, res) => {
     req.logout()
     res.redirect(process.env.LOG_OUT_REDIRECT)
 })
@@ -93,23 +94,23 @@ app.get('/logout', (req, res) => {
 
 //////// DECKS ENDPOINTS //////////
 //Parent decks
-app.get('/api/decks', decksCtrl.allParentDecks);
-//Decks by category ==> by userInput
-app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
-//Decks and subdecks?
-app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
-//Create new Deck
-app.post('/api/create/deck', decksCtrl.createDeck);
-//Delete Deck by ID
-app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
-//Edit Deck
-app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
-//Get Favorites
-app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
-//Study decks
-app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
-//Get Children???
-app.get('/api/users/decks/:userId', decksCtrl.getSudy);
+// app.get('/api/decks', decksCtrl.allParentDecks);
+// //Decks by category ==> by userInput
+// app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
+// //Decks and subdecks?
+// app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
+// //Create new Deck
+// app.post('/api/create/deck', decksCtrl.createDeck);
+// //Delete Deck by ID
+// app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
+// //Edit Deck
+// app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
+// //Get Favorites
+// app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
+// //Study decks
+// app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
+// //Get Children???
+// app.get('/api/users/decks/:userId', decksCtrl.getSudy);
 
 
 
