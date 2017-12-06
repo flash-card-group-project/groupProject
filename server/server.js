@@ -1,4 +1,3 @@
-//terminal to run project : 8080;
 require("dotenv").config();
 const express = require("express"),
     bodyParser = require("body-parser"),
@@ -40,6 +39,7 @@ passport.use(new Auth0Strategy({
     const userData = profile._json;
     db.find_user([userData.identities[0].user_id])
         .then((user) => {
+            // console.log(user)
             if (user[0]) {
                 return done(null, user[0].user_id);
             } else {
@@ -48,11 +48,9 @@ passport.use(new Auth0Strategy({
                     userData.family_name,
                     userData.email,
                     userData.identities[0].user_id
-                ])
-               
-                    .then((user) => {
-                        return done(null, user[0].user_id);
-                    })
+                ]).then((user) => {
+                    return done(null, user[0].user_id);
+                })
             }
             console.log(req.user)
         });
@@ -60,7 +58,7 @@ passport.use(new Auth0Strategy({
 
 passport.serializeUser(function (id, done) {
     done(null, id);
-    console.log(id);
+    // console.log(id);
 })
 passport.deserializeUser(function (id, done) {
     app.get('db').find_session_user([id])
@@ -71,7 +69,9 @@ passport.deserializeUser(function (id, done) {
 
 
 //////// USER ENDPOINTS //////////
+
 app.get('/auth', passport.authenticate('auth0'));
+console.log(passport);
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: process.env.SUCCESSFUL_REDIRECT,
     failureRedirect: process.env.FAILURE_REDIRECT
@@ -79,14 +79,16 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 
 app.get('/auth/me', (req, res) => {
     if (req.user) {
-        return res.status(200).send(req.user);
+        console.log(req.user)
+        return res.status(200).send(req.user)
     } else {
-        return res.status(401).send('Please log in.');
+        return res.status(401).send(`You Need To Log In`)
     }
 })
-app.get('/auth/logout', (req, res) => {
-    req.logOut();
-    res.redirect(308, '/');
+
+app.get('/logout', (req, res) => {
+    req.logout()
+    res.redirect(process.env.LOG_OUT_REDIRECT)
 })
 
 
