@@ -69,6 +69,8 @@ passport.deserializeUser(function (id, done) {
         })
 })
 
+
+//////// USER ENDPOINTS //////////
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: process.env.SUCCESSFUL_REDIRECT,
@@ -109,7 +111,6 @@ app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
 app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 //Get Children???
 app.get('/api/users/decks/:userId', decksCtrl.getSudy);
-
 
 
 
