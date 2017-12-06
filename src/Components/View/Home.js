@@ -1,9 +1,16 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class Home extends Component{
-    render(){
+class Home extends Component {
+    render() {
         return (
-            <div>I am the home</div>
+            <div>
+                <div>I am the home</div>
+
+                <div>
+                                                     
+                </div>
+
+            </div>
         )
     }
 }
