@@ -44,15 +44,23 @@ table {
   border-spacing: 0; }
 
 .footer {
-  height: 100px;
+  height: 20vh;
+  line-height: 70px;
   background-color: #3581b8;
   display: flex;
   color: #f3f8f2;
   flex-direction: column;
   justify-content: center;
-  margin-top: 10px; }
+  margin-top: 10px;
+  align-items: center; }
+  .footer .social-links {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-around; }
   .footer .contact {
-    color: #fcb07e; }
+    color: #fcb07e;
+    font-size: 24px; }
 
 .nav_links {
   width: 100%;
