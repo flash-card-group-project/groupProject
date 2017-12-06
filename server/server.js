@@ -90,15 +90,39 @@ app.get('/logout', (req, res) => {
 
 
 //endpoints by erin tues 12-5
-//.get
+
+//////// DECKS ENDPOINTS //////////
+//Parent decks
 app.get('/api/decks', decksCtrl.allParentDecks);
-// app.get()
+//Decks by category ==> by userInput
+app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
+//Decks and subdecks?
+app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
+//Create new Deck
+app.post('/api/create/deck', decksCtrl.createDeck);
+//Delete Deck by ID
+app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
+//Edit Deck
+app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
+//Get Favorites
+app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
+//Study decks
+app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
+//Get Children???
+app.get('/api/users/decks/:userId', decksCtrl.getSudy);
 
-//.put
 
-//.post
 
-//.delete
+
+////////////CARDS ENDPOINTS ///////////////////
+//Get Card
+app.get('/api/card/:cardId', cardsCtrl.getCard);
+//Create a new Card
+app.post('/api/create/card', cardsCtrl.createCard);
+//Delete a Card
+app.delete('/api/card/delete/:cardId', cardsCtrl.deleteCard);
+//Edit Card
+app.put('/api/card/edit/:cardId', cardsCtrl.editCard);
 
 
 
