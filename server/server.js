@@ -53,13 +53,8 @@ passport.use(new Auth0Strategy({
                     return done(null, user[0].user_id);
                 }).catch(err => console.log('create', err))
             }
-<<<<<<< HEAD
-            // console.log(req.user)
-        });
-=======
             console.log(req.user)
         }).catch(err => console.log('find', err));
->>>>>>> 47667d7b68f5cbf1524a07d3e520eeda4ef27309
 }));
 
 passport.serializeUser(function (id, done) {

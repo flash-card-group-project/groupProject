@@ -18,7 +18,6 @@ class MyDecks extends Component {
                 this.setState({
                     allParentDecks: res.data
                 })
-                console.log("User-Created decks:",res.data)
             })
     }
    
@@ -28,7 +27,6 @@ class MyDecks extends Component {
             return (
                 <div key={item.deck_id}>
                     <h2>Deck Name: {item.deck_name}</h2>
-                    <h3>Subdeck: {item.category}</h3>
                 </div>
             )
         })
