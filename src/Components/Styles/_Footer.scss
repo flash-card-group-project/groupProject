@@ -1,0 +1,12 @@
+.footer{
+    height: 100px;
+    background-color: $darkShade;
+    display: flex;
+    color: $highlight;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    .contact{
+        color: $accent;
+    }
+  }
