@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 export default function Header() {
     return (
-            <div>
-                <ul className='nav_links'>
-                    <Link to='/home'><li>HOME</li></Link>
-                    <Link to='/my_decks'><li>MY DECKS</li></Link>
-                    <Link to='/favorites'><li>FAVORITES</li></Link>
-                    <a href={process.env.REACT_APP_LOGOUT}><p>LOG OUT</p></a>
-                </ul>
-            </div>
+            <section>
+                <div className='nav_links'>
+                    <Link to='/home'><div>HOME</div></Link>
+                    <Link to='/my_decks'><div>MY DECKS</div></Link>
+                    <Link to='/favorites'><div>FAVORITES</div></Link>
+                    <a href={process.env.REACT_APP_LOGOUT}><div>LOG OUT</div></a>
+                </div>
+            </section>
     )
 }
