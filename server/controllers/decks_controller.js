@@ -1,24 +1,24 @@
 module.exports = {
 
     //Mark - Dec 6 - get all user created decks and cards
-    getUserDecks: async () => {
-        let decks = await db.get_user_decks(req.body.user.Id);
-        let newDecks = decks.map(async (deck)=> {
-            decks.cards = await db.get_user_cards(deck.deckId);
-            return decks;
-        })
-        res.status(200).send(newDeck);
-    },
+    // getUserDecks: async () => {
+    //     let decks = await db.get_user_decks(req.body.user.Id);
+    //     let newDecks = decks.map(async (deck)=> {
+    //         decks.cards = await db.get_user_cards(deck.deckId);
+    //         return decks;
+    //     })
+    //     res.status(200).send(newDeck);
+    // },
 
     //Mark - Dec 6 - get all user favorited decks and their associated cards
-    getFavoriteDecks: async () => {
-        let favDecks = await db.get_favorite_decks(req.body.user.favorites[]);
-        let newFavDecks = favDecks.map(async (favDeck)=> {
-            favDecks.cards = await db.get_favorite_cards(deck.deckId);
-            return favDecks;
-        })
-        res.status(200).send(newFavDecks);
-    },
+    // getFavoriteDecks: async () => {
+    //     let favDecks = await db.get_favorite_decks(req.body.user.favorites[]);
+    //     let newFavDecks = favDecks.map(async (favDeck)=> {
+    //         favDecks.cards = await db.get_favorite_cards(deck.deckId);
+    //         return favDecks;
+    //     })
+    //     res.status(200).send(newFavDecks);
+    // },
 
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {

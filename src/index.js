@@ -9,11 +9,11 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
     <BrowserRouter>
 
-        <Provider>
+        {/* <Provider> */}
 
             <App />
             
-        </Provider>
+        {/* </Provider> */}
         
     </BrowserRouter>
 
