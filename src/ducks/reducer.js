@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const initialState = {
     currentUser: {
         userId: 0,
@@ -41,28 +43,31 @@ const initialState = {
             question: '',
             answer: ''
         }]
-    }] //on Home page land
+    }],
+    history: []
+    //on Home page land
 };
 
+const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
 
-export function getUser(){
+export function getUser() {
     return {
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
     }
 }
 
-export function getDecksHome(){
+export function getDecksHome() {
     return {
         type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        payload: axios.get('/api/user/decks').then(res => res)
     }
 }
 
 //createDeck
-export function createDeck(){
+export function createDeck() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -70,7 +75,7 @@ export function createDeck(){
 }
 
 //editDeck
-export function editDeck(){
+export function editDeck() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -78,7 +83,7 @@ export function editDeck(){
 }
 
 //editCard
-export function editCard(){
+export function editCard() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -86,7 +91,7 @@ export function editCard(){
 }
 
 //searchDecks
-export function searchDecks(){
+export function searchDecks() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -94,7 +99,7 @@ export function searchDecks(){
 }
 
 //createCard
-export function getChildren(){
+export function getChildren() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -102,7 +107,7 @@ export function getChildren(){
 }
 
 //deleteDeck
-export function deleteDeck(){
+export function deleteDeck() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -110,15 +115,16 @@ export function deleteDeck(){
 }
 
 //deleteCard
-export function deleteCard(){
+export function deleteCard() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
     }
 }
 
-export default function reducer(state=initialState, action){
-    switch(action.type) {
+export default function reducer(state = initialState, action) {
+    console.log(action.type);
+    switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
         case 'GET_USER_FULFILLED':
@@ -134,6 +140,17 @@ export default function reducer(state=initialState, action){
             )
         case 'GET_USER_REJECTED':
             return state;
+        case 'GET_DECKS_FULFILLED':
+            if (action.payload.data === 'No decks found.') {
+                return state;
+            } else {
+            return Object.assign(
+                {},
+                state,
+                {
+                    userDecks: action.payload.data
+                }
+            )}
+            default: return state;
     }
-    return state;
 }
