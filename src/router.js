@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import CreateCard from './Components/View/CreateCard';
 import Favorites from './Components/View/Favorites';
 import Landing from './Components/View/Landing';
@@ -9,7 +9,8 @@ import Search from './Components/View/Search';
 import Wrapper from './Components/Children/Wrapper';
 // import createDeck from './Components/Children/CreateDeck';
 
-export default(
+
+export default (
     <div>
         <Switch>
             <Route exact path='/' component={Landing}/>
