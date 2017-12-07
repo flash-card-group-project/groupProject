@@ -48,6 +48,7 @@ const initialState = {
     //on Home page land
 };
 
+const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
@@ -56,6 +57,13 @@ export function getUser() {
     return {
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
+    }
+}
+
+export function getCurrentUser() {
+    return {
+        type: GET_CURRENT_USER,
+        payload: axios.get('/api/currentUser').then(res => res)
     }
 }
 
@@ -140,6 +148,15 @@ export default function reducer(state = initialState, action) {
             )
         case 'GET_USER_REJECTED':
             return state;
+        case 'GET_CURRENT_USER_FULFILLED':
+        console.log("Bye", action.payload)
+            return Object.assign(
+                {},
+                state,
+                {
+                    currentUser: action.payload.data
+                }
+            )
         case 'GET_DECKS_FULFILLED':
             if (action.payload.data === 'No decks found.') {
                 return state;

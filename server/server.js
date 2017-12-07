@@ -98,7 +98,7 @@ app.get('/auth/logout', (req, res) => {
 
 //////// DECKS ENDPOINTS //////////
 
-// app.get('api/currentUser', decksCtrl.getUserInfo);
+app.get('/api/currentUser', decksCtrl.getUserInfo);
 //Get All public Decks, need this to find category
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
