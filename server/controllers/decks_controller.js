@@ -1,6 +1,12 @@
 module.exports = {
 
-    // getUserInfo:
+    getUserInfo: async (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.get_user_info([req.user.id]).then res =>{
+
+        }
+    },
 
     //Mark - Dec 6 - get all user created decks and cards
     getUserDecks: async (req, res, next) => {
