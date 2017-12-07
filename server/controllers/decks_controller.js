@@ -1,18 +1,34 @@
 module.exports = {
+    //
+
+    //all Decks to search through:
+    getAllPublicDecks: (req, res, next) => {
+        const db = req.app.get('db')
+
+        db.get_all_decks()
+        .then(decks => {
+            res.status(200).send(decks)
+        }).catch(err => res.status(500).send(err));
+        
+    },
+
+    //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-        // console.log(req.user)
-        //([req.user.id])
-        db.find_parent_decks([req.user.id])
-            .then(decks => {
+        // const { user } = req;
+
+    console.log("hi", req.body)
+
+        db.find_parent_decks([2])   //test again after login is working
+             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));
-    },
+        },
 
     decksByCategory: (req, res, next) => {
         const db = req.app.get('db')
         const { query } = req;
-        console.log("Hi", req);
+        // console.log("Hi", req);
 
         db.decks_by_category(query.term)
             .then(deck => {
@@ -23,7 +39,7 @@ module.exports = {
     userDecks: (req, res, next) => {
         const db = req.app.get('db')
         const {params} = req;
-        console.log("gets here")
+        // console.log("gets here")
 
         db.get_user_decks([params.id])
             .then(decks => {

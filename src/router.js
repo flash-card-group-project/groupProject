@@ -13,7 +13,7 @@ export default(
         <Switch>
             <Route exact path='/' component={Landing}/>
             <Route path='/home' component={Home}/>
-            <Route path='/my-decks' component={MyDecks}/>
+            <Route path='/my-decks/:id' component={MyDecks}/>
             <Route path='/favorites' component={Favorites}/>
             <Route path='/search' component={Search}/>
             <Route path='/create-card' component={CreateCard}/>

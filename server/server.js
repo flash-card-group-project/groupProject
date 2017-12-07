@@ -25,6 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 massive(process.env.CONNECTION_STRING).then((db) => {
+    // console.log(db);
     console.log('db is connected');
     app.set('db', db);
 });
@@ -68,6 +69,9 @@ passport.deserializeUser(function (id, done) {
         })
 })
 
+
+//////// USER ENDPOINTS //////////
+
 app.get('/auth', passport.authenticate('auth0'));
 // console.log(passport);
 app.get('/auth/callback', passport.authenticate('auth0', {
@@ -77,7 +81,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 
 app.get('/auth/me', (req, res) => {
     if (req.user) {
-        console.log(req.user)
+        // console.log(req.user)
         return res.status(200).send(req.user)
     } else {
         return res.status(401).send(`You Need To Log In`)
@@ -93,11 +97,13 @@ app.get('/auth/logout', (req, res) => {
 //endpoints by erin tues 12-5
 
 //////// DECKS ENDPOINTS //////////
+//Get All public Decks, need this to find category
+app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
-// app.get('/api/decks', decksCtrl.allParentDecks);
-// //Decks by category ==> by userInput
+app.get('/api/decks', decksCtrl.allParentDecks);
+//Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
-// //Decks and subdecks?
+//Decks and subdecks?
 // app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
 // //Create new Deck
 // app.post('/api/create/deck', decksCtrl.createDeck);
@@ -108,14 +114,15 @@ app.get('/auth/logout', (req, res) => {
 // //Get Favorites
 // app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
 // //Study decks
-// app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
+// // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???
 // app.get('/api/users/decks/:userId', decksCtrl.getSudy);
 
 
 
-
 ////////////CARDS ENDPOINTS ///////////////////
+//Get User card
+app.get('/api/user/card', cardsCtrl.getUserCard);
 //Get Card
 app.get('/api/card/:cardId', cardsCtrl.getCard);
 //Create a new Card
