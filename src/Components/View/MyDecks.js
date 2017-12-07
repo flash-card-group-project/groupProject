@@ -13,12 +13,13 @@ class MyDecks extends Component {
     }
     //get all parent decks
     componentDidMount() {
+        console.log(this.props);
         axios.get('/api/decks')
+        // axios.get(`/api/decks/:${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
                     allParentDecks: res.data
                 })
-                console.log("User-Created decks:",res.data)
             })
     }
    
@@ -28,7 +29,6 @@ class MyDecks extends Component {
             return (
                 <div key={item.deck_id}>
                     <h2>Deck Name: {item.deck_name}</h2>
-                    <h3>Subdeck: {item.category}</h3>
                 </div>
             )
         })

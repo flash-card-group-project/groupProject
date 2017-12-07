@@ -1,5 +1,19 @@
 module.exports = {
 
+    getUserCard: (req, res, next) => {
+        const db = req.app.get('db');
+        const { params } = req;
+        console.log(req.body);
+
+        db.get_user_card([2])
+        .then(card => {
+            res.status(200).send(card)
+        })
+        .catch((err) => {
+            res.status(500).send(err)
+        })
+    },
+
     getCard: (req, res, next) => {
         const db = req.app.get('db')
         console.log("gets here")
