@@ -8,19 +8,18 @@
     height:40vh;
     line-height:55px;
     margin-top:2vh;
-    color:$highlight;
-    background:$lightShade;
-    background-image: url('https://121spanish.com/images/media/books.jpg');
+    background:lightgray;
+    // background-image: url('https://121spanish.com/images/media/books.jpg');
     .focal_point,button{
         width:40vw;
         height:5vh;
-        background:$darkShade;
+        background:white;
     }
 }
 
 .steps{
     height:200vh;
-    background: $accent;
+    background: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,6 +31,6 @@
 .card{
     width:90%;
     height:25vh;
-    background: $highlight;
+    background:white;
     display: flex; 
 }

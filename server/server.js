@@ -100,17 +100,10 @@ app.get('/auth/logout', (req, res) => {
 //Get All public Decks, need this to find category
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
-<<<<<<< HEAD
-// app.get('/api/decks', decksCtrl.allParentDecks);
-// //Decks by category ==> by userInput
-// app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
-// //Decks and subdecks?
-=======
 app.get('/api/decks', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
->>>>>>> f81b620f6432d8994601fa2a3bad4b8f49269e8e
 // app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
 // //Create new Deck
 // app.post('/api/create/deck', decksCtrl.createDeck);
@@ -121,16 +114,9 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 // //Get Favorites
 // app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
 // //Study decks
-<<<<<<< HEAD
-// app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
-// //Get Children???
-// app.get('/api/users/decks/:userId', decksCtrl.getSudy);
-
-=======
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???
 // app.get('/api/users/decks/:userId', decksCtrl.getSudy);
->>>>>>> f81b620f6432d8994601fa2a3bad4b8f49269e8e
 
 
 
