@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { getDecksHome } from '../../ducks/reducer';
 // import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
