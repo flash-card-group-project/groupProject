@@ -9,7 +9,6 @@ module.exports = {
         .then(decks => {
             res.status(200).send(decks)
         }).catch(err => res.status(500).send(err));
-        
     },
 
     //decks that a User created:
