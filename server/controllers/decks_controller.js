@@ -1,7 +1,6 @@
 module.exports = {
-    //
 
-    //all Decks to search through:
+    //all Public Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
 
@@ -15,11 +14,10 @@ module.exports = {
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-        // const { user } = req;
 
-    console.log("hi", req.body)
+    console.log("hi", req.user)
 
-        db.find_parent_decks([2])   //test again after login is working
+        db.find_parent_decks([req.user.id])  
              .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));
