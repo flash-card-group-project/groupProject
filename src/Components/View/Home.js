@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { getDecksHome } from '../../ducks/reducer';
 // import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
@@ -10,6 +12,7 @@ class Home extends Component {
     //     })
     // }
     render() {
+        console.log(this.props);
         return (
             <main className='home_body'>
                 <div className='card'>Create Deck</div>
@@ -20,4 +23,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+        userDecks: state.userDecks
+    }
+}
+
+export default connect(mapStateToProps, { getDecksHome })(Home);
