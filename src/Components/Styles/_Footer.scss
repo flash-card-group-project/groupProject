@@ -1,0 +1,27 @@
+.footer{
+    height: 25vh;
+    line-height: 70px;
+    background-color: $darkShade;
+    display: flex;
+    color: $highlight;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+    .social-links{
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        justify-content: space-around;
+        margin-bottom: 5px;
+        img{
+            height: 25px;
+            width: 25px;
+        }
+    }
+    .contact{
+        margin-top: 5px;
+        color: $accent;
+        font-size: $footerFontSize;
+    }
+  }
