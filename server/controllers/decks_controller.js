@@ -15,9 +15,9 @@ module.exports = {
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-        // const { params } = req;
+        // const { user } = req;
 
-    // console.log("hi", req.body.user)
+    console.log("hi", req.body)
 
         db.find_parent_decks([2])   //test again after login is working
              .then(decks => {

@@ -121,6 +121,8 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 
 
 ////////////CARDS ENDPOINTS ///////////////////
+//Get User card
+app.get('/api/user/card', cardsCtrl.getUserCard);
 //Get Card
 app.get('/api/card/:cardId', cardsCtrl.getCard);
 //Create a new Card

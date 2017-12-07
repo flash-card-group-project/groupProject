@@ -13,7 +13,9 @@ class MyDecks extends Component {
     }
     //get all parent decks
     componentDidMount() {
+        console.log(this.props);
         axios.get('/api/decks')
+        // axios.get(`/api/decks/:${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
                     allParentDecks: res.data
