@@ -7,6 +7,7 @@ import Home from './Components/View/Home';
 import MyDecks from './Components/View/MyDecks';
 import Search from './Components/View/Search';
 import Wrapper from './Components/Children/Wrapper';
+// import createDeck from './Components/Children/CreateDeck';
 
 export default(
     <div>
@@ -18,6 +19,8 @@ export default(
             <Route path='/search' component={Search}/>
             <Route path='/create-card' component={CreateCard}/>
             <Route path='/viewer' component={Wrapper}/>    
+            {/* <Route path='/create-deck' component={createDeck}/>  */}
+            {/* get rid of of createDeck before push!!! */}
         </Switch>
     </div>
 )
