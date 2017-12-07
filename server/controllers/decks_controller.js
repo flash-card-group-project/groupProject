@@ -43,9 +43,8 @@ module.exports = {
                 })
         }
         res.status(200).send('No decks found.');
-    }
+    },
         
-
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
