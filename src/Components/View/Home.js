@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getDecksHome } from '../../ducks/reducer';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+// import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
+    // componentWillMount(){
+    //     axios.get('api/user/decks/:id').then((res)=>{
 
-    componentWillMount() {
-        this.props.getDecksHome()
-    }
-
+    //     })
+    // }
     render() {
         console.log(this.props);
         return (
-            <div>
-                <div>I am the home</div>
-
-                <div>
-                                                     
-                </div>
-
-            </div>
+            <main className='home_body'>
+                <div className='card'>Create Deck</div>
+                <Link to='/my-decks/:id' className='card'>My Decks</Link>
+                <Link to='/favorites' className='card'>Favorites</Link>
+            </main>
         )
     }
 }
