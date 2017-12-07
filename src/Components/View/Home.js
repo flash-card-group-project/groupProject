@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getDecksHome } from '../../ducks/reducer';
 
 class Home extends Component {
+
+    componentWillMount() {
+        this.props.getDecksHome()
+    }
+
     render() {
+        console.log(this.props);
         return (
             <div>
                 <div>I am the home</div>
@@ -15,4 +23,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps(state) {
+    return {
+        userDecks: state.userDecks
+    }
+}
+
+export default connect(mapStateToProps, { getDecksHome })(Home);

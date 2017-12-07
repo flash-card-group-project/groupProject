@@ -1,19 +1,25 @@
 module.exports = {
 
+    // getUserInfo:
+
     //Mark - Dec 6 - get all user created decks and cards
     getUserDecks: async (req, res, next) => {
-        const db = req.app.get('db');
-        let decks = await db.get_user_decks([2]);
-        let deckIDs = decks.map(deck => deck.deck_id);
-        db.cards.find( { parent_id: deckIDs } )
-        .then(cards => {
-          let fullDecks = decks.map(deck => {
-            deck.cards = cards.filter(card => card.parent_id === deck.deck_id)
-            return deck;
-          })
-          res.status(200).send(fullDecks);
-        })
-      },
+        const db = req.app.get('db');   
+        console.log(req.user);
+        let decks = await db.get_user_decks([req.user.id]);
+        if (decks.length > 0) {
+            let deckIDs = decks.map(deck => deck.deck_id);
+            db.cards.find({ parent_id: deckIDs })
+                .then(cards => {
+                    let fullDecks = decks.map(deck => {
+                        deck.cards = cards.filter(card => card.parent_id === deck.deck_id)
+                        return deck;
+                    })
+                    res.status(200).send(fullDecks);
+                })
+        }
+        res.status(200).send('No decks found.');
+    },
 
     // Mark - Dec 6 - get all user favorited decks and their associated cards
     getFavoriteDecks: async (req, res, next) => {
