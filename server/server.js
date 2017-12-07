@@ -104,7 +104,7 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
-// app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
+app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Create new Deck
 // app.post('/api/create/deck', decksCtrl.createDeck);
 // //Delete Deck by ID

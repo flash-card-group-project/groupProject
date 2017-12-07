@@ -41,9 +41,12 @@ const initialState = {
             question: '',
             answer: ''
         }]
-    }] //on Home page land
+    }], 
+    history: [] 
+    //on Home page land
 };
 
+const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
 
@@ -57,7 +60,7 @@ export function getUser(){
 export function getDecksHome(){
     return {
         type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        payload: axios.get('/api/user/decks').then(res => res)
     }
 }
 
@@ -134,6 +137,13 @@ export default function reducer(state=initialState, action){
             )
         case 'GET_USER_REJECTED':
             return state;
+        case 'GET_DECKS_FULFILLED':
+            return Object.assign(
+                {},
+                state,
+                {
+                    userDecks: action.payload.data
+                }
     }
     return state;
 }
