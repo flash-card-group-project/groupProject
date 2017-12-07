@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-// import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
-    // componentWillMount(){
-    //     axios.get('api/user/decks/:id').then((res)=>{
-
-    //     })
-    // }
     render() {
         return (
             <main className='home_body'>

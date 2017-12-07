@@ -6,3 +6,14 @@
     justify-content: space-around;
     align-items: center;
 }
+
+@media (max-width:500px){
+    .nav_links{
+        // display: none;
+    }
+}
+@media(min-width:900px){
+    .nav_links{
+        background:lightblue;
+    }
+}
