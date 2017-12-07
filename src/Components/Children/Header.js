@@ -6,7 +6,7 @@ export default function Header() {
             <section>
                 <div className='nav_links'>
                     <Link to='/home'><div>HOME</div></Link>
-                    <Link to='/my_decks'><div>MY DECKS</div></Link>
+                    <Link to='/my-decks/:id'><div>MY DECKS</div></Link>
                     <Link to='/favorites'><div>FAVORITES</div></Link>
                     <a href={process.env.REACT_APP_LOGOUT}><div>LOG OUT</div></a>
                 </div>

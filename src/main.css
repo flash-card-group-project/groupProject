@@ -64,8 +64,50 @@ table {
 
 .nav_links {
   width: 100%;
-  height: 7vh;
+  height: 12vh;
   background: #dee2d6;
   display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.landing_body {
+  width: 100%;
+  height: 240vh;
+  text-align: center; }
+
+.focal_point {
+  height: 40vh;
+  line-height: 55px;
+  margin-top: 2vh;
+  color: #f3f8f2;
+  background: #ebe9e9;
+  background-image: url("https://121spanish.com/images/media/books.jpg"); }
+  .focal_point .focal_point, .focal_point button {
+    width: 40vw;
+    height: 5vh;
+    background: #3581b8; }
+
+.steps {
+  height: 200vh;
+  background: #fcb07e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center; }
+
+.card {
+  width: 90%;
+  height: 25vh;
+  background: #f3f8f2;
+  display: flex; }
+
+.home_body {
+  width: 100%;
+  height: 110vh;
+  background: #fcb07e;
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center; }
