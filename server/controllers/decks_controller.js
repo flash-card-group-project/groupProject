@@ -30,14 +30,21 @@ module.exports = {
     // Mark - Dec 6 - get all user favorited decks and their associated cards
     getFavoriteDecks: async (req, res, next) => {
         const db = req.app.get('db');
-        let favDecks = await db.get_favorite_decks([req.user.favorites]);
-        let newFavDecks = favDecks.map(async (favDeck) => {
-            favDecks.cards = await db.get_favorite_cards([deck.deckid]);
-            return favDecks;
-        })
-        res.status(200).send(newFavDecks);
+        let favArr = await db.get_fav_decks([req.user.id]);
+        if ( favArr.length > 0 ){
+            let favDecks = await db.decks.find({ deck_id: favArr});
+            db.cards.find({ parent_id: favArr})
+                .then(cards => {
+                    let fullFavDecks = favDecks.map(deck => {
+                        deck.cards = cards.filter( card => card.parent_id === deck.deck_id)
+                        return deck;
+                    })
+                    res.status(200).send(fullFavDecks);
+                })
+        }
+        res.status(200).send('No decks found.');
     },
-
+        
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
