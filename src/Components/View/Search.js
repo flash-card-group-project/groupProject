@@ -13,7 +13,6 @@ class Search extends Component {
     }
 
     handleChange(value) {
-        console.log(this.state.userInput)
         this.setState({
             userInput: value
         })
@@ -26,7 +25,6 @@ class Search extends Component {
         this.setState({
             foundDecks: found
         })
-        console.log(this.state.foundDecks)
     }
 
     //get decks by category
