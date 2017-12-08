@@ -137,6 +137,8 @@ module.exports = {
             }).catch(err => console.log(err));
     },
 
+    
+
     // getStudy:(req, res, next) => {
     //     const db = req.app.get('db')
 
