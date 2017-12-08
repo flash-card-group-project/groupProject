@@ -107,7 +107,7 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
 app.get('/api/user/decks', decksCtrl.getUserDecks);
-// //Create new Deck un-commented by erin 12/8
+// //Create new Deck
 app.post('/api/create/deck', decksCtrl.createDeck);
 // //Delete Deck by ID
 // app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);

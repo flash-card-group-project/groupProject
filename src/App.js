@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 
 class App extends Component {
   render() {
-    const headerOrNah= this.props.location.pathname!=='/'?<Header/>:null;
+    const headerOrNah=this.props.location.pathname!=='/'?<Header/>:null;
     return (
       <div className='App'>
         {headerOrNah}
