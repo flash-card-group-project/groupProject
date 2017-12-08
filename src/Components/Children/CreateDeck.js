@@ -49,14 +49,14 @@ class CreateDeck extends Component {
     render() {
         console.log( 'deck body' , this.state.currentDeck);
         return (
-            <div className="card">
+            <div className="deck">
                 <div>
                     <input type='text' placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} />
                     <input type='text' placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} />
                 </div>
                     <div className="buttons">
-                        <button>Cancel</button>
-                        <button onClick={this.handleClick} >Submit</button>
+                        <button className="cancel" >Cancel</button>
+                        <button className="submit" onClick={this.handleClick} >Submit</button>
                         {/* link to deck viewer component, create deck, update history */}
                     </div>
             </div>
