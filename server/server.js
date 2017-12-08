@@ -108,7 +108,7 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 //Decks and subdecks?
 app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Create new Deck
-// app.post('/api/create/deck', decksCtrl.createDeck);
+app.post('/api/create/deck', decksCtrl.createDeck);
 // //Delete Deck by ID
 // app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck
