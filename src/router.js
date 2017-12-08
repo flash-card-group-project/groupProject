@@ -6,7 +6,7 @@ import Landing from './Components/View/Landing';
 import Home from './Components/View/Home';
 import MyDecks from './Components/View/MyDecks';
 import Search from './Components/View/Search';
-import Wrapper from './Components/Children/Wrapper';
+import Wrapper from './Components/View/Wrapper';
 // import createDeck from './Components/Children/CreateDeck';
 
 

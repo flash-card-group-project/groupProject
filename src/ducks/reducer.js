@@ -65,14 +65,6 @@ export function getFavorites() {
     }
 }
 
-//createDeck
-export function createDeck() {
-    return {
-        type: GET_FAVORITES,
-        payload: axios.get('/api/user/favorites').then(res => res)
-    }
-}
-
 //createDeck erin 12/8
 export function createDeck(body) {
     console.log('create deck redux');
