@@ -22,8 +22,9 @@ module.exports = {
                     })
                     res.status(200).send(fullDecks);
                 })
+        } else {
+            res.status(200).send('No decks found.');
         }
-        res.status(200).send('No decks found.');
     },
 
     // Mark - Dec 6 - get all user favorited decks and their associated cards
@@ -41,8 +42,9 @@ module.exports = {
                     })
                     res.status(200).send(fullFavDecks);
                 })
+        } else {
+            res.status(200).send('No decks found.');
         }
-        res.status(200).send('No decks found.');
     },
         
     //all Decks to search through:
