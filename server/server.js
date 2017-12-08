@@ -98,7 +98,7 @@ app.get('/auth/logout', (req, res) => {
 
 //////// DECKS ENDPOINTS //////////
 
-// app.get('api/currentUser', decksCtrl.getUserInfo);
+app.get('/api/currentUser', decksCtrl.getUserInfo);
 //Get All public Decks, need this to find category
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
@@ -114,7 +114,7 @@ app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
-// app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
+app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???
