@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ToggleButton from 'react-toggle-button';
+import ViewCards from '../Children/ViewCards';
+import ViewDecks from '../Children/ViewDecks';
 
 class DeckViewerM extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
             cardView: true
@@ -10,7 +12,7 @@ class DeckViewerM extends Component {
         this.toggleView = this.toggleView.bind(this);
     }
 
-    toggleView(){
+    toggleView() {
         let currentView = this.state.cardView;
         this.setState({
             cardView: !currentView
@@ -18,20 +20,20 @@ class DeckViewerM extends Component {
     }
 
     render() {
+        let display = this.state.cardView
+                      ? <ViewCards /> 
+                      : <ViewDecks />;
         return (
             <div>
                 <div>
                     <ToggleButton
-                        value={ this.state.cardView}
+                        value={this.state.cardView}
                         onToggle={this.toggleView}
                         inactiveLabel={'Decks'}
                         activeLabel={'Cards'}
-                         />
+                    />
                 </div>
-                
-                <div>
-
-                </div>
+                {display}
             </div>
         )
     }
