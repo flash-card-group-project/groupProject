@@ -2,16 +2,20 @@ import axios from 'axios';
 
 const initialState = {
     currentUser: {
-   
+
     }, //on Home page land
     currentDeck: {
-      
+        deckInfo: {
+            deck_name: '',
+            category: ''
+            // private: 
+        }
     }, //onclick deckCover, submit createDeck
     favDecks: [
 
     ], //on Home page land
     userDecks: [
-        
+
     ],
     history: []
     //on Home page land
@@ -21,6 +25,8 @@ const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
+const CREATE_DECK = 'CREATE_DECK';
+const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
 
 export function getUser() {
     return {
@@ -50,14 +56,20 @@ export function getFavorites() {
     }
 }
 
-//createDeck
+//createDeck erin 12/8
 export function createDeck() {
     return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        type: CREATE_DECK,
+        payload: axios.post('/api/create/deck').then(res => res)
     }
 }
-
+//updateReduxDeck erin 12/8
+export function updateReduxDeck(val){
+    return {
+        type: UPDATE_CURRENT_DECK,
+        payload: val
+    }
+}
 //editDeck
 export function editDeck() {
     return {
@@ -125,7 +137,7 @@ export default function reducer(state = initialState, action) {
         case 'GET_USER_REJECTED':
             return state;
         case 'GET_CURRENT_USER_FULFILLED':
-        
+
             return Object.assign(
                 {},
                 state,
@@ -137,15 +149,16 @@ export default function reducer(state = initialState, action) {
             if (action.payload.data === 'No decks found.') {
                 return state;
             } else {
-            return Object.assign(
-                {},
-                state,
-                {
-                    userDecks: action.payload.data
-                }
-            )}
+                return Object.assign(
+                    {},
+                    state,
+                    {
+                        userDecks: action.payload.data
+                    }
+                )
+            }
         case 'GET_FAVORITES_FULFILLED':
-        console.log("Bye", action.payload)
+            console.log("Bye", action.payload)
             return Object.assign(
                 {},
                 state,
@@ -153,6 +166,14 @@ export default function reducer(state = initialState, action) {
                     favDecks: action.payload.data
                 }
             )
-            default: return state;
+        case 'CREATE_DECK_FULFILLED':
+            return Object.assign(
+                {},
+                state,
+                {
+                    currentDeck: action.payload.data
+                }
+            )
+        default: return state;
     }
 }
