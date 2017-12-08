@@ -7,7 +7,7 @@ class Search extends Component {
 
         this.state = {
             allPublicDecks: [],
-            userInput: '', 
+            userInput: '',
             foundDecks: []
         }
     }
@@ -17,11 +17,12 @@ class Search extends Component {
             userInput: value
         })
     }
-    handleClick(){
+    handleClick() {
         let found = this.state.allPublicDecks.filter((item, i) => {
             let name = item.deck_name.toLowerCase();
             let input = this.state.userInput.toLowerCase();
-            return name.includes(input)});
+            return name.includes(input)
+        });
         this.setState({
             foundDecks: found
         })
@@ -34,25 +35,49 @@ class Search extends Component {
                 this.setState({
                     allPublicDecks: res.data
                 })
-        })
+            })
     }
 
 
     render() {
         let filteredDecks = this.state.foundDecks.map((item, i) => {
-            return(
-                <div key={i}>
-                    <p>FOUND DECK: {item.deck_name}</p>
-                    <p>with the category: {item.category}</p>
+            return (
+                <div className='deck_results' key={i}>
+                    <div className='deck_found' >
+                        <div className='deck_name'>DECK: {item.deck_name}</div>
+                        <div className='deck_category'> CATEGORY: {item.category}</div>
+                    </div>
+
+                    <div className='boxes'>
+                        <div className='box'></div>
+                        <div className='box'></div>
+                        <div className='box'></div>
+                        <div className='box'></div>
+                    </div>
+
                 </div>
             )
         });
         return (
-            <div>
+            <div className='search_container'>
                 <div style={{ color: 'red' }}> I will be the Search component</div>
-                <input type='text' placeholder='Search for decks' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)} />
-                <button onClick={() => this.handleClick(this.state.userInput)}>Find Decks</button>
-                {filteredDecks}
+
+                <div className='search_input' >
+
+                    <input type='text' placeholder='Search for decks' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)} />
+                    <button type='submit' onClick={() => this.handleClick(this.state.userInput)}>Find Decks</button>
+
+                </div>
+
+                <div className='search_container'>
+                    {filteredDecks.length >= 0 ?
+                        (<div className='search_results' >Search Results: {filteredDecks.length}
+                            <div className='results'>{filteredDecks}</div>
+                        </div>) : null
+                    }
+                </div>
+
+
             </div>
         )
     }
