@@ -13,14 +13,23 @@ const initialState = {
     userDecks: [
         
     ],
-    history: []
+    history: [],
     //on Home page land
+    card:{
+            question:'',
+            answer:'',
+            multiple1:'',
+            multiple2:'',
+            multiple3:'',
+            multiple4:''    
+    }
 };
 
 const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
+const CREATE_CARD= 'CREATE_CARD';
 
 export function getUser() {
     return {
@@ -83,10 +92,10 @@ export function searchDecks() {
 }
 
 //createCard
-export function getChildren() {
+export function createCard(body) {
     return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        type: CREATE_CARD,
+        payload: axios.post('/api/create/card',body).then(res => res)
     }
 }
 
@@ -153,6 +162,9 @@ export default function reducer(state = initialState, action) {
                     favDecks: action.payload.data
                 }
             )
+            case 'CREATE_CARD':
+            console.log('will create card', action.payload)
+            return Object.assign({},state)
             default: return state;
     }
 }
