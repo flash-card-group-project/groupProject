@@ -21,6 +21,7 @@
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
     "redux-promise-middleware": "^5.0.0",
+    "sass": "^1.0.0-beta.3",
     "session": "^0.1.0"
   },
   "scripts": {
