@@ -11,7 +11,7 @@ class Home extends Component {
         this.props.getFavorites();
     }
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <main className='home_body'>
                 <CreateDeck />
@@ -23,7 +23,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("Hi", state);
+    // console.log("Hi", state);
     return {
         userDecks: state.userDecks,
         currentUser: state.currentUser,
