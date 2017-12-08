@@ -13,6 +13,7 @@ class Home extends Component {
     render() {
         console.log(this.props);
         return (
+            
             <main className='home_body'>
                 <CreateDeck />
                 <Link to='/my-decks/:id' className='card'>My Decks</Link>
