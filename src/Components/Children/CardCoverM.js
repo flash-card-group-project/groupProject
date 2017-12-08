@@ -13,18 +13,20 @@ class CardCoverM extends Component {
         };
     };
 
-    handleClick() {
-        let deleteCard = confirm('Are you sure you want to delete this question?');
-        if (deleteCard === true) {
-            axios.delete('/api/delete/card').then(response => {
+//handleClick will give an error about confirm -Kevin 12/8
+
+    // handleClick() {
+    //     let deleteCard = confirm('Are you sure you want to delete this question?');
+    //     if (deleteCard === true) {
+    //         axios.delete('/api/delete/card').then(response => {
                 
-            })
-        } else {
-            this.setState({
-                deleteStatus: 'Question was not deleted!'
-            })
-        }
-    }
+    //         })
+    //     } else {
+    //         this.setState({
+    //             deleteStatus: 'Question was not deleted!'
+    //         })
+    //     }
+    // }
 
     render() {
         return (
@@ -39,7 +41,7 @@ class CardCoverM extends Component {
                 </button>
                 </a>
                 
-                <button onClick={}>
+                <button>
                     <img src='' alt='Delete' />
                 </button>
                 
