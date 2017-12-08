@@ -10,49 +10,49 @@ class CreateDeck extends Component {
         super(props)
         
         this.state = {
-            currentDecks: {},
+            currentDeck: {},
             deck_name: '',
-            category: ''
-            // public: 
+            category: '',
+            public: true,
+            deck_card: 'deck'
         }
         this.handleUserInput = this.handleUserInput.bind(this);
         this.handleUserInput2 = this.handleUserInput2.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
     handleUserInput(e){
-        this.setState = {
+        this.setState({
             deck_name: e.target.value
-        }
+        })
     }
     handleUserInput2(e){
-        this.setState= {
+        this.setState({
             category: e.target.value
-        }
-    }
-    componentDidMount(){
-        console.log('createDeck', this.props.createDeck);
-        this.props.createDeck();
-    }
-    handleClick(e){
-        // console.log(this.props.createDeck);
-        this.props.dispatch({
-            type: 'UPDATE_CURRENT_DECK',
-            payload: {
-                deckInfo: {
-                    deck_name: this.state.deck_name,
-                    category: this.state.category
-                }
-            }
         })
+    }
+    // componentDidMount(){
+    //     console.log('createDeck', this.props.createDeck);
+    //     this.props.createDeck();
+    // }
+    handleClick(e){
+        let body = {
+            deck_name: this.state.deck_name,
+            category: this.state.category
+            // public: true,
+            // deck_card: 'deck'
+        }
+        // console.log(this.props.createDeck);
+        this.props.createDeck(body);
         // createDeck(deck_name, category);
     }
 
     render() {
+        console.log( 'deck body' , this.state.currentDeck);
         return (
             <div className="card">
                 <div>
-                    <input placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput}/>
-                    <input placeholder="What category is this in?" value={this.state.deck_name} className="category-input" onChange={this.handleUserInput2} />
+                    <input type='text' placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} />
+                    <input type='text' placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} />
                 </div>
                     <div className="buttons">
                         <button>Cancel</button>
@@ -65,7 +65,7 @@ class CreateDeck extends Component {
 }
 function mapStateToProps(state) {
     return{
-        currentDecks: state.currentDecks
+        currentDeck: state.currentDeck
     }
 }
 

@@ -5,11 +5,11 @@ const initialState = {
 
     }, //on Home page land
     currentDeck: {
-        deckInfo: {
-            deck_name: '',
-            category: ''
-            // private: 
-        }
+        deck_name: '',
+        category: '',
+        deck_card: 'deck',
+        public: true,
+        cards: []
     }, //onclick deckCover, submit createDeck
     favDecks: [
 
@@ -26,7 +26,7 @@ const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
 const CREATE_DECK = 'CREATE_DECK';
-const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
+// const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
 
 export function getUser() {
     return {
@@ -57,19 +57,20 @@ export function getFavorites() {
 }
 
 //createDeck erin 12/8
-export function createDeck() {
+export function createDeck(body) {
+    console.log('create deck redux');
     return {
         type: CREATE_DECK,
-        payload: axios.post('/api/create/deck').then(res => res)
+        payload: axios.post('/api/create/deck', body).then(res => res)
     }
 }
-//updateReduxDeck erin 12/8
-export function updateReduxDeck(val){
-    return {
-        type: UPDATE_CURRENT_DECK,
-        payload: val
-    }
-}
+// // updateReduxDeck erin 12/8
+// export function updateReduxDeck(val){
+//     return {
+//         type: UPDATE_CURRENT_DECK,
+//         payload: val
+//     }
+// }
 //editDeck
 export function editDeck() {
     return {
