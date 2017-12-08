@@ -29,10 +29,10 @@ class CreateCard extends Component {
         let body = {
             question: this.state.questionInput,
             answer: this.state.answerInput,
-            multiple1:'',
-            multiple2: '',
-            multiple3: '',
-            multiple4: ''
+            multiple1:null,
+            multiple2: null,
+            multiple3: null,
+            multiple4: null
         }
         this.props.createCard(body);
     }
