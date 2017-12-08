@@ -2,48 +2,17 @@ import axios from 'axios';
 
 const initialState = {
     currentUser: {
-        userId: 0,
-        first_name: ''
+   
     }, //on Home page land
     currentDeck: {
-        deckId: 0,
-        subDecks: [{
-            deckId: 0,
-            deckName: '',
-            category: ''
-        }],
-        cards: [{
-            cardId: 0,
-            question: '',
-            answer: ''
-        }]
+      
     }, //onclick deckCover, submit createDeck
-    favDecks: [{
-        deckId: 0,
-        subDecks: [{
-            deckId: 0,
-            deckName: '',
-            category: ''
-        }],
-        cards: [{
-            cardId: 0,
-            question: '',
-            answer: ''
-        }]
-    }], //on Home page land
-    userDecks: [{
-        deckId: 0,
-        subDecks: [{
-            deckId: 0,
-            deckName: '',
-            category: ''
-        }],
-        cards: [{
-            cardId: 0,
-            question: '',
-            answer: ''
-        }]
-    }],
+    favDecks: [
+
+    ], //on Home page land
+    userDecks: [
+        
+    ],
     history: []
     //on Home page land
 };
@@ -71,6 +40,13 @@ export function getDecksHome() {
     return {
         type: GET_DECKS,
         payload: axios.get('/api/user/decks').then(res => res)
+    }
+}
+
+export function getFavorites() {
+    return {
+        type: GET_FAVORITES,
+        payload: axios.get('/api/user/favorites').then(res => res)
     }
 }
 
@@ -149,7 +125,7 @@ export default function reducer(state = initialState, action) {
         case 'GET_USER_REJECTED':
             return state;
         case 'GET_CURRENT_USER_FULFILLED':
-        console.log("Bye", action.payload)
+        
             return Object.assign(
                 {},
                 state,
@@ -168,6 +144,15 @@ export default function reducer(state = initialState, action) {
                     userDecks: action.payload.data
                 }
             )}
+        case 'GET_FAVORITES_FULFILLED':
+        console.log("Bye", action.payload)
+            return Object.assign(
+                {},
+                state,
+                {
+                    favDecks: action.payload.data
+                }
+            )
             default: return state;
     }
 }

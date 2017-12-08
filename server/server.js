@@ -114,7 +114,7 @@ app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
-// app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
+app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???

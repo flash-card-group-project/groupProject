@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { getDecksHome, getCurrentUser } from '../../ducks/reducer';
+import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer';
 
 // import CreateDeck from '../Children/CreateDeck';
 
@@ -10,11 +9,14 @@ class Home extends Component {
      componentWillMount(){
         this.props.getDecksHome();
         this.props.getCurrentUser();
+        this.props.getFavorites();
     }
     render() {
         // console.log(this.props);
         return (
+            
             <main className='home_body'>
+            
                 <div className='card'>Create Deck</div>
                 <Link to='/my-decks/:id' className='card'>My Decks</Link>
                 <Link to='/favorites' className='card'>Favorites</Link>
@@ -24,11 +26,12 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("Hi", state.currentUser);
+    console.log("Hi", state);
     return {
         userDecks: state.userDecks,
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        favDecks: state.favDecks
     }
 }
 
-export default connect(mapStateToProps, { getDecksHome, getCurrentUser })(Home);
+export default connect(mapStateToProps, { getDecksHome, getCurrentUser, getFavorites })(Home);

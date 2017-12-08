@@ -1,3 +1,3 @@
-SELECT *
-FROM decks
-WHERE deck_id = $1;
+SELECT favorites
+FROM users
+WHERE id = $1;
