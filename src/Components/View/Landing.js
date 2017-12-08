@@ -3,6 +3,7 @@ import React from 'react';
 export default function Landing() {
     return (
         <main className='landing_body'>
+            <nav className='nav_links'/>
             <section className='focal_point'>
                 <h1>Flash Toolkit</h1>
                 <h2>Create, Study, Shuffle, Repeat</h2>

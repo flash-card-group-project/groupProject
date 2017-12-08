@@ -5,7 +5,7 @@ import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer'
 import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
-     componentWillMount(){
+    componentWillMount() {
         this.props.getDecksHome();
         this.props.getCurrentUser();
         this.props.getFavorites();
@@ -13,9 +13,8 @@ class Home extends Component {
     render() {
         // console.log(this.props);
         return (
-            
             <main className='home_body'>
-                <CreateDeck/>
+                <CreateDeck />
                 <Link to='/my-decks/:id' className='card'>My Decks</Link>
                 <Link to='/favorites' className='card'>Favorites</Link>
             </main>
@@ -24,7 +23,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("Hi", state);
+    // console.log("Hi", state);
     return {
         userDecks: state.userDecks,
         currentUser: state.currentUser,
