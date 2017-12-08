@@ -1,34 +1,59 @@
 module.exports = {
 
+    getUserInfo: (req, res, next) => {
+        const db = req.app.get('db');
+        db.get_user_info([6]).then(response =>{
+            res.status(200).send(response)
+        }).catch(err => res.status(500).send(err))
+    },
+
     //Mark - Dec 6 - get all user created decks and cards
-    // getUserDecks: async () => {
-    //     let decks = await db.get_user_decks(req.body.user.Id);
-    //     let newDecks = decks.map(async (deck)=> {
-    //         decks.cards = await db.get_user_cards(deck.deckId);
-    //         return decks;
-    //     })
-    //     res.status(200).send(newDeck);
-    // },
+    getUserDecks: async (req, res, next) => {
+        const db = req.app.get('db');   
+        console.log(req.user);
+        let decks = await db.get_user_decks([4]);  
+        if (decks.length > 0) {
+            let deckIDs = decks.map(deck => deck.deck_id);
+            await db.cards.find({ parent_id: deckIDs })
+                .then(cards => {
+                    let fullDecks = decks.map(deck => {
+                        deck.cards = cards.filter(card => card.parent_id === deck.deck_id)
+                        return deck;
+                    })
+                    res.status(200).send(fullDecks);
+                })
+        }
+        res.status(200).send('No decks found.');
+    },
 
-    //Mark - Dec 6 - get all user favorited decks and their associated cards
-    // getFavoriteDecks: async () => {
-    //     let favDecks = await db.get_favorite_decks(req.body.user.favorites[]);
-    //     let newFavDecks = favDecks.map(async (favDeck)=> {
-    //         favDecks.cards = await db.get_favorite_cards(deck.deckId);
-    //         return favDecks;
-    //     })
-    //     res.status(200).send(newFavDecks);
-    // },
-
+    // Mark - Dec 6 - get all user favorited decks and their associated cards
+    getFavoriteDecks: async (req, res, next) => {
+        const db = req.app.get('db');
+        let favArr = await db.get_fav_decks([6]);
+        if ( favArr[0].favorites.length > 0 ){
+            // console.log('favArray: ', favArr[0].favorites)
+            let favDecks = await db.decks.find({ deck_id: favArr[0].favorites});
+            await db.cards.find({ parent_id: favArr[0].favorites})
+                .then(cards => {
+                    let fullFavDecks = favDecks.map(deck => {
+                        deck.cards = cards.filter( card => card.parent_id === deck.deck_id)
+                        return deck;
+                    })
+                    res.status(200).send(fullFavDecks);
+                })
+        }
+        res.status(200).send('No decks found.');
+    },
+        
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
 
         db.get_all_decks()
-        .then(decks => {
-            res.status(200).send(decks)
-        }).catch(err => res.status(500).send(err));
-        
+            .then(decks => {
+                res.status(200).send(decks)
+            }).catch(err => res.status(500).send(err));
+
     },
 
     //decks that a User created:
@@ -36,13 +61,13 @@ module.exports = {
         const db = req.app.get('db')
         // const { user } = req;
 
-    console.log("hi", req.body)
+        console.log("hi", req.body)
 
         db.find_parent_decks([2])   //test again after login is working
-             .then(decks => {
+            .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));
-        },
+    },
 
     decksByCategory: (req, res, next) => {
         const db = req.app.get('db')
@@ -57,7 +82,7 @@ module.exports = {
 
     userDecks: (req, res, next) => {
         const db = req.app.get('db')
-        const {params} = req;
+        const { params } = req;
         // console.log("gets here")
 
         db.get_user_decks([params.id])
@@ -102,12 +127,12 @@ module.exports = {
                 res.status(200).send(deck)
                     .catch((err) => res.status(500).send(err));
             })
-    }, 
+    },
 
     getFavorites: (req, res, next) => {
         const db = req.app.get('db')
-        const {params} = req;
-    
+        const { params } = req;
+
         db.get_favorites([params.id])
             .then(favs => {
                 res.status(200).send(favs)
@@ -116,7 +141,7 @@ module.exports = {
 
     // getStudy:(req, res, next) => {
     //     const db = req.app.get('db')
-       
+
     //     db.get_study([])
     //         .then(deck => {
     //             res.status(200).send(deck)
@@ -125,7 +150,7 @@ module.exports = {
 
     // getChildren: (req, res, next) => {
     //     const db = req.app.get('db')
-        
+
     //     db.find_parent_decks()
     //         .then(decks => {
     //             res.status(200).send(decks)

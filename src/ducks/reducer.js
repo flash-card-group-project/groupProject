@@ -1,68 +1,57 @@
+import axios from 'axios';
+
 const initialState = {
     currentUser: {
-        userId: 0,
-        first_name: ''
+   
     }, //on Home page land
     currentDeck: {
-        deckId: 0,
-        subDecks: [{
-            deckId: 0,
-            deckName: '',
-            category: ''
-        }],
-        cards: [{
-            cardId: 0,
-            question: '',
-            answer: ''
-        }]
+      
     }, //onclick deckCover, submit createDeck
-    favDecks: [{
-        deckId: 0,
-        subDecks: [{
-            deckId: 0,
-            deckName: '',
-            category: ''
-        }],
-        cards: [{
-            cardId: 0,
-            question: '',
-            answer: ''
-        }]
-    }], //on Home page land
-    userDecks: [{
-        deckId: 0,
-        subDecks: [{
-            deckId: 0,
-            deckName: '',
-            category: ''
-        }],
-        cards: [{
-            cardId: 0,
-            question: '',
-            answer: ''
-        }]
-    }] //on Home page land
+    favDecks: [
+
+    ], //on Home page land
+    userDecks: [
+        
+    ],
+    history: []
+    //on Home page land
 };
 
+const GET_CURRENT_USER = 'GET_CURRENT_USER';
+const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
 
-export function getUser(){
+export function getUser() {
     return {
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
     }
 }
 
-export function getDecksHome(){
+export function getCurrentUser() {
+    return {
+        type: GET_CURRENT_USER,
+        payload: axios.get('/api/currentUser').then(res => res)
+    }
+}
+
+export function getDecksHome() {
     return {
         type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        payload: axios.get('/api/user/decks').then(res => res)
+    }
+}
+
+export function getFavorites() {
+    return {
+        type: GET_FAVORITES,
+        payload: axios.get('/api/user/favorites').then(res => res)
     }
 }
 
 //createDeck
-export function createDeck(){
+export function createDeck() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -70,7 +59,7 @@ export function createDeck(){
 }
 
 //editDeck
-export function editDeck(){
+export function editDeck() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -78,7 +67,7 @@ export function editDeck(){
 }
 
 //editCard
-export function editCard(){
+export function editCard() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -86,7 +75,7 @@ export function editCard(){
 }
 
 //searchDecks
-export function searchDecks(){
+export function searchDecks() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -94,7 +83,7 @@ export function searchDecks(){
 }
 
 //createCard
-export function getChildren(){
+export function getChildren() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -102,7 +91,7 @@ export function getChildren(){
 }
 
 //deleteDeck
-export function deleteDeck(){
+export function deleteDeck() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
@@ -110,15 +99,16 @@ export function deleteDeck(){
 }
 
 //deleteCard
-export function deleteCard(){
+export function deleteCard() {
     return {
         type: GET_DECKS,
         payload: axios.get('').then(res => res)
     }
 }
 
-export default function reducer(state=initialState, action){
-    switch(action.type) {
+export default function reducer(state = initialState, action) {
+    console.log(action.type);
+    switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
         case 'GET_USER_FULFILLED':
@@ -134,6 +124,35 @@ export default function reducer(state=initialState, action){
             )
         case 'GET_USER_REJECTED':
             return state;
+        case 'GET_CURRENT_USER_FULFILLED':
+        
+            return Object.assign(
+                {},
+                state,
+                {
+                    currentUser: action.payload.data
+                }
+            )
+        case 'GET_DECKS_FULFILLED':
+            if (action.payload.data === 'No decks found.') {
+                return state;
+            } else {
+            return Object.assign(
+                {},
+                state,
+                {
+                    userDecks: action.payload.data
+                }
+            )}
+        case 'GET_FAVORITES_FULFILLED':
+        console.log("Bye", action.payload)
+            return Object.assign(
+                {},
+                state,
+                {
+                    favDecks: action.payload.data
+                }
+            )
+            default: return state;
     }
-    return state;
 }
