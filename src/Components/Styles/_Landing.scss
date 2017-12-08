@@ -6,9 +6,12 @@
 
 .focal_point{
     height:40vh;
-    line-height:55px;
     margin-top:2vh;
     background:lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
     // background-image: url('https://121spanish.com/images/media/books.jpg');
     .focal_point,button{
         width:40vw;
@@ -19,7 +22,7 @@
 
 .steps{
     height:200vh;
-    background: black;
+    background: lightgray;
     display: flex;
     flex-direction: column;
     justify-content: center;
