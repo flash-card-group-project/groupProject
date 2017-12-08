@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer';
-
-// import CreateDeck from '../Children/CreateDeck';
+import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
      componentWillMount(){
@@ -16,8 +15,7 @@ class Home extends Component {
         return (
             
             <main className='home_body'>
-            
-                <div className='card'>Create Deck</div>
+                <CreateDeck/>
                 <Link to='/my-decks/:id' className='card'>My Decks</Link>
                 <Link to='/favorites' className='card'>Favorites</Link>
             </main>
