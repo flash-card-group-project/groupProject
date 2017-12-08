@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ToggleButton from 'react-toggle-button';
 import ViewCards from '../Children/ViewCards';
 import ViewDecks from '../Children/ViewDecks';
@@ -39,4 +40,10 @@ class DeckViewerM extends Component {
     }
 }
 
-export default DeckViewerM;
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, {})(DeckViewerM);
+
+// Mark - Dec 8 - Connecting to redux and finishing functionality.

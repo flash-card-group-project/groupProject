@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class DeckViewerD extends Component {
     constructor() {
@@ -12,4 +13,8 @@ class DeckViewerD extends Component {
     }
 }
 
-export default DeckViewerD;
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, {})(DeckViewerD);
