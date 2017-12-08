@@ -8,57 +8,42 @@ class CardCoverM extends Component {
         super(props)
 
         this.state = {
-            card_title : 'Some Deck',
-            card_category : 'Some Category',
-            deck_number : this.props.match.params.number,
-            card_info : []
+            card_question: this.props.match.params.question,
+            deleteStatus: ''
         };
     };
 
-    componentDidMount() {
-        axios.get(`/api/cards/${this.state.deck_number}`).then(response => {
-
+    handleClick() {
+        let deleteCard = confirm('Are you sure you want to delete this question?');
+        if (deleteCard === true) {
+            axios.delete('/api/delete/card').then(response => {
+                
+            })
+        } else {
             this.setState({
-                card_info: response.data
-            });
-        })
-    };
-
-    componentWillReceiveProps(nextProps) {
-        axios.get(`/api/cards/${nextProps.match.params.decks}`).then(response => {
-
-            this.setState({
-                card_info: response.data
-            });
-        })
-    };
-
-    editCard(){
-
-    };
-
-    deleteCard(){
-
-    };
+                deleteStatus: 'Question was not deleted!'
+            })
+        }
+    }
 
     render() {
-        let cardCoverList = this.state.card_info.map((item, index) => {
-            return (
-                <div key={index} className="card-cover">
-                    <div className="question-face">
-                        <h3> {item.question} </h3>
-                    </div>
-                    <div className="c-buttons">
-                        <div>
-                            <button onClick={this.privatePublicToggle.bind(this)}></button>
-                            <button onClick={this.favoriteToggle.bind(this)}></button>
-                        </div>
-                    </div>
-                </div>
-            )
-        })
         return (
-            {cardCoverList}
+            <div>
+                <p style={{color: 'red'}}>{this.state.deleteStatus}</p>
+                <div>
+                    {this.state.card_question}
+                </div>
+                <a href='http://localhost:3000/create-card'>
+                <button>
+                    <img src='' alt='Edit' />
+                </button>
+                </a>
+                
+                <button onClick={}>
+                    <img src='' alt='Delete' />
+                </button>
+                
+            </div>
         )
     }
 };
