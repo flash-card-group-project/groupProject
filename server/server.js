@@ -97,6 +97,8 @@ app.get('/auth/logout', (req, res) => {
 //endpoints by erin tues 12-5
 
 //////// DECKS ENDPOINTS //////////
+
+app.get('/api/currentUser', decksCtrl.getUserInfo);
 //Get All public Decks, need this to find category
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
@@ -104,7 +106,7 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
-// app.get('/api/user/decks/:creatorId', decksCtrl.userDecks);
+app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Create new Deck
 // app.post('/api/create/deck', decksCtrl.createDeck);
 // //Delete Deck by ID
@@ -112,7 +114,7 @@ app.get('/api/decks', decksCtrl.allParentDecks);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
-// app.get('/api/users/favorites/:userID', decksCtrl.getFavorites);
+app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???

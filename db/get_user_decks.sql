@@ -1,3 +1,2 @@
 select * from decks
-where creator_id = $1
-returning *;
+where creator_id = $1;
