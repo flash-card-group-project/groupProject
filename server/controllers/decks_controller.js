@@ -2,6 +2,7 @@ module.exports = {
 
     getUserInfo: (req, res, next) => {
         const db = req.app.get('db');
+        
         db.get_user_info([req.params.id]).then(response =>{
             res.status(200).send(response)
         }).catch(err => res.status(500).send(err))
@@ -61,7 +62,7 @@ module.exports = {
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-
+console.log("USER", req.user)
         db.find_parent_decks([req.params.id])   
             .then(decks => {
                 res.status(200).send(decks)

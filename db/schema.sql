@@ -11,22 +11,25 @@ create table users (
 )
 
 create table decks (
-	deck_id integer not null primary key, 
+	deck_id serial not null primary key, 
 	deck_name varChar(200) not null, 
 	category text not null, 
-	parent_id integer references decks (deck_id),
+	parent_id integer references decks(deck_id),
 	deck_card text not null, 
 	public boolean, 
-	creator_id integer references users(id)
+	creator_id integer references users(id),
+	cards_array integer[]
 )
 
 create table cards (
 	card_id serial not null primary key, 
 	question text not null, 
 	answer text not null, 
-	parent_id integer references deck(deck_id), 
+	parent_id integer references decks(deck_id), 
 	multiple1 text, 
 	multiple2 text, 
 	multiple3 text, 
-	multiple4 text
+	multiple4 text,
+	creator_id integer references users(id),
+	cards_array integer[]
 )

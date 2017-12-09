@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import {getUser} from './../../ducks/reducer';
+import { connect } from 'react-redux';
 
 
 class MyDecks extends Component {
@@ -13,8 +14,8 @@ class MyDecks extends Component {
     }
     //get all parent decks
     componentDidMount() {
-        console.log(this.props);
-        axios.get(`/api/decks${this.props.match.params.id}`)
+        // console.log(this.props);
+        axios.get(`/api/decks/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
                     allParentDecks: res.data
@@ -41,5 +42,9 @@ class MyDecks extends Component {
     }
 }
 
+function mapStateToProps (state){
+    return{
 
+    }
+}
 export default MyDecks;

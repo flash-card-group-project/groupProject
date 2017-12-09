@@ -60,6 +60,7 @@ passport.serializeUser(function (id, done) {
     done(null, id);
 })
 passport.deserializeUser(function (id, done) {
+    // console.log("auth", id)
     app.get('db').find_session_user([id])
         .then((user) => {
             return done(null, user[0]); // put on req.user for BACKEND use
@@ -78,6 +79,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 
 app.get('/auth/me', (req, res) => {
     if (req.user) {
+        // console.log("Natalia", user);
         return res.status(200).send(req.user)
     } else {
         return res.status(401).send(`You Need To Log In`)
