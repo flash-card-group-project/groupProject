@@ -60,6 +60,7 @@ passport.serializeUser(function (id, done) {
     done(null, id);
 })
 passport.deserializeUser(function (id, done) {
+    // console.log("auth", id)
     app.get('db').find_session_user([id])
         .then((user) => {
             return done(null, user[0]); // put on req.user for BACKEND use
