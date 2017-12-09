@@ -17,7 +17,7 @@ class Home extends Component {
         return (
             <main className='home_body'>
                 <CreateDeck />
-                <Link to={`/my-decks/${this.props.userData.userId}`}className='card'>My Decks</Link>
+                <Link to={`/my-decks/${this.props.userData.userId}`} className='card'>My Decks</Link>
                 <Link to={`/favorites/${this.props.userData.userId}`} className='card'>Favorites</Link>
             </main>
         )
