@@ -112,9 +112,17 @@ a:visited {
   height: 30vh;
   background: white; }
 
+.title_bg {
+  font-size: 30px;
+  font-weight: 900; }
+
+.title_sml {
+  font-size: 24px;
+  font-weight: 600; }
+
 .home_body {
   width: 100%;
-  height: 110vh;
+  height: 145vh;
   background: lightgray;
   display: flex;
   flex-direction: column;
