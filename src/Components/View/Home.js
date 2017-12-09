@@ -5,19 +5,20 @@ import { getDecksHome, getCurrentUser, getFavorites, getUser } from '../../ducks
 import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
-    componentWillMount() {
+
+    componentDidMount() {
         this.props.getDecksHome();
-        // this.props.getCurrentUser();
+        this.props.getCurrentUser();
         this.props.getFavorites();
         this.props.getUser(); //auth user info
     }
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <main className='home_body'>
                 <CreateDeck />
                 <Link to={`/my-decks/${this.props.userData.userId}`}className='card'>My Decks</Link>
-                <Link to='/favorites' className='card'>Favorites</Link>
+                <Link to={`/favorites/${this.props.userData.userId}`} className='card'>Favorites</Link>
             </main>
         )
     }
@@ -26,7 +27,7 @@ class Home extends Component {
 function mapStateToProps(state) {
     // console.log("Hi", state.userData);
     return {
-        userDecks: state.userDecks,
+        // userDecks: state.userDecks,
         currentUser: state.currentUser,
         favDecks: state.favDecks,
         userData: state.userData

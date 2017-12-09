@@ -79,7 +79,6 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 
 app.get('/auth/me', (req, res) => {
     if (req.user) {
-        // console.log("Natalia", user);
         return res.status(200).send(req.user)
     } else {
         return res.status(401).send(`You Need To Log In`)

@@ -11,7 +11,7 @@ render() {
                 <div><Link to='/home'>H</Link></div>
                 <div><Link to='/search'>SEARCH</Link></div>                
                 <div><Link to={`/my-decks/${this.props.userData.userId}`}>MD</Link></div>
-                <div><Link to='/favorites'>FAV</Link></div>
+                <div><Link to={`/favorites/${this.props.userData.userId}`}>FAV</Link></div>
                 <a href={process.env.REACT_APP_LOGOUT}><div>OUT</div></a>
             </nav>
         </section>

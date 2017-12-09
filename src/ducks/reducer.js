@@ -2,9 +2,7 @@ import axios from 'axios';
 
 const initialState = {
     userData: {},
-    currentUser: {
-
-    }, //on Home page land
+    currentUser: {}, //on Home page land
     currentDeck: {
         deck_name: '',
         category: '',
@@ -12,12 +10,8 @@ const initialState = {
         public: true,
         cards: []
     }, //onclick deckCover, submit createDeck
-    favDecks: [
-
-    ], //on Home page land
-    userDecks: [
-
-    ],
+    favorites: [], //on Home page land
+    userDecks: [], //on My Decks view
     history: [],
     //on Home page land
     card: {
@@ -62,6 +56,7 @@ export function getDecksHome(userID) {
 }
 
 export function getFavorites(userID) {
+    console.log("ID:", userID)
     return {
         type: GET_FAVORITES,
         payload: axios.get(`/api/user/favorites/${userID}`).then(res => res)
@@ -146,7 +141,7 @@ export default function reducer(state = initialState, action) {
             })
         case 'GET_USER_REJECTED':
             return state;
-            
+
         case 'GET_CURRENT_USER_FULFILLED':
 
             return Object.assign(
@@ -169,14 +164,10 @@ export default function reducer(state = initialState, action) {
                 )
             }
         case 'GET_FAVORITES_FULFILLED':
-            console.log("Bye", action.payload)
-            return Object.assign(
-                {},
-                state,
-                {
-                    favDecks: action.payload.data
-                }
-            )
+            return Object.assign({}, state, {
+                favorites: action.payload.data
+            })
+
         case 'CREATE_DECK_FULFILLED':
             return Object.assign(
                 {},
