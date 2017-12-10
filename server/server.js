@@ -112,6 +112,8 @@ app.post('/api/create/deck', decksCtrl.createDeck);
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
 app.get('/api/user/favorites/:id', decksCtrl.getFavoriteDecks);
+//ADD to Favorites aka edit the array of favorote deck id's:
+app.post('/api/add/favorites/:id', decksCtrl.addToFavorites);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???

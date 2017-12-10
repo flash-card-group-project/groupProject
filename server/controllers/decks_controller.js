@@ -47,7 +47,26 @@ module.exports = {
             res.status(200).send('No decks found.');
         }
     },
+
+
+
+    //add to favorites where favorite=deck_id and userID=id
+    // it's kind of working, but only adding 1 item, and replaces an existing one.
+    addToFavorites: (req, res, next) => {
+        const db = req.app.get('db');
+                       
+            db.add_favorite_deck([[14], 4])
+            .then(user => {
+                console.log("USER:", user)
+            })
+            res.status(200).send(user)
+        .catch(err => res.status(500).send("Bye")
+        )},
         
+
+
+
+
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
@@ -62,7 +81,7 @@ module.exports = {
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-console.log("USER", req.user)
+// console.log("USER", req.user)
         db.find_parent_decks([req.params.id])   
             .then(decks => {
                 res.status(200).send(decks)

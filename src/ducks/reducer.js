@@ -31,6 +31,7 @@ const GET_FAVORITES = 'GET_FAVORITES';
 const CREATE_DECK = 'CREATE_DECK';
 // const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
 const CREATE_CARD = 'CREATE_CARD';
+const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 
 export function getUser() {
     return {
@@ -56,10 +57,17 @@ export function getDecksHome(userID) {
 }
 
 export function getFavorites(userID) {
-    console.log("ID:", userID)
+    // console.log("ID:", userID)
     return {
         type: GET_FAVORITES,
         payload: axios.get(`/api/user/favorites/${userID}`).then(res => res)
+    }
+}
+
+export function addToFavorites(deckID, userID){
+    return {
+        type: ADD_FAVORITE_DECK,
+        payload: axios.post(`/api/add/favorites/${userID}`).then(res => res)
     }
 }
 
@@ -127,7 +135,7 @@ export function deleteCard() {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log(action.type);
+    // console.log(action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
@@ -167,6 +175,11 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {
                 favorites: action.payload.data
             })
+
+            case 'ADD_FAVORITE_DECK_FULFILLED':
+            return Object.assign([], state, {
+                userData: action.payload.data}
+            )
 
         case 'CREATE_DECK_FULFILLED':
             return Object.assign(
