@@ -7,12 +7,18 @@
 .focal_point{
     height:75vh;
     display: flex;
+    position:relative;
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
-     background-image: url('https://i.pinimg.com/736x/08/51/2b/08512b4dcb24795fe2283030750efd03--art-oil-music-posters.jpg');
+    background:lightgray;
+    line-height: 60px;
+    //  background-image: url('https://i0.wp.com/outlawpoetry.com/wp-content/uploads/sites/15/2015/06/tumblr_mvjlyfFXa51qza249o1_500.gif?fit=400%2C700&ssl=1');
+    // background-image: url('https://media.giphy.com/media/99jllHQsXllM4/giphy.gif');
+    background-image: url('https://www.bsrp.org/wp-content/uploads/2017/02/Artice-writing1.jpg');
+    background-repeat: no-repeat;
     .focal_point,button{
-        width:50vw;
+        width:60vw;
         height:10vh;
         background:white;
     }
@@ -41,6 +47,6 @@
     font-weight: 900;
 }
 .title_sml{
-    font-size:24px;
+    font-size:22px;
     font-weight: 600;
 }
