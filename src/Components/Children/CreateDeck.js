@@ -2,9 +2,8 @@
 //functionality 12/8
 //debugged 12/11
 import React, { Component } from 'react';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-
 import {createDeck, getUser} from './../../ducks/reducer';
 
 class CreateDeck extends Component {
@@ -58,11 +57,7 @@ class CreateDeck extends Component {
         console.log( 'deck body' , this.state.currentDeck);
         return (
             <div>
-<<<<<<< HEAD
-                <button onClick={this.openModal} className="home_btn" >Create Deck</button>
-=======
                 <button onClick={this.openModal} className='home_btn'>Create Deck</button>
->>>>>>> bc489896a2b31be8864aea08df1561edb13a61d6
                 <ReactModal
                 isOpen= {this.state.modalisOpen}
                 onRequestClose= {this.closeModal}

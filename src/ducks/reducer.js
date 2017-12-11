@@ -15,6 +15,7 @@ const initialState = {
     history: [],
     //on Home page land
     card: {
+        deck_id: 0,
         question: '',
         answer: '',
         multiple1: '',
@@ -105,7 +106,7 @@ export function searchDecks() {
 export function createCard(body) {
     return {
         type: CREATE_CARD,
-        payload: axios.post('/api/create/card', body).then(res => res)
+        payload: axios.post('/api/create/card/:id', body).then(res => res)
     }
 }
 

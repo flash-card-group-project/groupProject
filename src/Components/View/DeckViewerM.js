@@ -28,6 +28,10 @@ class DeckViewerM extends Component {
         return (
             <div>
                 <div>
+                    <h2>{this.props.currentDeck.deck_name}Test</h2>
+                    <h3>{this.props.currentDeck.category}Test</h3>
+                </div>
+                <div>
                     <ToggleButton
                         value={this.state.cardView}
                         onToggle={this.toggleView}
@@ -42,7 +46,9 @@ class DeckViewerM extends Component {
 }
 
 function mapStateToProps(state) {
-    return state;
+    return {
+        currentDeck: state.currentDeck        
+    };
 }
 
 export default connect(mapStateToProps, {})(DeckViewerM);
