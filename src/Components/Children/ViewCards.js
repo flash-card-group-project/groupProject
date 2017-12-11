@@ -10,7 +10,7 @@ class ViewCards extends Component {
                                  <CardCoverM 
                                     key = {i}
                                     question = {card.question}
-                                     />
+                                    />
                              )
                          })
                          : 'null';
