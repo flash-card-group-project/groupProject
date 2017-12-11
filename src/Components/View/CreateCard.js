@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createCard } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class CreateCard extends Component {
     constructor(props) {
@@ -53,8 +54,9 @@ class CreateCard extends Component {
                         className='card2'
                         onChange={this.handleAnswer} />
                     <div className='btn_positioning'>
-                        <button className='lrg_btn'
-                            onClick={this.sendCard}>save</button>
+                        <button  className='lrg_btn'
+                            onClick={this.sendCard}>Create Card</button>
+                        <Link to='/viewer'><button className='lrg_btn'>Back to Deck</button></Link>
                     </div>
                 </section>
             </main>
