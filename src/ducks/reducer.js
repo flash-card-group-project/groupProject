@@ -24,7 +24,6 @@ const initialState = {
     }
 };
 
-const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
@@ -40,7 +39,6 @@ export function getUser() {
 
     }
 }
-
 
 export function getDecksHome(userID) {
     return {

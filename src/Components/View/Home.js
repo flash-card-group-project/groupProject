@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDecksHome, getFavorites, getUser } from '../../ducks/reducer';
+import { getDecksHome, getFavorites, getUser, createDeck } from '../../ducks/reducer';
 import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
 
     componentDidMount() {
         this.props.getDecksHome();
-        // this.props.getCurrentUser();
         this.props.getFavorites();
-        this.props.getUser(); //auth user info
+        this.props.getUser();
     }
     render() {
         // console.log(this.props);
         return (
             <main className='home_body'>
                 <h2 className='title_sml'>Welcome, {this.props.userData.first_name}!</h2>
-                <h2>Where would you like to go? </h2>
-                <CreateDeck />
-                <Link to={`/my-decks/${this.props.userData.userId}`} className='card'>My Decks</Link>
-                <Link to={`/favorites/${this.props.userData.userId}`} className='card'>Favorites</Link>
+                <button className='home_btn'>Create Deck</button>
+                <Link to={`/my-decks/${this.props.userData.userId}`}><button className='home_btn'> My Decks</button></Link>
+                <Link to={`/favorites/${this.props.userData.userId}`}><button className='home_btn'>Favorites</button></Link>
             </main>
         )
     }
 }
 
 function mapStateToProps(state) {
-    // console.log("Hi", state.userData);
     return {
-        // userDecks: state.userDecks,
-        // currentUser: state.currentUser,
         favDecks: state.favDecks,
         userData: state.userData
     }
 }
 
-export default connect(mapStateToProps, { getDecksHome,  getFavorites, getUser })(Home);
+export default connect(mapStateToProps, { getDecksHome, getFavorites, getUser })(Home);
