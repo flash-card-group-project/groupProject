@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer';
 
 class CardCoverM extends Component {
 
@@ -35,11 +37,11 @@ class CardCoverM extends Component {
                 <div>
                     {this.state.card_question}
                 </div>
-                <a href='http://localhost:3000/create-card'>
+                <Link to='/viewer'>
                 <button>
                     <img src='' alt='Edit' />
                 </button>
-                </a>
+                </Link>
                 
                 <button>
                     <img src='' alt='Delete' />
