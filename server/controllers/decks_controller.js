@@ -2,7 +2,8 @@ module.exports = {
 
     getUserInfo: (req, res, next) => {
         const db = req.app.get('db');
-        db.get_user_info([6]).then(response =>{
+        
+        db.get_user_info([req.params.id]).then(response =>{
             res.status(200).send(response)
         }).catch(err => res.status(500).send(err))
     },
@@ -10,8 +11,8 @@ module.exports = {
     //Mark - Dec 6 - get all user created decks and cards
     getUserDecks: async (req, res, next) => {
         const db = req.app.get('db');   
-        console.log(req.user);
-        let decks = await db.get_user_decks([4]);  
+
+        let decks = await db.get_user_decks([req.params.id]);  
         if (decks.length > 0) {
             let deckIDs = decks.map(deck => deck.deck_id);
             await db.cards.find({ parent_id: deckIDs })
@@ -30,7 +31,7 @@ module.exports = {
     // Mark - Dec 6 - get all user favorited decks and their associated cards
     getFavoriteDecks: async (req, res, next) => {
         const db = req.app.get('db');
-        let favArr = await db.get_fav_decks([6]);
+        let favArr = await db.get_fav_decks([req.params.id]);
         if ( favArr[0].favorites.length > 0 ){
             // console.log('favArray: ', favArr[0].favorites)
             let favDecks = await db.decks.find({ deck_id: favArr[0].favorites});
@@ -46,7 +47,26 @@ module.exports = {
             res.status(200).send('No decks found.');
         }
     },
+
+
+
+    //add to favorites where favorite=deck_id and userID=id
+    // it's kind of working, but only adding 1 item, and replaces an existing one.
+    addToFavorites: (req, res, next) => {
+        const db = req.app.get('db');
+                       
+            db.add_favorite_deck([[14], 4])
+            .then(user => {
+                console.log("USER:", user)
+            })
+            res.status(200).send(user)
+        .catch(err => res.status(500).send("Bye")
+        )},
         
+
+
+
+
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
@@ -57,15 +77,12 @@ module.exports = {
             }).catch(err => res.status(500).send(err));
 
     },
-
+ 
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-        // const { user } = req;
-
-        console.log("hi", req.body)
-
-        db.find_parent_decks([2])   //test again after login is working
+// console.log("USER", req.user)
+        db.find_parent_decks([req.params.id])   
             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));
@@ -74,7 +91,6 @@ module.exports = {
     decksByCategory: (req, res, next) => {
         const db = req.app.get('db')
         const { query } = req;
-        // console.log("Hi", req);
 
         db.decks_by_category(query.term)
             .then(deck => {
@@ -140,6 +156,8 @@ module.exports = {
                 res.status(200).send(favs)
             }).catch(err => console.log(err));
     },
+
+    
 
     // getStudy:(req, res, next) => {
     //     const db = req.app.get('db')

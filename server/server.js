@@ -40,7 +40,7 @@ passport.use(new Auth0Strategy({
     const userData = profile._json;
     db.find_user([userData.identities[0].user_id])
         .then((user) => {
-            console.log(user)
+            // console.log(user)
             if (user[0]) {
                 return done(null, user[0].id);
             } else {
@@ -53,16 +53,14 @@ passport.use(new Auth0Strategy({
                     return done(null, user[0].user_id);
                 }).catch(err => console.log('create', err))
             }
-            console.log(req.user)
         }).catch(err => console.log('find', err));
 }));
 
 passport.serializeUser(function (id, done) {
-    console.log('serializing');
-    return done(null, id);
-    // console.log(id);
+    done(null, id);
 })
 passport.deserializeUser(function (id, done) {
+    // console.log("auth", id)
     app.get('db').find_session_user([id])
         .then((user) => {
             return done(null, user[0]); // put on req.user for BACKEND use
@@ -81,7 +79,6 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 
 app.get('/auth/me', (req, res) => {
     if (req.user) {
-        // console.log(req.user)
         return res.status(200).send(req.user)
     } else {
         return res.status(401).send(`You Need To Log In`)
@@ -98,15 +95,15 @@ app.get('/auth/logout', (req, res) => {
 
 //////// DECKS ENDPOINTS //////////
 
-app.get('/api/currentUser', decksCtrl.getUserInfo);
+app.get('/api/currentUser/:id', decksCtrl.getUserInfo);
 //Get All public Decks, need this to find category
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
-app.get('/api/decks', decksCtrl.allParentDecks);
+app.get('/api/decks/:id', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
-app.get('/api/user/decks', decksCtrl.getUserDecks);
+app.get('/api/user/decks/:id', decksCtrl.getUserDecks);
 // //Create new Deck
 app.post('/api/create/deck', decksCtrl.createDeck);
 // //Delete Deck by ID
@@ -114,7 +111,9 @@ app.post('/api/create/deck', decksCtrl.createDeck);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
-app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
+app.get('/api/user/favorites/:id', decksCtrl.getFavoriteDecks);
+//ADD to Favorites aka edit the array of favorote deck id's:
+app.post('/api/add/favorites/:id', decksCtrl.addToFavorites);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???
