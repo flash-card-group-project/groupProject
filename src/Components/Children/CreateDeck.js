@@ -1,5 +1,6 @@
 //erin flesh out starting 12/7
 //functionality 12/8
+//debugged 12/11
 import React, { Component } from 'react';
 import {connect } from 'react-redux';
 
@@ -15,6 +16,7 @@ class CreateDeck extends Component {
             category: '',
             public: true,
             deck_card: 'deck'
+            // cards: null
         }
         this.handleUserInput = this.handleUserInput.bind(this);
         this.handleUserInput2 = this.handleUserInput2.bind(this);
@@ -37,9 +39,9 @@ class CreateDeck extends Component {
     handleClick(e){
         let body = {
             deck_name: this.state.deck_name,
-            category: this.state.category
-            // public: true,
-            // deck_card: 'deck'
+            category: this.state.category,
+            public: this.state.public,
+            deck_card: this.state.deck_card
         }
         // console.log(this.props.createDeck);
         this.props.createDeck(body);
