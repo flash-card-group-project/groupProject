@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import {connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
-import {createDeck} from './../../ducks/reducer';
+import {createDeck, getUser} from './../../ducks/reducer';
 
 class CreateDeck extends Component {
     constructor(props){
@@ -15,11 +15,10 @@ class CreateDeck extends Component {
             currentDeck: {},
             deck_name: '',
             category: '',
-            public: true,
             deck_card: 'deck',
             modalisOpen: false
-            // cards: null
         };
+        
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -42,10 +41,7 @@ class CreateDeck extends Component {
             category: e.target.value
         })
     }
-    // componentDidMount(){
-    //     console.log('createDeck', this.props.createDeck);
-    //     this.props.createDeck();
-    // }
+
     handleClick(e){
         let body = {
             deck_name: this.state.deck_name,
@@ -54,15 +50,15 @@ class CreateDeck extends Component {
             deck_card: this.state.deck_card
         }
         // console.log(this.props.createDeck);
-        this.props.createDeck(body);
+        this.props.createDeck(body, this.props.userData.userId);
         // createDeck(deck_name, category);
     }
 
     render() {
         console.log( 'deck body' , this.state.currentDeck);
         return (
-            <div className="deck">
-                <button onClick={this.openModal}>Create Deck</button>
+            <div>
+                <button onClick={this.openModal} className="home_btn" >Create Deck</button>
                 <ReactModal
                 isOpen= {this.state.modalisOpen}
                 onRequestClose= {this.closeModal}
@@ -88,8 +84,9 @@ class CreateDeck extends Component {
 function mapStateToProps(state) {
     console.log('state from createDeck', state);
     return{
-        currentDeck: state.currentDeck
+        currentDeck: state.currentDeck,
+        userData: state.userData
     }
 }
 
-export default connect(mapStateToProps, {createDeck})(CreateDeck);
+export default connect(mapStateToProps, {createDeck, getUser})(CreateDeck);

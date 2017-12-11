@@ -114,9 +114,9 @@ module.exports = {
 
     createDeck: (req, res, next) => {
         const db = req.app.get('db')
-        const { deck_name, category, deck_card, public } = req.body
+        const { deck_name, category, deck_card, creator_id } = req.body
 
-        db.create_deck([deck_name, category, deck_card, public])
+        db.create_deck([deck_name, category, deck_card, req.params.id])
             .then(deck => {
                 res.status(200).send(deck)
             })

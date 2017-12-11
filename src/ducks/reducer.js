@@ -72,12 +72,12 @@ export function addToFavorites(deckID, userID){
 }
 
 //createDeck erin 12/8
-export function createDeck(body) {
-    console.log('create deck redux');
+export function createDeck(body, userID) {
     return {
         type: CREATE_DECK,
-        payload: axios.post('/api/create/deck', body).then(res => res)
+        payload: axios.post(`/api/create/deck/${userID}`, body).then(res => res)
     }
+    console.log('create deck redux');
 }
 // // updateReduxDeck erin 12/8
 // export function updateReduxDeck(val){
