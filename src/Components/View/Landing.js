@@ -1,11 +1,14 @@
 import React from 'react';
-
+import Typist from 'react-typist';
 export default function Landing() {
     return (
         <main className='landing_body'>
             <section className='focal_point'>
+            <Typist>
                 <h1 className='title_bg'>Flash Toolkit</h1>
+                
                 <h2 className='title_sml'>Create, Study, Shuffle, Repeat</h2>
+                </Typist>
                 <a href={process.env.REACT_APP_LOGIN}><button>Sign In / Register</button></a>
             </section>
             <section className='steps'>
