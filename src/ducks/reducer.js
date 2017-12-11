@@ -24,7 +24,6 @@ const initialState = {
     }
 };
 
-const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
@@ -35,17 +34,9 @@ const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 
 export function getUser() {
     return {
-
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
 
-    }
-}
-
-export function getCurrentUser(userID) {
-    return {
-        type: GET_CURRENT_USER,
-        payload: axios.get(`/api/currentUser/${userID}`).then(res => res)
     }
 }
 
