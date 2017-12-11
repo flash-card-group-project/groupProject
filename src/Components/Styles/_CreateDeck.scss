@@ -1,18 +1,24 @@
 .deck{
     width: 90%;
     height: 200px;
+    border: $deckBorder;
+    background-color: white;
+    font-size: 11px;
     div{
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-top: 10px;
         margin-left: 10px;
+        // width: 100%;
         .title-input{
+            width: 75%;
             height: 30px;
             border: 1px solid black;
             margin-bottom: 5px;
         }
         .category-input{
+            width: 90%;
             height: 50px;
             border: 1px solid black;
         }

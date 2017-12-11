@@ -53,8 +53,8 @@ class CreateDeck extends Component {
         return (
             <div className="deck">
                 <div>
-                    <input type='text' placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} />
-                    <input type='text' placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} />
+                    <textarea type='text' placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} />
+                    <textarea type='text' placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} />
                 </div>
                     <div className="buttons">
                         <button className="cancel" >Cancel</button>
