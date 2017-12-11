@@ -2,7 +2,7 @@ insert into decks(
     deck_name,
     category, 
     deck_card, 
-    public
+    creator_id
 )
 values( $1, 
 $2, 

@@ -94,9 +94,6 @@ app.get('/auth/logout', (req, res) => {
 //endpoints by erin tues 12-5
 
 //////// DECKS ENDPOINTS //////////
-
-app.get('/api/currentUser/:id', decksCtrl.getUserInfo);
-//Get All public Decks, need this to find category
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
 app.get('/api/decks/:id', decksCtrl.allParentDecks);
@@ -105,7 +102,7 @@ app.get('/api/decks/:id', decksCtrl.allParentDecks);
 //Decks and subdecks?
 app.get('/api/user/decks/:id', decksCtrl.getUserDecks);
 // //Create new Deck
-app.post('/api/create/deck', decksCtrl.createDeck);
+app.post('/api/create/deck/:id', decksCtrl.createDeck);
 // //Delete Deck by ID
 // app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck

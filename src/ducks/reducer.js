@@ -24,7 +24,6 @@ const initialState = {
     }
 };
 
-const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
@@ -35,17 +34,9 @@ const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 
 export function getUser() {
     return {
-
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
 
-    }
-}
-
-export function getCurrentUser(userID) {
-    return {
-        type: GET_CURRENT_USER,
-        payload: axios.get(`/api/currentUser/${userID}`).then(res => res)
     }
 }
 
@@ -72,12 +63,12 @@ export function addToFavorites(deckID, userID){
 }
 
 //createDeck erin 12/8
-export function createDeck(body) {
-    console.log('create deck redux');
+export function createDeck(body, userID) {
     return {
         type: CREATE_DECK,
-        payload: axios.post('/api/create/deck', body).then(res => res)
+        payload: axios.post(`/api/create/deck/${userID}`, body).then(res => res)
     }
+    console.log('create deck redux');
 }
 // // updateReduxDeck erin 12/8
 // export function updateReduxDeck(val){
