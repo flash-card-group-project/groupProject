@@ -2,10 +2,9 @@ module.exports = {
 
     getUserCard: (req, res, next) => {
         const db = req.app.get('db');
-        const { params } = req;
         console.log(req.body);
 
-        db.get_user_card([2])
+        db.get_user_card([req.params.id])
         .then(card => {
             res.status(200).send(card)
         })

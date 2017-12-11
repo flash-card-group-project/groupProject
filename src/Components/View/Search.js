@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Search extends Component {
+
+export default class Search extends Component {
     constructor() {
         super()
 
@@ -83,4 +84,3 @@ class Search extends Component {
     }
 }
 
-export default Search;
