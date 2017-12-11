@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
+import {withRouter} from 'react-router-dom';
+
 import {createDeck, getUser} from './../../ducks/reducer';
 
 class CreateDeck extends Component {
@@ -50,11 +52,18 @@ class CreateDeck extends Component {
         }
         // console.log(this.props.createDeck);
         this.props.createDeck(body, this.props.userData.userId);
+
         // createDeck(deck_name, category);
     }
-
+    componentWillReceiveProps(nextProps){
+        if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
+            let newRoute = `/viewer/${nextProps.currentDeck.deck_id}`;
+            console.log('newRoute', newRoute)
+            return this.props.history.push(newRoute);
+        }
+    }
     render() {
-        console.log( 'deck body' , this.state.currentDeck);
+        // console.log( 'deck body' , this.state.currentDeck);
         return (
             <div>
                 <button onClick={this.openModal} className='home_btn'>Create Deck</button>
@@ -88,4 +97,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {createDeck, getUser})(CreateDeck);
+export default withRouter( connect(mapStateToProps, {createDeck, getUser})(CreateDeck));

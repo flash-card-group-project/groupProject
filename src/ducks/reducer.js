@@ -4,6 +4,7 @@ const initialState = {
     userData: {},
     currentUser: {}, //on Home page land
     currentDeck: {
+        deck_id: null,
         deck_name: '',
         category: '',
         deck_card: '',
@@ -41,35 +42,35 @@ export function getUser() {
     }
 }
 
-export function getDecksHome(userID) {
+export function getDecksHome() {
     return {
         type: GET_DECKS,
-        payload: axios.get(`/api/user/decks/${userID}`).then(res => res)
+        payload: axios.get(`/api/user/decks`).then(res => res)
     }
 }
 
-export function getFavorites(userID) {
+export function getFavorites() {
     // console.log("ID:", userID)
     return {
         type: GET_FAVORITES,
-        payload: axios.get(`/api/user/favorites/${userID}`).then(res => res)
+        payload: axios.get(`/api/user/favorites`).then(res => res)
     }
 }
 
-export function addToFavorites(deckID, userID){
+export function addToFavorites(deckID){
     return {
         type: ADD_FAVORITE_DECK,
-        payload: axios.post(`/api/add/favorites/${userID}`).then(res => res)
+        payload: axios.post(`/api/add/favorites/${deckID}`).then(res => res)
     }
 }
 
 //createDeck erin 12/8
-export function createDeck(body, userID) {
+export function createDeck(body) {
+    console.log('create deck redux');
     return {
         type: CREATE_DECK,
-        payload: axios.post(`/api/create/deck/${userID}`, body).then(res => res)
+        payload: axios.post(`/api/create/deck`, body).then(res => res)
     }
-    console.log('create deck redux');
 }
 // // updateReduxDeck erin 12/8
 // export function updateReduxDeck(val){
@@ -174,11 +175,12 @@ export default function reducer(state = initialState, action) {
             )
 
         case 'CREATE_DECK_FULFILLED':
+            console.log('reducer: ', action.payload.data)
             return Object.assign(
                 {},
                 state,
                 {
-                    currentDeck: action.payload.data
+                    currentDeck: action.payload.data[0]
                 }
             )
 
