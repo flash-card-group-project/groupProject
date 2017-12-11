@@ -47,7 +47,7 @@ module.exports = {
     // it's kind of working, but only adding 1 item, and replaces an existing one.
     addToFavorites: (req, res, next) => {
         const db = req.app.get('db');
-                       
+        let {deck_id} = req.params;
             db.add_favorite_deck([[14], 4])
             .then(user => {
                 console.log("USER:", user)
@@ -75,7 +75,7 @@ module.exports = {
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
 // console.log("USER", req.user)
-        db.find_parent_decks([req.params.id])   
+        db.find_parent_decks([req.params.deck_id])   
             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));

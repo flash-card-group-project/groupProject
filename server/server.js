@@ -96,7 +96,7 @@ app.get('/auth/logout', (req, res) => {
 //////// DECKS ENDPOINTS //////////
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
-app.get('/api/decks/:id', decksCtrl.allParentDecks);
+app.get('/api/decks/:deck_id', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
@@ -110,7 +110,7 @@ app.post('/api/create/deck', decksCtrl.createDeck);
 // //Get Favorites
 app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 //ADD to Favorites aka edit the array of favorote deck id's:
-app.post('/api/add/favorites/:id', decksCtrl.addToFavorites);
+app.post('/api/add/favorites/:deck_id', decksCtrl.addToFavorites);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???

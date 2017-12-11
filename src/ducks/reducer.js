@@ -56,10 +56,10 @@ export function getFavorites() {
     }
 }
 
-export function addToFavorites(deckID, userID){
+export function addToFavorites(deckID){
     return {
         type: ADD_FAVORITE_DECK,
-        payload: axios.post(`/api/add/favorites/${userID}`).then(res => res)
+        payload: axios.post(`/api/add/favorites/${deckID}`).then(res => res)
     }
 }
 
