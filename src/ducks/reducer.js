@@ -6,9 +6,9 @@ const initialState = {
     currentDeck: {
         deck_name: '',
         category: '',
-        deck_card: 'deck',
-        public: true,
-        cards: []
+        deck_card: '',
+        public: null
+        // cards: []
     }, //onclick deckCover, submit createDeck
     favorites: [], //on Home page land
     userDecks: [], //on My Decks view

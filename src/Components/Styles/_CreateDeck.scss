@@ -1,0 +1,36 @@
+.deck{
+    width: 90%;
+    height: 200px;
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 10px;
+        .title-input{
+            height: 30px;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+        .category-input{
+            height: 50px;
+            border: 1px solid black;
+        }
+    }
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        .cancel{
+            width: 50px;
+            border: 1px solid black;
+            margin-right: 5px;
+            color: tomato;
+        }
+        .submit{
+            width: 50px;
+            border: 1px solid black;
+            color: green;
+        }
+    }
+}
