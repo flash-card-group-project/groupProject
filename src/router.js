@@ -20,7 +20,7 @@ export default (
             <Route path='/search' component={Search}/>
             <Route path='/create-card' component={CreateCard}/>
             <Route path='/viewer' component={Wrapper}/>    
-            {<Route path='/create-deck' component={createDeck}/> }
+            <Route path='/create-deck' component={createDeck}/>
             {/* get rid of of createDeck before push!!! */}
         </Switch>
     </div>
