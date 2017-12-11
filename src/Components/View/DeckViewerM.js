@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ToggleButton from 'react-toggle-button';
 import ViewCards from '../Children/ViewCards';
 import ViewDecks from '../Children/ViewDecks';
+import CardCoverM from '../Children/CardCoverM';
 
 class DeckViewerM extends Component {
     constructor() {
