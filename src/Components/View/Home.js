@@ -3,20 +3,27 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDecksHome, getFavorites, getUser, createDeck } from '../../ducks/reducer';
 import CreateDeck from '../Children/CreateDeck';
+import Modal from 'react-modal';
+import CreateCard from './CreateCard';
+
+}
+
 
 class Home extends Component {
+  
 
     componentDidMount() {
         this.props.getDecksHome();
         this.props.getFavorites();
         this.props.getUser();
     }
+
+
     render() {
-        // console.log(this.props);
+
         return (
-            <main className='home_body'>
-                <h2 className='title_sml'>Welcome, {this.props.userData.first_name}!</h2>
-                <button className='home_btn'>Create Deck</button>
+            <main>
+                <CreateDeck />
                 <Link to={`/my-decks/${this.props.userData.userId}`}><button className='home_btn'> My Decks</button></Link>
                 <Link to={`/favorites/${this.props.userData.userId}`}><button className='home_btn'>Favorites</button></Link>
             </main>
