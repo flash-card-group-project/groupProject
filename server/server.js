@@ -100,15 +100,15 @@ app.get('/api/decks/:id', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
-app.get('/api/user/decks/:id', decksCtrl.getUserDecks);
+app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Create new Deck
-app.post('/api/create/deck/:id', decksCtrl.createDeck);
+app.post('/api/create/deck', decksCtrl.createDeck);
 // //Delete Deck by ID
 // app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
-app.get('/api/user/favorites/:id', decksCtrl.getFavoriteDecks);
+app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 //ADD to Favorites aka edit the array of favorote deck id's:
 app.post('/api/add/favorites/:id', decksCtrl.addToFavorites);
 // //Study decks
