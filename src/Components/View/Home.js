@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDecksHome, getCurrentUser, getFavorites, getUser } from '../../ducks/reducer';
+import { getDecksHome, getFavorites, getUser } from '../../ducks/reducer';
 import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
 
     componentDidMount() {
         this.props.getDecksHome();
-        this.props.getCurrentUser();
+        // this.props.getCurrentUser();
         this.props.getFavorites();
         this.props.getUser(); //auth user info
     }
@@ -30,10 +30,10 @@ function mapStateToProps(state) {
     // console.log("Hi", state.userData);
     return {
         // userDecks: state.userDecks,
-        currentUser: state.currentUser,
+        // currentUser: state.currentUser,
         favDecks: state.favDecks,
         userData: state.userData
     }
 }
 
-export default connect(mapStateToProps, { getDecksHome, getCurrentUser, getFavorites, getUser })(Home);
+export default connect(mapStateToProps, { getDecksHome,  getFavorites, getUser })(Home);

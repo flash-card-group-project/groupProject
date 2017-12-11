@@ -35,19 +35,12 @@ const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 
 export function getUser() {
     return {
-
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
 
     }
 }
 
-export function getCurrentUser(userID) {
-    return {
-        type: GET_CURRENT_USER,
-        payload: axios.get(`/api/currentUser/${userID}`).then(res => res)
-    }
-}
 
 export function getDecksHome(userID) {
     return {

@@ -1,13 +1,5 @@
 module.exports = {
 
-    getUserInfo: (req, res, next) => {
-        const db = req.app.get('db');
-        
-        db.get_user_info([req.params.id]).then(response =>{
-            res.status(200).send(response)
-        }).catch(err => res.status(500).send(err))
-    },
-
     //Mark - Dec 6 - get all user created decks and cards
     getUserDecks: async (req, res, next) => {
         const db = req.app.get('db');   
