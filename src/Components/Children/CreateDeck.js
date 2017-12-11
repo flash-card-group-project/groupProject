@@ -61,8 +61,8 @@ class CreateDeck extends Component {
     render() {
         console.log( 'deck body' , this.state.currentDeck);
         return (
-            <div className="deck">
-                <button onClick={this.openModal}>Create Deck</button>
+            <div>
+                <button onClick={this.openModal} className='home_btn'>Create Deck</button>
                 <ReactModal
                 isOpen= {this.state.modalisOpen}
                 onRequestClose= {this.closeModal}
