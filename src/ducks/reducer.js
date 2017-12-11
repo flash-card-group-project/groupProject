@@ -104,10 +104,10 @@ export function searchDecks() {
 }
 
 //createCard
-export function createCard(body) {
+export function createCard(body, deck_id) {
     return {
         type: CREATE_CARD,
-        payload: axios.post('/api/create/card/:id', body).then(res => res)
+        payload: axios.post(`/api/create/card/${deck_id}`, body).then(res => res)
     }
 }
 

@@ -18,7 +18,7 @@ export default (
             <Route path='/my-decks/:id' component={MyDecks}/>
             <Route path='/favorites' component={Favorites}/>
             <Route path='/search' component={Search}/>
-            <Route path='/create-card' component={CreateCard}/>
+            <Route path='/create-card/:deck_id' component={CreateCard}/>
             <Route path='/viewer/:deck_id' component={Wrapper}/>    
             <Route path='/create-deck' component={createDeck}/>
             {/* get rid of of createDeck before push!!! */}
