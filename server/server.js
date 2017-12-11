@@ -124,7 +124,7 @@ app.get('/api/user/card', cardsCtrl.getUserCard);
 //Get Card
 app.get('/api/card/:cardId', cardsCtrl.getCard);
 //Create a new Card
-app.post('/api/create/card', cardsCtrl.createCard);
+app.post('/api/create/card/:deck_id', cardsCtrl.createCard);
 //Delete a Card
 app.delete('/api/card/delete/:cardId', cardsCtrl.deleteCard);
 //Edit Card

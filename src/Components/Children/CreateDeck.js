@@ -2,7 +2,7 @@
 //functionality 12/8
 //debugged 12/11
 import React, { Component } from 'react';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import {withRouter} from 'react-router-dom';
 

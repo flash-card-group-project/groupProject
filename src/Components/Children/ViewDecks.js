@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DeckCoverM from './DeckCoverM';
-
+import CreateDeck from './CreateDeck';
 
 class ViewDecks extends Component {
     render(){
@@ -11,14 +11,14 @@ class ViewDecks extends Component {
                 <DeckCoverM 
                    key = {i}
                    deckName = {deck.deck_name}
-                   
+                   category = {deck.category}
                     />
             )
         })
         : 'null';
         return(
             <div>
-                <button>Create Deck</button>
+                <CreateDeck />
                 <div>
                     {subDeckList}
                 </div>

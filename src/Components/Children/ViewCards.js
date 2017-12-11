@@ -17,7 +17,7 @@ class ViewCards extends Component {
         return(
             <div>
                 <button>STUDY!</button>
-                <a href='/create-card'><button>Create Card</button></a>
+                <a href={`/create-card/${this.props.currentDeck.deck_id}`}><button>Create Card</button></a>
                 <div>
                     {cardList}
                 </div>
