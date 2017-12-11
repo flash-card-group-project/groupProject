@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class DeckCoverM extends Component {
 
@@ -6,10 +7,9 @@ class DeckCoverM extends Component {
         super(props)
 
         this.state = {
-            card_title = 'Some Deck',
-            card_category = 'Some Category',
-            decks = this.props.match.params.decks,
-            deck_info =[]
+            decks : 1,
+            // decks : this.props.match.params.decks,
+            deck_info : [{deck_name: 'react', category: 'javascript'},{deck_name: 'redux', category: 'react'}]
         };
     };
 
@@ -22,17 +22,17 @@ class DeckCoverM extends Component {
         })
     };
 
-    componentWillReceiveProps(nextProps) {
-        axios.get(`/api/decks/${nextProps.match.params.decks}`).then(response => {
+    // componentWillReceiveProps(nextProps) {
+    //     axios.get(`/api/decks/${nextProps.match.params.decks}`).then(response => {
 
-            this.setState({
-                deck_info: response.data
-            });
-        })
-    };
+    //         this.setState({
+    //             deck_info: response.data
+    //         });
+    //     })
+    // };
 
     privatePublicToggle(){
-
+        
     };
 
     favoriteToggle(){

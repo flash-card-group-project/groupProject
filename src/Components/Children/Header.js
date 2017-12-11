@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header(props){
+
     return (
-            <div>
-                <ul className='nav_links'>
-                    <Link to='/home'><li>HOME</li></Link>
-                    <Link to='/my_decks'><li>MY DECKS</li></Link>
-                    <Link to='/favorites'><li>FAVORITES</li></Link>
-                    <a href={process.env.REACT_APP_LOGOUT}><p>LOG OUT</p></a>
-                </ul>
-            </div>
+        <section>
+            <nav className='nav_links'>
+                <div><Link to='/home'>H</Link></div>
+                <div><Link to='/search'>SEARCH</Link></div>                
+                <div><Link to='/my-decks/:id'>MD</Link></div>
+                <div><Link to='/favorites'>FAV</Link></div>
+                <a href={process.env.REACT_APP_LOGOUT}><div>OUT</div></a>
+            </nav>
+        </section>
     )
 }
