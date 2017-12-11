@@ -58,11 +58,7 @@ class CreateDeck extends Component {
         console.log( 'deck body' , this.state.currentDeck);
         return (
             <div>
-<<<<<<< HEAD
-                <button onClick={this.openModal} className="home_btn" >Create Deck</button>
-=======
                 <button onClick={this.openModal} className='home_btn'>Create Deck</button>
->>>>>>> bc489896a2b31be8864aea08df1561edb13a61d6
                 <ReactModal
                 isOpen= {this.state.modalisOpen}
                 onRequestClose= {this.closeModal}
