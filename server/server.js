@@ -40,7 +40,7 @@ passport.use(new Auth0Strategy({
     const userData = profile._json;
     db.find_user([userData.identities[0].user_id])
         .then((user) => {
-            console.log(user)
+            // console.log(user)
             if (user[0]) {
                 return done(null, user[0].id);
             } else {
@@ -60,6 +60,7 @@ passport.serializeUser(function (id, done) {
     done(null, id);
 })
 passport.deserializeUser(function (id, done) {
+    // console.log("auth", id)
     app.get('db').find_session_user([id])
         .then((user) => {
             return done(null, user[0]); // put on req.user for BACKEND use
@@ -111,6 +112,8 @@ app.post('/api/create/deck', decksCtrl.createDeck);
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
 app.get('/api/user/favorites/:id', decksCtrl.getFavoriteDecks);
+//ADD to Favorites aka edit the array of favorote deck id's:
+app.post('/api/add/favorites/:id', decksCtrl.addToFavorites);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???
