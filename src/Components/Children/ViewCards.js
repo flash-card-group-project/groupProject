@@ -4,7 +4,7 @@ import CardCoverM from './CardCoverM';
 
 class ViewCards extends Component {
     render(){
-        const cardList = this.props.currentDeck.cards.length
+        const cardList = this.props.currentDeck.cards
                          ? this.props.currentDeck.cards.map((card, i) => {
                              return (
                                  <CardCoverM 
