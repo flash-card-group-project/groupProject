@@ -106,6 +106,8 @@ app.get('/api/decks/:id', decksCtrl.allParentDecks);
 app.get('/api/user/decks/:id', decksCtrl.getUserDecks);
 // //Create new Deck
 app.post('/api/create/deck', decksCtrl.createDeck);
+// Put private/public toggle switch
+app.put('/api/decks/private-toggle/:deckid', decksCtrl.privateToggle);
 // //Delete Deck by ID
 // app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck
@@ -113,7 +115,9 @@ app.post('/api/create/deck', decksCtrl.createDeck);
 // //Get Favorites
 app.get('/api/user/favorites/:id', decksCtrl.getFavoriteDecks);
 //ADD to Favorites aka edit the array of favorote deck id's:
-app.post('/api/add/favorites/:id', decksCtrl.addToFavorites);
+app.post('/api/add/favorites/:deckId', decksCtrl.addToFavorites);
+//DELETE from favorites based on deck id
+app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???
