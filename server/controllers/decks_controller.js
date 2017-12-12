@@ -1,8 +1,16 @@
 module.exports = {
 
+    getUserInfo: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.get_user_info([req.params.id]).then(response => {
+            res.status(200).send(response)
+        }).catch(err => res.status(500).send(err))
+    },
+
     //Mark - Dec 6 - get all user created decks and cards
     getUserDecks: async (req, res, next) => {
-        const db = req.app.get('db');   
+        const db = req.app.get('db');
 
         let decks = await db.get_user_decks([req.user.id]);  
         if (decks.length ) {
@@ -27,11 +35,11 @@ module.exports = {
         let favArr = await db.get_fav_decks([req.user.id]);
         if ( favArr.length ){
             // console.log('favArray: ', favArr[0].favorites)
-            let favDecks = await db.decks.find({ deck_id: favArr[0].favorites});
-            await db.cards.find({ parent_id: favArr[0].favorites})
+            let favDecks = await db.decks.find({ deck_id: favArr[0].favorites });
+            await db.cards.find({ parent_id: favArr[0].favorites })
                 .then(cards => {
                     let fullFavDecks = favDecks.map(deck => {
-                        deck.cards = cards.filter( card => card.parent_id === deck.deck_id)
+                        deck.cards = cards.filter(card => card.parent_id === deck.deck_id)
                         return deck;
                     })
                     res.status(200).send(fullFavDecks);
@@ -43,20 +51,39 @@ module.exports = {
 
 
 
-    //add to favorites where favorite=deck_id and userID=id
-    // it's kind of working, but only adding 1 item, and replaces an existing one.
-    addToFavorites: (req, res, next) => {
+    // this controller uses the same sql query (update_favorite_deck) as add_favorites (above)
+    addToFavorites: async (req, res, next) => {
         const db = req.app.get('db');
-        let {deck_id} = req.params;
-            db.add_favorite_deck([[14], 4])
-            .then(user => {
-                console.log("USER:", user)
+        let favArr = await db.get_fav_decks([req.user.id]);
+        console.log(req.user.id, 'This is from the addToFavorites endpoint.');
+        // console.log(favArr[0].favorites);
+        let newFavArr = favArr[0].favorites.concat([req.params.deckId]);
+        // console.log(newFavArr, "Hi");
+        db.update_favorite_deck([newFavArr, req.user.id])
+            .then(arr => {
+                // console.log("Favorite Array:", arr)
+                res.status(200).send(arr)
             })
-            res.status(200).send(user)
-        .catch(err => res.status(500).send("Bye")
-        )},
-        
+            .catch(err => res.status(500).send("Bye")
+            )
+    },
 
+    deleteFromFavorites: async (req, res, next) => {
+        const db = req.app.get('db');
+        console.log(req.user.id);
+        let favArr = await db.get_fav_decks([req.user.id]);
+        console.log(req.user)
+        // console.log(favArr[0].favorites);
+        let newFavArr = favArr[0].favorites.filter(e => e !== Number(req.params.deckId));
+        // console.log(newFavArr, "Hi");
+        db.update_favorite_deck([newFavArr, req.user.id])
+            .then(arr => {
+                // console.log("Favorite Array:", arr)
+                res.status(200).send(arr)
+            })
+            .catch(err => res.status(500).send("Bye")
+            )
+    },
 
 
 
@@ -70,7 +97,16 @@ module.exports = {
             }).catch(err => res.status(500).send(err));
 
     },
- 
+
+    privateToggle: (req, res, next) => {
+        const db = req.app.get('db')
+
+        db.private_toggle([req.params.deckid])
+            .then(toggle => {
+                res.status(200).send(toggle)
+            }).catch(err => res.status(500).send(err));
+    },
+
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
@@ -150,7 +186,7 @@ module.exports = {
             }).catch(err => console.log(err));
     },
 
-    
+
 
     // getStudy:(req, res, next) => {
     //     const db = req.app.get('db')

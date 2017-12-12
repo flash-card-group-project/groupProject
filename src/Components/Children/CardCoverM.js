@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer';
+import Modal from 'react-modal';
 
 class CardCoverM extends Component {
 
@@ -10,10 +11,10 @@ class CardCoverM extends Component {
         super(props)
 
         this.state = {
-            card_question: this.props.match.params.question,
+            card_question: '',
             deleteStatus: ''
         };
-        this.handleClickDelete = this.handleClickDelete.bind(this);
+        // this.handleClickDelete = this.handleClickDelete.bind(this);
     };
 
     //handleClick will give an error about confirm -Kevin 12/8
@@ -53,7 +54,13 @@ class CardCoverM extends Component {
     }
 };
 
-export default CardCoverM;
+function mapStateToProps(state) {
+    return {
+        currentDeck: state.currentDeck
+    }
+}
+
+export default connect(mapStateToProps, {})(CardCoverM);
 
 
 // Kevin

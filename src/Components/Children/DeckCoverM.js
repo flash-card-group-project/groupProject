@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getDecksHome, getFavorites } from '../../ducks/reducer';
+import privateIcon from '../Assets/private-mode.png';
+import publicIcon from '../Assets/public-view-icon.png';
+import favoriteIcon from '../Assets/favorite-icon.png';
+import emptyHeartIcon from '../Assets/empty-heart-icon.png';
 
 class DeckCoverM extends Component {
 
@@ -7,20 +14,36 @@ class DeckCoverM extends Component {
         super(props)
 
         this.state = {
-            decks : 1,
-            // decks : this.props.match.params.decks,
-            deck_info : [{deck_name: 'react', category: 'javascript'},{deck_name: 'redux', category: 'react'}]
+            publicStatus: this.props.public,
+            favoriteStatus: null,
+            favoriteArr: this.props.favorites
         };
+        this.privatePublicToggle = this.privatePublicToggle.bind(this);
+        this.favoriteToggle = this.favoriteToggle.bind(this);
     };
+
 
     componentDidMount() {
-        axios.get(`/api/decks/${this.state.decks}`).then(response => {
-
-            this.setState({
-                deck_info: response.data
-            });
-        })
-    };
+        this.props.getFavorites()
+        .then(()=> {
+        let currentDeckID = this.props.deckid;
+        for (let i = 0; i < this.props.favorites.length; i++) {
+            if (this.props.favorites[i] === currentDeckID) {
+                this.setState({
+                    favoriteStatus: true
+                })
+            }
+        }
+        // if (this.props.favorites.includes(currentDeckID)) {
+        //     this.setState({
+        //         favoriteStatus: true
+        //     })
+        // } else {
+        //     this.setState({
+        //         favoriteStatus: false
+        //     })
+        // }
+    })};
 
     // componentWillReceiveProps(nextProps) {
     //     axios.get(`/api/decks/${nextProps.match.params.decks}`).then(response => {
@@ -31,51 +54,86 @@ class DeckCoverM extends Component {
     //     })
     // };
 
-    privatePublicToggle(){
-        
+    privatePublicToggle() {
+        console.log(this.props)
+        axios.put(`/api/decks/private-toggle/${this.props.deckid}`).then((res) => {
+            if (this.state.publicStatus === true) {
+                this.setState({
+                    publicStatus: false
+                })
+            } else {
+                this.setState({
+                    publicStatus: true
+                })
+            }
+        })
     };
 
-    favoriteToggle(){
+    favoriteToggle() {
+        console.log(this.state)
+        if (this.state.favoriteArr.includes(this.props.deckid)) {
+            axios.delete(`/api/delete/favorites/${this.props.deckid}`).then((res) => {
+                this.props.getFavorites();
+                this.setState({
+                    favoriteStatus: false
+                })
+            })
 
+        } else {
+            axios.post(`/api/add/favorites/${this.props.deckid}`).then((res) => {
+                this.props.getFavorites();
+                this.setState({
+                    favoriteStatus: true
+                })
+            })
+        }
     };
 
-    editDeck(){
+    // editDeck(){
 
-    };
+    // };
 
-    deleteDeck(){
+    // deleteDeck(){
 
-    };
+    // };
 
     render() {
-        let deckCoverList = this.state.deck_info.map((item, index) => {
-            return (
-                <div key={index} className="deck-cover">
-                    <div className="name-category">
-                        <h3> {item.deck_name} </h3>
-                        <h3> {item.category} </h3>
-                    </div>
-                    <div className="d-buttons">
-                        <div>
-                            <button onClick={this.privatePublicToggle.bind(this)}></button>
-                            <button onClick={this.favoriteToggle.bind(this)}></button>
-                        </div>
-                        <div>
-                            <button onClick={this.editCard.bind(this)}></button>
-                            <button onClick={this.deleteCard.bind(this)}></button>
-                        </div>
-                    </div>
 
+        let privacy = this.state.publicStatus;
+        let favorite = this.state.favoriteStatus;
 
-                </div>
-            )
-        })
         return (
-            {deckCoverList}
+
+            <div className="deck-cover">
+                <div className="name-category">
+                    <h3> {this.props.name}</h3>
+                    <h3> {this.props.category}</h3>
+                </div>
+                <div className="d-buttons">
+                    <div>
+                        <button onClick={this.privatePublicToggle}>{privacy ? <img src={publicIcon} alt='' /> : <img src={privateIcon} alt='' />}</button>
+                        <button onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt='' /> : <img src={emptyHeartIcon} alt='' />}</button>
+                    </div>
+                    <div>
+                        <button onClick={this.editCard}>Edit</button>
+                        <button onClick={this.deleteCard}>Delete</button>
+                    </div>
+                </div>
+
+
+            </div>
         )
     }
 };
 
-export default DeckCoverM;
+function mapStateToProps(state) {
+    // console.log(state)
+    return {
+        userDecks: state.userDecks,
+        favorites: state.favorites
+    }
+}
+
+export default connect(mapStateToProps, { getDecksHome, getFavorites })(DeckCoverM);
 
 // Kevin
