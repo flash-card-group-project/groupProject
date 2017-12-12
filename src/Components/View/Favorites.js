@@ -41,7 +41,7 @@ class Favorites extends Component {
 
 
 function mapStateToProps(state) {
-    // console.log("STATE", state)
+    console.log("Favorites", state)
     return {
         userData: state.userData,
         favorites: state.favorites
