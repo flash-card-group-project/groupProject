@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { log } from 'util';
 
 const initialState = {
     userData: {},
@@ -200,15 +201,14 @@ export default function reducer(state = initialState, action) {
 
         case 'EDIT_DECK_FULFILLED':
             console.log('edit card testing', action.payload)
-            return Object.assign(
-                {}, 
-                state, 
-                {
+            return Object.assign({}, state, {
                     currentDeck: action.payload.data
-                }
+                    }
             )
-        case 'GET_CURRENT_DECK_FULLFILLED':
+        case 'GET_CURRENT_DECK_FULFILLED':
+        console.log(action)
             return Object.assign({}, state, {currentDeck: action.payload.data[0]})
+
         default: return state;
     }
 }

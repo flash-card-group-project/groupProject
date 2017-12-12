@@ -29,6 +29,18 @@ module.exports = {
         }
     },
 
+
+    getCurrentDeck: (req, res, next) => {
+        const db = req.app.get('db');
+
+        db.get_current_deck([req.params.deck_id, req.user.id])
+            .then (deck => {
+                res.status(200).send(deck)
+            }).catch(err => console.log(err))
+    },
+
+
+
     // Mark - Dec 6 - get all user favorited decks and their associated cards
     getFavoriteDecks: async (req, res, next) => {
         const db = req.app.get('db');
