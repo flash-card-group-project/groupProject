@@ -9,6 +9,7 @@ import Search from './Components/View/Search';
 import Wrapper from './Components/View/Wrapper';
 import editDeck from './Components/Children/EditDeck';
 import createDeck from './Components/Children/CreateDeck';
+import StudyCarousel from './Components/Children/StudyCarousel';
 
 
 export default (
@@ -16,7 +17,7 @@ export default (
         <Switch>
             <Route exact path='/' component={Landing}/>
             <Route path='/home' component={Home}/>
-            <Route path='/my-decks/:id' component={MyDecks}/>
+            <Route path='/my-decks' component={MyDecks}/>
             <Route path='/favorites' component={Favorites}/>
             <Route path='/search' component={Search}/>
             <Route path='/create-card/:deck_id' component={CreateCard}/>
@@ -24,6 +25,7 @@ export default (
             <Route path='/edit-deck/:deck_id' component={editDeck}/>
             <Route path='/create-deck/:deck_id' component={createDeck}/>
             {/* commented out editDeck before push!!! */}
+            <Route path= '/study' component={StudyCarousel} />
         </Switch>
     </div>
 )

@@ -10,8 +10,12 @@ class ViewDecks extends Component {
             return (
                 <DeckCoverM 
                    key = {i}
-                   deckName = {deck.deck_name}
-                   category = {deck.category}
+                   name={deck.deck_name}
+                   category={deck.category}
+                   deckid={deck.deck_id}
+                   public={deck.public}
+                   userID={this.props.id}
+                   creatorID={deck.creator_id}
                     />
             )
         })
@@ -31,6 +35,12 @@ function mapStateToProps(state) {
     let subDecks = state.userDecks.filter((deck, i) => {
         return deck.parent_id === state.currentDeck.deck_id;
     });
+    
+    console.log(state.userDecks.parent_id, 'deck parentid');
+    console.log(state.currentDeck.deck_id, 'state currentdeck');
+    console.log(subDecks, 'subDecks');
+    console.log(state.userDecks.parent_id === state.currentDeck.deck_id);
+    console.log(state.userDecks);
     return {
         subDecks: subDecks
     }

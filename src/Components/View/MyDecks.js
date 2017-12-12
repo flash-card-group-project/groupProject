@@ -17,7 +17,7 @@ class MyDecks extends Component {
     //get all parent decks
     componentDidMount() {
         // console.log(this.props);
-        axios.get(`/api/decks/${this.props.match.params.id}`)
+        axios.get('/api/user/decks')
             .then(res => {
                 this.setState({
                     allParentDecks: res.data
@@ -27,26 +27,27 @@ class MyDecks extends Component {
 
 
     render() {
-        
+
         let userDecks = this.state.allParentDecks.map((item, i) => {
             return (
-                
+
                 <div key={i}>
                     <DeckCoverM
-                name={item.deck_name} 
-                category={item.category}
-                deckid={item.deck_id}
-                public={item.public}
-                userID={this.props.id}/>
+                        name={item.deck_name}
+                        category={item.category}
+                        deckid={item.deck_id}
+                        public={item.public}
+                        userID={this.props.id}
+                        creatorID={item.creator_id} />
                 </div>
-                
+
             )
         })
 
         return (
             <div className='search_container'>
                 <div> I will show the user-created Decks</div>
-                
+
                 {userDecks}
             </div>
         )
@@ -59,4 +60,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps,{ getUser })(MyDecks);
+export default connect(mapStateToProps, { getUser })(MyDecks);
