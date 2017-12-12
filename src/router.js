@@ -21,8 +21,8 @@ export default (
             <Route path='/search' component={Search}/>
             <Route path='/create-card/:deck_id' component={CreateCard}/>
             <Route path='/viewer/:deck_id' component={Wrapper}/>    
-            <Route path='/edit-deck' component={editDeck}/>
-            <Route path='/create-deck' component={createDeck}/>
+            <Route path='/edit-deck/:deck_id' component={editDeck}/>
+            <Route path='/create-deck/:deck_id' component={createDeck}/>
             {/* commented out editDeck before push!!! */}
         </Switch>
     </div>

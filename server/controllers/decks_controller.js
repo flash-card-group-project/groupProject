@@ -167,13 +167,14 @@ module.exports = {
 
     editDeck: (req, res, next) => {
         const db = req.app.get('db')
-        const { params } = req;
+        const { category, deck_name } = req.body;
+        console.log('are we getting to the server?', req.body);
 
-        db.edit_deck([params.id])
+        db.edit_deck([category, deck_name, Number(req.params.deck_id)])
             .then(deck => {
                 res.status(200).send(deck)
-                    .catch((err) => res.status(500).send(err));
             })
+            .catch((err) => res.status(500).send(err));
     },
 
     getFavorites: (req, res, next) => {

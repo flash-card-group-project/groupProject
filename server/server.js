@@ -108,7 +108,7 @@ app.put('/api/decks/private-toggle/:deckid', decksCtrl.privateToggle);
 // //Delete Deck by ID
 // app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck
-// app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
+app.put('/api/deck/edit/:deck_id', decksCtrl.editDeck);
 // //Get Favorites
 app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 //ADD to Favorites aka edit the array of favorote deck id's:

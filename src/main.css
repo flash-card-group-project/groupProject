@@ -52,14 +52,13 @@ a:visited {
   text-decoration: none; }
 
 .footer {
-  height: 25vh;
+  height: 27vh;
   line-height: 70px;
   background-color: #3581b8;
   display: flex;
   color: #f3f8f2;
   flex-direction: column;
   justify-content: center;
-  margin-top: 10px;
   align-items: center; }
   .footer .social-links {
     display: flex;
