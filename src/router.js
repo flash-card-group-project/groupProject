@@ -7,8 +7,7 @@ import Home from './Components/View/Home';
 import MyDecks from './Components/View/MyDecks';
 import Search from './Components/View/Search';
 import Wrapper from './Components/View/Wrapper';
-import test491 from './Components/Children/test491';
-// import createDeck from './Components/Children/CreateDeck';
+import createDeck from './Components/Children/CreateDeck';
 
 
 export default (
@@ -19,10 +18,9 @@ export default (
             <Route path='/my-decks/:id' component={MyDecks}/>
             <Route path='/favorites' component={Favorites}/>
             <Route path='/search' component={Search}/>
-            <Route path='/create-card' component={CreateCard}/>
-            <Route path='/viewer' component={Wrapper}/>    
-            <Route path='/test' component={test491}/>
-            {/* <Route path='/create-deck' component={createDeck}/>  */}
+            <Route path='/create-card/:deck_id' component={CreateCard}/>
+            <Route path='/viewer/:deck_id' component={Wrapper}/>    
+            <Route path='/create-deck' component={createDeck}/>
             {/* get rid of of createDeck before push!!! */}
         </Switch>
     </div>

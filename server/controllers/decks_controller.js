@@ -12,8 +12,9 @@ module.exports = {
     getUserDecks: async (req, res, next) => {
         const db = req.app.get('db');
 
-        let decks = await db.get_user_decks([req.params.id]);
-        if (decks.length > 0) {
+        let decks = await db.get_user_decks([req.user.id]);  
+        if (decks.length ) {
+            //decks.length > 0
             let deckIDs = decks.map(deck => deck.deck_id);
             await db.cards.find({ parent_id: deckIDs })
                 .then(cards => {
@@ -31,8 +32,8 @@ module.exports = {
     // Mark - Dec 6 - get all user favorited decks and their associated cards
     getFavoriteDecks: async (req, res, next) => {
         const db = req.app.get('db');
-        let favArr = await db.get_fav_decks([req.params.id]);
-        if (favArr[0].favorites.length > 0) {
+        let favArr = await db.get_fav_decks([req.user.id]);
+        if ( favArr.length ){
             // console.log('favArray: ', favArr[0].favorites)
             let favDecks = await db.decks.find({ deck_id: favArr[0].favorites });
             await db.cards.find({ parent_id: favArr[0].favorites })
@@ -109,8 +110,8 @@ module.exports = {
     //decks that a User created:
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
-        // console.log("USER", req.user)
-        db.find_parent_decks([req.params.id])
+// console.log("USER", req.user)
+        db.find_parent_decks([req.params.deck_id])   
             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));
@@ -142,9 +143,9 @@ module.exports = {
 
     createDeck: (req, res, next) => {
         const db = req.app.get('db')
-        const { deck_name, category } = req.body
+        const { deck_name, category, deck_card } = req.body
 
-        db.create_deck([deck_name, category])
+        db.create_deck([deck_name, category, deck_card, req.user.id])
             .then(deck => {
                 res.status(200).send(deck)
             })

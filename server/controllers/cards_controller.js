@@ -27,10 +27,11 @@ module.exports = {
     },
 
     createCard: (req, res, next) => {
-        const db = req.app.get('db')
-        const { question, answer, multiple1, multiple2, multiple3, multiple4 } = req.body
+        const db = req.app.get('db');
+        const { question, answer, multiple1, multiple2, multiple3, multiple4 } = req.body;
+        const deck_id = Number(req.params.deck_id);
 
-        db.create_card([question, answer, multiple1, multiple2, multiple3, multiple4])
+        db.create_card([deck_id, req.user.id, question, answer, multiple1, multiple2, multiple3, multiple4])
             .then(card => {
                 res.status(200).send(card)
             })

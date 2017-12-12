@@ -4,17 +4,19 @@ const initialState = {
     userData: {},
     currentUser: {}, //on Home page land
     currentDeck: {
+        deck_id: null,
         deck_name: '',
         category: '',
-        deck_card: 'deck',
-        public: true,
-        cards: []
+        deck_card: '',
+        public: null
+        // cards: []
     }, //onclick deckCover, submit createDeck
     favorites: [], //on Home page land
     userDecks: [], //on My Decks view
     history: [],
     //on Home page land
     card: {
+        deck_id: 0,
         question: '',
         answer: '',
         multiple1: '',
@@ -24,7 +26,6 @@ const initialState = {
     }
 };
 
-const GET_CURRENT_USER = 'GET_CURRENT_USER';
 const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
@@ -35,39 +36,31 @@ const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 
 export function getUser() {
     return {
-
         type: GET_USER,
         payload: axios.get('/auth/me').then(res => res)
 
     }
 }
 
-export function getCurrentUser(userID) {
-    return {
-        type: GET_CURRENT_USER,
-        payload: axios.get(`/api/currentUser/${userID}`).then(res => res)
-    }
-}
-
-export function getDecksHome(userID) {
+export function getDecksHome() {
     return {
         type: GET_DECKS,
-        payload: axios.get(`/api/user/decks/${userID}`).then(res => res)
+        payload: axios.get(`/api/user/decks`).then(res => res)
     }
 }
 
-export function getFavorites(userID) {
+export function getFavorites() {
     // console.log("ID:", userID)
     return {
         type: GET_FAVORITES,
-        payload: axios.get(`/api/user/favorites/${userID}`).then(res => res)
+        payload: axios.get(`/api/user/favorites`).then(res => res)
     }
 }
 
-export function addToFavorites(deckID, userID){
+export function addToFavorites(deckID){
     return {
         type: ADD_FAVORITE_DECK,
-        payload: axios.post(`/api/add/favorites/${userID}`).then(res => res)
+        payload: axios.post(`/api/add/favorites/${deckID}`).then(res => res)
     }
 }
 
@@ -76,7 +69,7 @@ export function createDeck(body) {
     console.log('create deck redux');
     return {
         type: CREATE_DECK,
-        payload: axios.post('/api/create/deck', body).then(res => res)
+        payload: axios.post(`/api/create/deck`, body).then(res => res)
     }
 }
 // // updateReduxDeck erin 12/8
@@ -111,10 +104,10 @@ export function searchDecks() {
 }
 
 //createCard
-export function createCard(body) {
+export function createCard(body, deck_id) {
     return {
         type: CREATE_CARD,
-        payload: axios.post('/api/create/card', body).then(res => res)
+        payload: axios.post(`/api/create/card/${deck_id}`, body).then(res => res)
     }
 }
 
@@ -182,11 +175,12 @@ export default function reducer(state = initialState, action) {
             )
 
         case 'CREATE_DECK_FULFILLED':
+            console.log('reducer: ', action.payload.data)
             return Object.assign(
                 {},
                 state,
                 {
-                    currentDeck: action.payload.data
+                    currentDeck: action.payload.data[0]
                 }
             )
 

@@ -4,20 +4,20 @@ import CardCoverM from './CardCoverM';
 
 class ViewCards extends Component {
     render(){
-        const cardList = this.props.currentDeck.cards.length
+        const cardList = this.props.currentDeck.cards
                          ? this.props.currentDeck.cards.map((card, i) => {
                              return (
                                  <CardCoverM 
                                     key = {i}
                                     question = {card.question}
-                                     />
+                                    />
                              )
                          })
                          : 'null';
         return(
             <div>
                 <button>STUDY!</button>
-                <a href='/create-card'><button>Create Card</button></a>
+                <a href={`/create-card/${this.props.currentDeck.deck_id}`}><button>Create Card</button></a>
                 <div>
                     {cardList}
                 </div>
