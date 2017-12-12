@@ -33,6 +33,7 @@ const CREATE_DECK = 'CREATE_DECK';
 // const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
 const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
+const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
 
 export function getUser() {
     return {
@@ -57,10 +58,17 @@ export function getFavorites() {
     }
 }
 
-export function addToFavorites(deckID){
+export function addToFavorites(deckID) {
     return {
         type: ADD_FAVORITE_DECK,
         payload: axios.post(`/api/add/favorites/${deckID}`).then(res => res)
+    }
+}
+
+export function getCurrentDeck(deckID) {
+    return {
+        type: GET_CURRENT_DECK,
+        payload: axios.get(`/api/deck/currentDeck/${deckID}`).then(res => res)
     }
 }
 
@@ -187,6 +195,9 @@ export default function reducer(state = initialState, action) {
         case 'CREATE_CARD':
             console.log('will create card', action.payload)
             return Object.assign({}, state)
+
+        case 'GET_CURRENT_DECK_FULLFILLED':
+            return Object.assign({}, state, {currentDeck: action.payload.data[0]})
         default: return state;
     }
 }

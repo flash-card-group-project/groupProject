@@ -90,7 +90,7 @@ class CreateDeck extends Component {
     }
 }
 function mapStateToProps(state) {
-    console.log('state from createDeck', state);
+    // console.log('state from createDeck', state);
     return{
         currentDeck: state.currentDeck,
         userData: state.userData

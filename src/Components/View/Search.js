@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DeckCoverM from '../Children/DeckCoverM';
 
 
 export default class Search extends Component {
@@ -43,20 +44,24 @@ export default class Search extends Component {
     render() {
         let filteredDecks = this.state.foundDecks.map((item, i) => {
             return (
+
                 <div className='deck_results' key={i}>
-                    <div className='deck_found' >
-                        <div className='deck_name'>DECK: {item.deck_name}</div>
-                        <div className='deck_category'> CATEGORY: {item.category}</div>
-                    </div>
+                    <DeckCoverM
+                        name={item.deck_name}
+                        category={item.category}
+                        deckid={item.deck_id}
+                        public={item.public}
+                        userID={this.props.id}
+                        creatorID={item.creator_id} />
+                    {/* <div className='deck_results' key={i}>
+                        <div className='deck_found' >
+                            <div className='deck_name'>DECK: {item.deck_name}</div>
+                            <div className='deck_category'> CATEGORY: {item.category}</div>
+                        </div>
 
-                    <div className='boxes'>
-                        <div className='box'></div>
-                        <div className='box'></div>
-                        <div className='box'></div>
-                        <div className='box'></div>
-                    </div>
-
+                    </div> */}
                 </div>
+
             )
         });
         return (

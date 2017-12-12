@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getUser } from './../../ducks/reducer';
 import { connect } from 'react-redux';
+import DeckCoverM from '../Children/DeckCoverM';
+
 
 
 class MyDecks extends Component {
@@ -15,7 +17,7 @@ class MyDecks extends Component {
     //get all parent decks
     componentDidMount() {
         // console.log(this.props);
-        axios.get(`/api/decks/${this.props.match.params.id}`)
+        axios.get('/api/user/decks')
             .then(res => {
                 this.setState({
                     allParentDecks: res.data
@@ -25,31 +27,37 @@ class MyDecks extends Component {
 
 
     render() {
+
         let userDecks = this.state.allParentDecks.map((item, i) => {
             return (
-                <div className='deck_results' key={item.deck_id}>
-                    <div className='deck_found' >
-                        <h2 className='deck_name'>Deck Name: {item.deck_name}</h2>
-                        <h3 className='deck_category'>Category: {item.category}</h3>
-                    </div>
 
-                    <div className='boxes'>
-                        <div className='box'></div>
-                        <div className='box'></div>
-                        <div className='box'></div>
-                        <div className='box'></div>
-                    </div>
+                <div key={i}>
+                    <DeckCoverM
+                        name={item.deck_name}
+                        category={item.category}
+                        deckid={item.deck_id}
+                        public={item.public}
+                        userID={this.props.id}
+                        creatorID={item.creator_id} />
                 </div>
+
             )
         })
 
         return (
             <div className='search_container'>
                 <div> I will show the user-created Decks</div>
+
                 {userDecks}
             </div>
         )
     }
 }
 
-export default MyDecks;
+function mapStateToProps(state) {
+    return {
+        userData: state.userData
+    }
+}
+
+export default connect(mapStateToProps, { getUser })(MyDecks);

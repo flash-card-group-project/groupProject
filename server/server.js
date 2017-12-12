@@ -96,21 +96,25 @@ app.get('/auth/logout', (req, res) => {
 //////// DECKS ENDPOINTS //////////
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
-app.get('/api/decks/:deck_id', decksCtrl.allParentDecks);
+app.get('/api/user/decks', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
 app.get('/api/user/decks', decksCtrl.getUserDecks);
 // //Create new Deck
 app.post('/api/create/deck', decksCtrl.createDeck);
+// Put private/public toggle switch
+app.put('/api/decks/private-toggle/:deckid', decksCtrl.privateToggle);
 // //Delete Deck by ID
-// app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
+app.delete('/api/delete/deck/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites
 app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 //ADD to Favorites aka edit the array of favorote deck id's:
-app.post('/api/add/favorites/:deck_id', decksCtrl.addToFavorites);
+app.post('/api/add/favorites/:deckId', decksCtrl.addToFavorites);
+//DELETE from favorites based on deck id
+app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
 // //Study decks
 // // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
 // //Get Children???

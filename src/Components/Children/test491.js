@@ -11,7 +11,7 @@ class test491 extends Component {
             <div>
                 <h1>This component is for testing child components only.</h1>
                 <DeckCoverM />
-                <CardCoverM></CardCoverM>
+                {/* <CardCoverM></CardCoverM> */}
             </div>
         )
     };

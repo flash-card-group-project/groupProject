@@ -52,14 +52,13 @@ a:visited {
   text-decoration: none; }
 
 .footer {
-  height: 25vh;
+  height: 27vh;
   line-height: 70px;
   background-color: #3581b8;
   display: flex;
   color: #f3f8f2;
   flex-direction: column;
   justify-content: center;
-  margin-top: 10px;
   align-items: center; }
   .footer .social-links {
     display: flex;
@@ -185,7 +184,8 @@ a:visited {
   align-content: center; }
 
 .box {
-  height: 30px;
+  height: 32px;
+  width: 32px;
   border: 1px solid; }
 
 .search_input {
@@ -204,7 +204,8 @@ input {
 button {
   width: 29%;
   font-size: 80%;
-  border: 1px solid orange; }
+  border: 1px solid orange;
+  background: white; }
 
 .search_results {
   width: 90%;
