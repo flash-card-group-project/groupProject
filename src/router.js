@@ -8,6 +8,7 @@ import MyDecks from './Components/View/MyDecks';
 import Search from './Components/View/Search';
 import Wrapper from './Components/View/Wrapper';
 import createDeck from './Components/Children/CreateDeck';
+import StudyCarousel from './Components/Children/StudyCarousel';
 
 
 export default (
@@ -22,6 +23,7 @@ export default (
             <Route path='/viewer/:deck_id' component={Wrapper}/>    
             <Route path='/create-deck' component={createDeck}/>
             {/* get rid of of createDeck before push!!! */}
+            <Route path= '/study' component={StudyCarousel} />
         </Switch>
     </div>
 )
