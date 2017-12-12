@@ -96,7 +96,7 @@ app.get('/auth/logout', (req, res) => {
 //////// DECKS ENDPOINTS //////////
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
 //Parent decks
-app.get('/api/decks/:deck_id', decksCtrl.allParentDecks);
+app.get('/api/user/decks', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
 //Decks and subdecks?
@@ -106,7 +106,7 @@ app.post('/api/create/deck', decksCtrl.createDeck);
 // Put private/public toggle switch
 app.put('/api/decks/private-toggle/:deckid', decksCtrl.privateToggle);
 // //Delete Deck by ID
-// app.delete('/api/deck/delete/:deckId', decksCtrl.deleteDeck);
+app.delete('/api/delete/deck/:deckId', decksCtrl.deleteDeck);
 // //Edit Deck
 // app.put('/api/deck/edit/:deckId', decksCtrl.editDeck);
 // //Get Favorites

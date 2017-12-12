@@ -20,8 +20,8 @@ class Home extends Component {
             <main className='home_body'>
                 <h2 className='title_sml welcome_background'>Welcome, {this.props.userData.first_name}!</h2>
                 <CreateDeck />
-                <Link to={`/my-decks/${this.props.userData.userId}`}><button className='home_btn'> My Decks</button></Link>
-                <Link to={`/favorites/${this.props.userData.userId}`}><button className='home_btn'>Favorites</button></Link>
+                <Link to={'/my-decks'}><button className='home_btn'> My Decks</button></Link>
+                <Link to={'/favorites'}><button className='home_btn'>Favorites</button></Link>
             </main>
         )
     }

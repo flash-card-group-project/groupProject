@@ -1,12 +1,17 @@
+/* global location */
+/* eslint no-restricted-globals: ["off", "confirm"] */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDecksHome, getFavorites } from '../../ducks/reducer';
+import { getUser, getDecksHome, getFavorites } from '../../ducks/reducer';
+import '../Styles/_Search.scss';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
 import favoriteIcon from '../Assets/favorite-icon.png';
 import emptyHeartIcon from '../Assets/empty-heart-icon.png';
+import trashCan from '../Assets/delete-icon.png';
 
 class DeckCoverM extends Component {
 
@@ -20,20 +25,25 @@ class DeckCoverM extends Component {
         };
         this.privatePublicToggle = this.privatePublicToggle.bind(this);
         this.favoriteToggle = this.favoriteToggle.bind(this);
+        this.deleteDeck = this.deleteDeck.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     };
 
 
     componentDidMount() {
-        this.props.getFavorites()
-        .then(()=> {
         let currentDeckID = this.props.deckid;
-        for (let i = 0; i < this.props.favorites.length; i++) {
-            if (this.props.favorites[i] === currentDeckID) {
-                this.setState({
-                    favoriteStatus: true
-                })
-            }
-        }
+        let isFavorited = this.props.favorites.find(e => e.deck_id === currentDeckID);
+        // console.log(this.props.favorites.includes(currentDeckID));
+        if (isFavorited) {
+            this.setState({
+                favoriteStatus: true
+            })
+        } else {
+            this.setState({
+                favoriteStatus: false
+            })
+            // console.log(this.props.favorites)
+        };
         // if (this.props.favorites.includes(currentDeckID)) {
         //     this.setState({
         //         favoriteStatus: true
@@ -43,7 +53,8 @@ class DeckCoverM extends Component {
         //         favoriteStatus: false
         //     })
         // }
-    })};
+
+    };
 
     // componentWillReceiveProps(nextProps) {
     //     axios.get(`/api/decks/${nextProps.match.params.decks}`).then(response => {
@@ -55,7 +66,7 @@ class DeckCoverM extends Component {
     // };
 
     privatePublicToggle() {
-        console.log(this.props)
+        // console.log(this.props)
         axios.put(`/api/decks/private-toggle/${this.props.deckid}`).then((res) => {
             if (this.state.publicStatus === true) {
                 this.setState({
@@ -70,9 +81,9 @@ class DeckCoverM extends Component {
     };
 
     favoriteToggle() {
-        console.log(this.state)
-        if (this.state.favoriteArr.includes(this.props.deckid)) {
-            axios.delete(`/api/delete/favorites/${this.props.deckid}`).then((res) => {
+        // console.log(this.state)
+        if (this.state.favoriteStatus) {
+            axios.delete(`/api/delete/favorites/${this.props.deckid}`).then(() => {
                 this.props.getFavorites();
                 this.setState({
                     favoriteStatus: false
@@ -80,7 +91,7 @@ class DeckCoverM extends Component {
             })
 
         } else {
-            axios.post(`/api/add/favorites/${this.props.deckid}`).then((res) => {
+            axios.post(`/api/add/favorites/${this.props.deckid}`).then(() => {
                 this.props.getFavorites();
                 this.setState({
                     favoriteStatus: true
@@ -93,47 +104,73 @@ class DeckCoverM extends Component {
 
     // };
 
-    // deleteDeck(){
+    deleteDeck() {
 
-    // };
+        let confirmation = confirm("Are you sure you want to delete this deck?");
+        if (confirmation) {
+            axios.delete(`/api/delete/deck/${this.props.deckid}`).then(() =>
+                alert('The deck has been deleted!'));
+        } else {
+            alert('The deck was NOT deleted!')
+        }
+    };
+
+    handleClick() {
+        
+    }
 
     render() {
 
         let privacy = this.state.publicStatus;
         let favorite = this.state.favoriteStatus;
+        let myButtons = this.props.userData.userId === this.props.creatorID;
+        // console.log(this.props.userData.userId);
+        // console.log(this.props.creatorID);
+        // console.log(myButtons);
 
         return (
-
             <div className="deck-cover">
-                <div className="name-category">
-                    <h3> {this.props.name}</h3>
-                    <h3> {this.props.category}</h3>
-                </div>
-                <div className="d-buttons">
-                    <div>
-                        <button onClick={this.privatePublicToggle}>{privacy ? <img src={publicIcon} alt='' /> : <img src={privateIcon} alt='' />}</button>
-                        <button onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt='' /> : <img src={emptyHeartIcon} alt='' />}</button>
+            <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
+                    <div className="deck_found">
+                        <div className="deck_name"> Name: {this.props.name}</div>
+                        <div className="deck_category"> Category: {this.props.category}</div>
                     </div>
-                    <div>
-                        <button onClick={this.editCard}>Edit</button>
-                        <button onClick={this.deleteCard}>Delete</button>
+                </Link>
+                {myButtons ? (
+                    <div className="boxes">
+                        <div>
+                            <button className="box" onClick={this.privatePublicToggle}>{privacy ? <img src={publicIcon} alt='public' /> : <img src={privateIcon} alt='private' />}</button>
+                            <button className="box" onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
+                        </div>
+                        <div>
+                            <button className="box" onClick={this.editCard}>Edit</button>
+                            <button className="box" onClick={this.deleteDeck}><img src={trashCan} alt='Delete' /></button>
+                        </div>
                     </div>
-                </div>
+                ) : (
+                        <div>
+
+                            <button onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
+                        </div>
+                    )}
+
 
 
             </div>
+
         )
     }
 };
 
 function mapStateToProps(state) {
-    // console.log(state)
+    // console.log(state, 'this is the state')
     return {
+        userData: state.userData,
         userDecks: state.userDecks,
         favorites: state.favorites
     }
 }
 
-export default connect(mapStateToProps, { getDecksHome, getFavorites })(DeckCoverM);
+export default connect(mapStateToProps, { getUser, getDecksHome, getFavorites })(DeckCoverM);
 
 // Kevin

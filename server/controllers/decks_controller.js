@@ -111,7 +111,7 @@ module.exports = {
     allParentDecks: (req, res, next) => {
         const db = req.app.get('db')
 // console.log("USER", req.user)
-        db.find_parent_decks([req.params.deck_id])   
+        db.find_parent_decks([req.user.id])   
             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => console.log(err));
@@ -156,13 +156,11 @@ module.exports = {
 
     deleteDeck: (req, res, next) => {
         const db = req.app.get('db')
-        const { params } = req;
 
-        db.delete_deck([params.id])
-            .then(() => {
-                res.status(200).send("Deleted!")
-                    .catch((err) => res.status(500).send(err));
-            })
+        db.delete_deck([req.params.deckId, 6])
+            .then(deck => {
+                res.status(200).send("Deleted!")   
+            }).catch((err) => res.status(500).send(err));
     },
 
     editDeck: (req, res, next) => {
@@ -172,8 +170,7 @@ module.exports = {
         db.edit_deck([params.id])
             .then(deck => {
                 res.status(200).send(deck)
-                    .catch((err) => res.status(500).send(err));
-            })
+            }).catch((err) => res.status(500).send(err));
     },
 
     getFavorites: (req, res, next) => {
