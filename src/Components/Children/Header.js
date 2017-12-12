@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUser } from "./../../ducks/reducer";
 import { IconButton, IconMenu, MenuItem, AppBar } from 'material-ui';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 
 class Header extends Component {

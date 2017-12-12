@@ -2,9 +2,11 @@
 //functionality 12/8
 //debugged 12/11
 import React, { Component } from 'react';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
+import ReactModal from 'react-modal';
+import {withRouter} from 'react-router-dom';
 
-import {createDeck} from './../../ducks/reducer';
+import {createDeck, getUser} from './../../ducks/reducer';
 
 class CreateDeck extends Component {
     constructor(props){
@@ -15,12 +17,20 @@ class CreateDeck extends Component {
             deck_name: '',
             category: '',
             public: true,
-            deck_card: 'deck'
-            // cards: null
-        }
+            deck_card: 'deck',
+            modalisOpen: false
+        };
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
         this.handleUserInput = this.handleUserInput.bind(this);
         this.handleUserInput2 = this.handleUserInput2.bind(this);
         this.handleClick = this.handleClick.bind(this);
+    }
+    openModal(){
+        this.setState({modalisOpen : true});
+    }
+    closeModal(){
+        this.setState({modalisOpen: false});
     }
     handleUserInput(e){
         this.setState({
@@ -32,10 +42,7 @@ class CreateDeck extends Component {
             category: e.target.value
         })
     }
-    // componentDidMount(){
-    //     console.log('createDeck', this.props.createDeck);
-    //     this.props.createDeck();
-    // }
+
     handleClick(e){
         let body = {
             deck_name: this.state.deck_name,
@@ -44,31 +51,50 @@ class CreateDeck extends Component {
             deck_card: this.state.deck_card
         }
         // console.log(this.props.createDeck);
-        this.props.createDeck(body);
+        this.props.createDeck(body, this.props.userData.userId);
+
         // createDeck(deck_name, category);
     }
-
+    componentWillReceiveProps(nextProps){
+        if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
+            let newRoute = `/viewer/${nextProps.currentDeck.deck_id}`;
+            console.log('newRoute', newRoute)
+            return this.props.history.push(newRoute);
+        }
+    }
     render() {
-        console.log( 'deck body' , this.state.currentDeck);
+        // console.log( 'deck body' , this.state.currentDeck);
         return (
-            <div className="deck">
+            <div>
+                <button onClick={this.openModal} className='home_btn'>Create Deck</button>
+                <ReactModal
+                isOpen= {this.state.modalisOpen}
+                onRequestClose= {this.closeModal}
+                aria = {{
+                    labelledby: 'heading',
+                    describedby: "full_description"
+                
+                }}> 
                 <div>
-                    <input type='text' placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} />
-                    <input type='text' placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} />
+                    <textarea type='text' placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} />
+                    <textarea type='text' placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} />
                 </div>
                     <div className="buttons">
-                        <button className="cancel" >Cancel</button>
+                        <button className="cancel" onClick={this.closeModal} >Cancel</button>
                         <button className="submit" onClick={this.handleClick} >Submit</button>
                         {/* link to deck viewer component, create deck, update history */}
                     </div>
+                    </ReactModal>
             </div>
         )
     }
 }
 function mapStateToProps(state) {
+    console.log('state from createDeck', state);
     return{
-        currentDeck: state.currentDeck
+        currentDeck: state.currentDeck,
+        userData: state.userData
     }
 }
 
-export default connect(mapStateToProps, {createDeck})(CreateDeck);
+export default withRouter( connect(mapStateToProps, {createDeck, getUser})(CreateDeck));
