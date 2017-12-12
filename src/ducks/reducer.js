@@ -33,6 +33,7 @@ const CREATE_DECK = 'CREATE_DECK';
 // const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
 const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
+const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
 
 export function getUser() {
@@ -88,10 +89,11 @@ export function createDeck(body) {
 //     }
 // }
 //editDeck
-export function editDeck() {
+export function editDeck(deckId, body) {
+    console.log('editDeck in redux');
     return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        type: EDIT_DECK,
+        payload: axios.put(`/api/deck/edit/${deckId}`, body).then(res => res)
     }
 }
 
@@ -136,7 +138,7 @@ export function deleteCard() {
 }
 
 export default function reducer(state = initialState, action) {
-    // console.log(action.type);
+    console.log(action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
@@ -196,6 +198,15 @@ export default function reducer(state = initialState, action) {
             console.log('will create card', action.payload)
             return Object.assign({}, state)
 
+        case 'EDIT_DECK_FULFILLED':
+            console.log('edit card testing', action.payload)
+            return Object.assign(
+                {}, 
+                state, 
+                {
+                    currentDeck: action.payload.data
+                }
+            )
         case 'GET_CURRENT_DECK_FULLFILLED':
             return Object.assign({}, state, {currentDeck: action.payload.data[0]})
         default: return state;

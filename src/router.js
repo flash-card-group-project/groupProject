@@ -7,6 +7,7 @@ import Home from './Components/View/Home';
 import MyDecks from './Components/View/MyDecks';
 import Search from './Components/View/Search';
 import Wrapper from './Components/View/Wrapper';
+import editDeck from './Components/Children/EditDeck';
 import createDeck from './Components/Children/CreateDeck';
 import StudyCarousel from './Components/Children/StudyCarousel';
 
@@ -21,8 +22,9 @@ export default (
             <Route path='/search' component={Search}/>
             <Route path='/create-card/:deck_id' component={CreateCard}/>
             <Route path='/viewer/:deck_id' component={Wrapper}/>    
-            <Route path='/create-deck' component={createDeck}/>
-            {/* get rid of of createDeck before push!!! */}
+            <Route path='/edit-deck/:deck_id' component={editDeck}/>
+            <Route path='/create-deck/:deck_id' component={createDeck}/>
+            {/* commented out editDeck before push!!! */}
             <Route path= '/study' component={StudyCarousel} />
         </Switch>
     </div>
