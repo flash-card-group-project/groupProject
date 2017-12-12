@@ -58,8 +58,8 @@ class EditDeck extends Component {
                         describedby: 'full_description'
                     }} >
                     <div>
-                        <textarea placeholder="Insert deck's new name" className="title-input" value={this.state.deck_name} onChange={this.handleUserInput}/>
-                        <textarea placeholder="Insert deck's new category" className="category-input" value={this.state.category} onChange={this.handleUserInput2}/>
+                        <textarea placeholder="Insert deck's new name" className="title-update" value={this.state.deck_name} onChange={this.handleUserInput}/>
+                        <textarea placeholder="Insert deck's new category" className="category-update" value={this.state.category} onChange={this.handleUserInput2}/>
                     </div>
                     <div>
                         <button onClick={this.closeModal}>Cancel</button>

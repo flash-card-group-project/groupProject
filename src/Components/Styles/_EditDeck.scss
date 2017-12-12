@@ -4,4 +4,24 @@
     border: $deckBorder;
     background-color: white;
     font-size: 11px;
+    button {
+        width: 75%;
+        height: 100px;
+        border: 3px solid red;
+        background-color: rgb(182, 182, 182);
+        font-size: 12px; 
+        color: white; 
+    }
+    div{
+        .title-update{
+            width: 75%;
+            height: 30px;
+            border: $inputBoxBorder;
+        }
+        .category-update{
+            width: 90%;
+            height: 50px;
+            border: $inputBoxBorder;
+        }
+    }
 }
