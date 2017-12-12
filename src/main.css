@@ -80,48 +80,57 @@ a:visited {
 
 .landing_body {
   width: 100%;
-  height: 283vh;
+  height: 400vh;
   text-align: center; }
 
 .focal_point {
-  height: 75vh;
+  height: 65vh;
   display: flex;
   position: relative;
   flex-direction: column;
   justify-content: space-around;
   text-align: center;
-  background: lightgray;
-  line-height: 60px;
+  line-height: 95px;
   background-image: url("https://www.bsrp.org/wp-content/uploads/2017/02/Artice-writing1.jpg");
   background-repeat: no-repeat; }
   .focal_point .focal_point, .focal_point button {
     width: 60vw;
     height: 10vh;
-    background: white; }
+    background: white;
+    border: none; }
 
 .steps {
-  height: 206vh;
-  background: lightgray;
+  height: 335vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  padding: 10px; }
+  padding: 5px; }
 
-.card {
+.img_card {
   width: 95%;
+  height: 40vh; }
+
+.description_card {
+  width: 90%;
   height: 30vh;
-  background: white; }
+  background: white;
+  padding: 5px;
+  border: 1px solid black; }
 
 .title_bg {
   font-size: 30px;
   font-weight: 900; }
 
-.title_sml {
-  font-size: 22px;
+.title_md {
+  font-size: 24px;
   font-weight: 600; }
+
+.title_sml {
+  font-size: 20px;
+  font-weight: 700; }
 
 .home_body {
   width: 100%;
