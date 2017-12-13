@@ -33,11 +33,22 @@ class CardCoverM extends Component {
     // }
 
     render() {
+        let card = this.props.currentDeck.cards.map((item, i) => {
+            return(
+                <div key={i}>
+                    <p>Card ID:{item.card_id}</p>
+                    <p>QUESTION: {item.question}</p>
+                    <p>PARENT DECK ID: {item.parent_id}</p>
+
+                </div>
+            )
+        })
         return (
             <div>
                 <p style={{ color: 'red' }}>{this.state.deleteStatus}</p>
                 <div>
-                    {this.state.card_question}
+                    {card}
+                    {/* {this.state.card_question} */}
                 </div>
                 <Link to='/viewer'>
                     <button>

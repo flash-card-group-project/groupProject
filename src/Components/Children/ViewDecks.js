@@ -14,6 +14,7 @@ class ViewDecks extends Component {
         const subDeckList = this.props.subDecks.length
         ? this.props.subDecks.map((deck, i) => {
             return (
+                <div>
                 <DeckCoverM 
                    key = {i}
                    name={deck.deck_name}
@@ -23,6 +24,8 @@ class ViewDecks extends Component {
                    userID={this.props.id}
                    creatorID={deck.creator_id}
                     />
+                
+                </div>
             )
         })
         : 'null';
@@ -42,11 +45,11 @@ function mapStateToProps(state) {
         return deck.parent_id === state.currentDeck.deck_id;
     });
     
-    console.log(state.userDecks, 'USER DECKS');
-    console.log(state.currentDeck.deck_id, 'state currentdeckID');
-    console.log(subDecks, 'subDecks');
+    // console.log(state.userDecks, 'USER DECKS');
+    // console.log(state.currentDeck.deck_id, 'state currentdeckID');
+    // console.log(subDecks, 'subDecks');
     //console.log(state.userDecks.parent_id !== state.currentDeck.deck_id);
-    console.log("STATE.CURRENT DECK",state.currentDeck);
+    // console.log("STATE.CURRENT DECK",state.currentDeck);
     return {
         userData: state.userData,
         subDecks: subDecks,

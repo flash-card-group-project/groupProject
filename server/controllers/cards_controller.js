@@ -53,9 +53,8 @@ module.exports = {
 
     deleteCard: (req, res, next) => {
         const db = req.app.get('db')
-        const { params } = req;
 
-        db.delete_card([params.id])
+        db.delete_card([req.params.id])
             .then(() => {
                 res.status(200).send("Deleted!")
                     .catch((err) => res.status(500).send(err));
