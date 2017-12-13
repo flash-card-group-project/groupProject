@@ -7,14 +7,8 @@ class CreateCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-<<<<<<< HEAD
-            currentCard: {},
-            questionInput:'',
-            answerInput:''
-=======
             questionInput: '',
             answerInput: ''
->>>>>>> b034e96ee5735e28b01850596ec222f37c83b769
         }
 
         this.handleQuestion = this.handleQuestion.bind(this);
