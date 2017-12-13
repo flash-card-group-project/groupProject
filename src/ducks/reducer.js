@@ -32,7 +32,9 @@ const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
-const GER_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
+const GET_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
+// const DELETE_DECK = 'DELETE_DECK';
+const DELETE_CARD = 'DELETE_CARD';
 
 
 
@@ -123,18 +125,19 @@ export function createCard(body, deck_id) {
 }
 
 //deleteDeck
-export function deleteDeck() {
-    return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
-    }
-}
+// export function deleteDeck() {
+//     return {
+//         type: DELETE_DECK,
+//         payload: axios.get('').then(res => res)
+//     }
+// }
 
 //deleteCard
-export function deleteCard() {
+export function deleteCard(card_id) {
+    console.log('are we reaching the reducer')
     return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
+        type: DELETE_CARD,
+        payload: axios.delete(`/api/card/delete/${card_id}`).then(res => res)
     }
 }
 
@@ -207,7 +210,11 @@ export default function reducer(state = initialState, action) {
             )
         case 'GET_CURRENT_DECK_FULFILLED':
         console.log(action)
-            return Object.assign({}, state, {currentDeck: action.payload.data[0]})
+        return Object.assign({}, state, {currentDeck: action.payload.data[0]})
+        
+        case 'DELETE_CARD_FULFILLED':
+        console.log(action.payload)
+            return Object.assign({}, state, {currentDeck: action.payload.data})
 
         default: return state;
     }
