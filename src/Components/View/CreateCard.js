@@ -14,7 +14,9 @@ class CreateCard extends Component {
 
         this.handleQuestion = this.handleQuestion.bind(this);
         this.handleAnswer = this.handleAnswer.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit
+         = this.handleSubmit
+        .bind(this);
     }
     handleQuestion(e) {
         this.setState({
