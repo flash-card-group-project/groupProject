@@ -15,24 +15,22 @@ class Home extends Component {
 
 
     render() {
-
         return (
             <main className='home_body'>
                 <h2 className='title_sml welcome_background'>Welcome, {this.props.userData.first_name}!</h2>
                 <CreateDeck />
-                <Link to={'/my-decks'}><button className='home_btn'> My Decks</button></Link>
-                <Link to={'/favorites'}><button className='home_btn'>Favorites</button></Link>
+                <Link to={'/my-decks'}><button className='large_btn'> My Decks</button></Link>
+                <Link to={'/favorites'}><button className='large_btn'>Favorites</button></Link>
             </main>
         )
     }
 }
 
 function mapStateToProps(state) {
-    // console.log("HOME", state.userDecks)
-    // console.log("USERDATA", state.userData)
     return {
         favDecks: state.favDecks,
-        userData: state.userData
+        userData: state.userData,
+        currentDeck: {}
     }
 }
 
