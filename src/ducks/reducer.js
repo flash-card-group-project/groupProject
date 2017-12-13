@@ -3,7 +3,7 @@ import { log } from 'util';
 
 const initialState = {
     userData: {},
-    currentUser: {}, //on Home page land
+    currentUser: {}, //on Home page land need to delete not being used
     currentDeck: {
         deck_id: null,
         deck_name: '',
@@ -16,15 +16,7 @@ const initialState = {
     userDecks: [], // parent decks ONLY
     history: [],
     //on Home page land
-    card: {
-        deck_id: 0,
-        question: '',
-        answer: '',
-        multiple1: '',
-        multiple2: '',
-        multiple3: '',
-        multiple4: ''
-    }
+    card:{}
 };
 
 const GET_DECKS = 'GET_DECKS';

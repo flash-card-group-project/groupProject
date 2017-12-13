@@ -56,7 +56,7 @@ class CreateCard extends Component {
                     <div className='btn_positioning'>
                         <button  className='lrg_btn'
                             onClick={this.sendCard}>Create Card</button>
-                        <Link to='/viewer'><button className='lrg_btn'>Back to Deck</button></Link>
+                        {/* <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link> */}
                     </div>
                 </section>
             </main>
@@ -65,6 +65,7 @@ class CreateCard extends Component {
 
 }
 function mapStateToProps(state) {
+    console.log('STATE on CREATE_CARD',state);
    return {
        card:state.currentCard
    } 
