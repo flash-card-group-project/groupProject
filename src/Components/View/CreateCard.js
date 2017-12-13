@@ -7,7 +7,6 @@ class CreateCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentCard: {},
             questionInput: '',
             answerInput: ''
         }
@@ -37,6 +36,7 @@ class CreateCard extends Component {
         }
         this.props.createCard(body, this.props.match.params.deck_id);
     }
+
     render() {
         return (
             <main className='create_card_bod'>
@@ -56,18 +56,18 @@ class CreateCard extends Component {
                     <div className='btn_positioning'>
                         <button  className='lrg_btn'
                             onClick={this.sendCard}>Create Card</button>
-                        <Link to='/viewer'><button className='lrg_btn'>Back to Deck</button></Link>
+                        <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link>
                     </div>
                 </section>
             </main>
         )
     }
-
 }
+
 function mapStateToProps(state) {
-   return {
-       card:state.currentCard
-   } 
+    return {
+        currentDeck: state.currentDeck
+    };
 }
 
 export default connect(mapStateToProps, { createCard })(CreateCard);
