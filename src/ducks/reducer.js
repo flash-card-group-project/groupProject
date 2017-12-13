@@ -9,8 +9,12 @@ const initialState = {
         deck_name: '',
         category: '',
         deck_card: '',
-        public: null
-        // cards: []
+        public: null,
+        cards: [{
+            card_id: null,
+            question: '',
+            parent_id: null
+        }]
     }, //onclick deckCover, submit createDeck
     favorites: [], //on Home page land
     userDecks: [], // parent decks ONLY

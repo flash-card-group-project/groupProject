@@ -4,6 +4,7 @@ import CardCoverM from './CardCoverM';
 
 class ViewCards extends Component {
     render(){
+        // let userDeckIndex = indexOf(this.props.currentDeck.deck_id === this.props.userDecks.deck_id)
         const cardList = this.props.currentDeck.cards
                          ? this.props.currentDeck.cards.map((card, i) => {
                              return (
@@ -28,7 +29,8 @@ class ViewCards extends Component {
 
 function mapStateToProps(state) {
     return {
-        currentDeck: state.currentDeck
+        currentDeck: state.currentDeck,
+        userDecks: state.userDecks
     };
 }
 
