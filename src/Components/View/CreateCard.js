@@ -13,7 +13,7 @@ class CreateCard extends Component {
 
         this.handleQuestion = this.handleQuestion.bind(this);
         this.handleAnswer = this.handleAnswer.bind(this);
-        this.sendCard = this.sendCard.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleQuestion(e) {
         this.setState({
@@ -25,7 +25,7 @@ class CreateCard extends Component {
             answerInput: e.target.value
         })
     }
-    sendCard(e) {
+    handleSubmit(e) {
         let body = {
             question: this.state.questionInput,
             answer: this.state.answerInput,
@@ -39,10 +39,11 @@ class CreateCard extends Component {
 
     render() {
         return (
-            <main className='create_card_bod'>
+            <form className='create_card_bod' onSubmit={this.handleSubmit}>
                 <section className='box1'>
                     <textarea placeholder='please enter your question here..'
                         className='card2'
+                        value={this.state.questionInput}
                         onChange={this.handleQuestion} />
                     <div className='btn_positioning'>
                         <button className='lrg_btn'>MC</button>
@@ -52,6 +53,7 @@ class CreateCard extends Component {
                 <section className='box1'>
                     <textarea placeholder='please enter your answer here...'
                         className='card2'
+                        value={this.state.answerInput}
                         onChange={this.handleAnswer} />
                     <div className='btn_positioning'>
                         <button  className='lrg_btn'
@@ -59,7 +61,7 @@ class CreateCard extends Component {
                         <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link>
                     </div>
                 </section>
-            </main>
+            </form>
         )
     }
 }
