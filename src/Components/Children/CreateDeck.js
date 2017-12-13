@@ -18,7 +18,8 @@ class CreateDeck extends Component {
             category: '',
             public: true,
             deck_card: 'deck',
-            modalisOpen: false
+            modalisOpen: false,
+            parent_id: this.props.currentDeck.deck_id
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
