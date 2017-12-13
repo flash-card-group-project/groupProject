@@ -8,11 +8,7 @@ class ViewDecks extends Component {
     constructor(props){
         super(props)
 
-    }
-        
-    componentDidMount(){
-   
-}  
+    } 
 
     render(){
         const subDeckList = this.props.subDecks.length
@@ -43,13 +39,13 @@ class ViewDecks extends Component {
 
 function mapStateToProps(state) {
     let subDecks = state.userDecks.filter((deck, i) => {
-        return deck.parent_id !== state.currentDeck.deck_id;
+        return deck.parent_id === state.currentDeck.deck_id;
     });
     
-    console.log(state.userDecks, 'deck parentid');
-    console.log(state.currentDeck.deck_id, 'state currentdeck');
+    console.log(state.userDecks, 'USER DECKS');
+    console.log(state.currentDeck.deck_id, 'state currentdeckID');
     console.log(subDecks, 'subDecks');
-    console.log(state.userDecks.parent_id === state.currentDeck.deck_id);
+    //console.log(state.userDecks.parent_id !== state.currentDeck.deck_id);
     console.log(state.currentDeck);
     return {
         userData: state.userData,

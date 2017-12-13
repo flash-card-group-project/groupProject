@@ -13,7 +13,7 @@ const initialState = {
         // cards: []
     }, //onclick deckCover, submit createDeck
     favorites: [], //on Home page land
-    userDecks: [], //on My Decks view
+    userDecks: [], // parent decks ONLY
     history: [],
     //on Home page land
     card: {
@@ -36,6 +36,10 @@ const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
+const GER_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
+
+
+
 
 export function getUser() {
     return {
