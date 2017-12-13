@@ -134,6 +134,7 @@ export function createCard(body, deck_id) {
 
 //deleteCard
 export function deleteCard(card_id) {
+    console.log('are we reaching the reducer')
     return {
         type: DELETE_CARD,
         payload: axios.delete(`/api/card/delete/${card_id}`).then(res => res)

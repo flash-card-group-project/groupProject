@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentDeck, deleteCard } from '../../ducks/reducer';
+import { getDecksHome, deleteCard } from '../../ducks/reducer';
 import editIcon from '../Assets/edit-icon.png';
 import trashCan from '../Assets/delete-icon.png';
 
@@ -20,15 +20,18 @@ class CardCoverM extends Component {
         this.handleClickDelete = this.handleClickDelete.bind(this);
     };
 
-    //handleClick
+    // componentWillUpdate(){
 
+    // }
+    // //handleClick
+    // componentWillMount(){
+    //     this.props.getDecksHome();
+    // }
     handleClickDelete() {
         let deleteCard = confirm('Are you sure you want to delete this question?');
         if (deleteCard === true) {
-            this.props.deleteCard(
-                this.props.cardID);
+            this.props.deleteCard(this.props.cardID);
             alert('The card was successfully deleted!');
-            this.props.getCurrentDeck()
         } else {
             alert('The card was NOT deleted!');
         }
@@ -63,7 +66,7 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getCurrentDeck, deleteCard })(CardCoverM);
+export default connect(mapStateToProps, { getDecksHome, deleteCard })(CardCoverM);
 
 
 // Kevin
