@@ -95,12 +95,12 @@ app.get('/auth/logout', (req, res) => {
 
 //////// DECKS ENDPOINTS //////////
 app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
-//Parent decks
-app.get('/api/user/decks', decksCtrl.allParentDecks);
 //Decks by category ==> by userInput
 // app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
-//Decks and subdecks?
+//Decks and subdecks
 app.get('/api/user/decks', decksCtrl.getUserDecks);
+//get current deck; the deck you click on
+app.get('/api/deck/currentDeck/:deck_id', decksCtrl.getCurrentDeck);
 // //Create new Deck
 app.post('/api/create/deck', decksCtrl.createDeck);
 // Put private/public toggle switch

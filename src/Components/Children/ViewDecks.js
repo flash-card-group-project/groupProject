@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getCurrentDeck } from './../../ducks/reducer';
 import DeckCoverM from './DeckCoverM';
 import CreateDeck from './CreateDeck';
 
 
 class ViewDecks extends Component {
+    constructor(props){
+        super(props)
+
+    } 
+
     render(){
         const subDeckList = this.props.subDecks.length
         ? this.props.subDecks.map((deck, i) => {
@@ -37,14 +43,17 @@ function mapStateToProps(state) {
         return deck.parent_id === state.currentDeck.deck_id;
     });
     
-    console.log(state.userDecks.parent_id, 'deck parentid');
-    console.log(state.currentDeck.deck_id, 'state currentdeck');
+    console.log(state.userDecks, 'USER DECKS');
+    console.log(state.currentDeck.deck_id, 'state currentdeckID');
     console.log(subDecks, 'subDecks');
-    console.log(state.userDecks.parent_id === state.currentDeck.deck_id);
-    console.log(state.userDecks);
+    //console.log(state.userDecks.parent_id !== state.currentDeck.deck_id);
+    console.log(state.currentDeck);
     return {
-        subDecks: subDecks
+        userData: state.userData,
+        subDecks: subDecks,
+        currentDeck: state.currentDeck, 
+        userDecks: state.userDecks
     }
 }
 
-export default connect(mapStateToProps, {})(ViewDecks);
+export default connect(mapStateToProps, { getCurrentDeck })(ViewDecks);
