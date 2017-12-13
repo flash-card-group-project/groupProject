@@ -18,8 +18,8 @@ class CreateDeck extends Component {
             category: '',
             public: true,
             deck_card: 'deck',
-            modalisOpen: false,
-            parent_id: this.props.currentDeck.deck_id
+            parent_id: this.props.currentDeck.deck_id ? this.props.currentDeck.deck_id : null,
+            modalisOpen: false
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
@@ -49,7 +49,8 @@ class CreateDeck extends Component {
             deck_name: this.state.deck_name,
             category: this.state.category,
             public: this.state.public,
-            deck_card: this.state.deck_card
+            deck_card: this.state.deck_card,
+            parent_id: this.state.parent_id
         }
         // console.log(this.props.createDeck);
         this.props.createDeck(body, this.props.userData.userId);
@@ -91,7 +92,7 @@ class CreateDeck extends Component {
     }
 }
 function mapStateToProps(state) {
-    // console.log('state from createDeck', state);
+    console.log('state from createDeck', state);
     return{
         currentDeck: state.currentDeck,
         userData: state.userData
