@@ -7,9 +7,14 @@ class CreateCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
+<<<<<<< HEAD
             currentCard: {},
             questionInput:'',
             answerInput:''
+=======
+            questionInput: '',
+            answerInput: ''
+>>>>>>> b034e96ee5735e28b01850596ec222f37c83b769
         }
 
         this.handleQuestion = this.handleQuestion.bind(this);
@@ -37,6 +42,7 @@ class CreateCard extends Component {
         }
         this.props.createCard(body, this.props.match.params.deck_id);
     }
+
     render() {
         return (
             <form className='create_card_bod' onSubmit={this.handleSubmit}>
@@ -56,21 +62,33 @@ class CreateCard extends Component {
                         value={this.state.answerInput}
                         onChange={this.handleAnswer} />
                     <div className='btn_positioning'>
+<<<<<<< HEAD
                         {/* <button  className='lrg_btn'
                             onClick={this.sendCard}>Create Card</button> */}
                         {/* <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link> */}
+=======
+                        <button  className='lrg_btn'
+                            onClick={this.sendCard}>Create Card</button>
+                        <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link>
+>>>>>>> b034e96ee5735e28b01850596ec222f37c83b769
                     </div>
                 </section>
             </form>
         )
     }
-
 }
+
 function mapStateToProps(state) {
+<<<<<<< HEAD
     console.log('STATE on CREATE_CARD',state);
    return {
        card:state.currentCard
    } 
+=======
+    return {
+        currentDeck: state.currentDeck
+    };
+>>>>>>> b034e96ee5735e28b01850596ec222f37c83b769
 }
 
 export default connect(mapStateToProps, { createCard })(CreateCard);
