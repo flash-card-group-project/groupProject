@@ -15,7 +15,6 @@ class Home extends Component {
 
 
     render() {
-
         return (
             <main className='home_body'>
                 <h2 className='title_sml welcome_background'>Welcome, {this.props.userData.first_name}!</h2>
@@ -28,8 +27,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("HOME", state.userDecks)
-    console.log("USERDATA", state.userData)
     return {
         favDecks: state.favDecks,
         userData: state.userData,
