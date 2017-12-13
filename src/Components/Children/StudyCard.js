@@ -17,11 +17,12 @@ export default class StudyCard extends Component {
     }
 
     render() {
+        console.log(this.props);
         if (this.state.question === true) {
             return (
                 <div>
                     <div>
-                        {this.props.card.question}
+                        {this.props.question}
                     </div>
                     <button onClick={this.handleClick} >Flip</button>
                 </div>
@@ -30,7 +31,7 @@ export default class StudyCard extends Component {
             return (
                 <div>
                     <div>
-                        {this.props.card.answer}
+                        {this.props.answer}
                     </div>
                     <button onClick={this.handleClick} >Flip</button>
                 </div>
