@@ -4,6 +4,7 @@ import CardCoverM from './CardCoverM';
 
 class ViewCards extends Component {
     render(){
+        console.log('CURRENT_DECK', this.props.currentDeck);
         const cardList = this.props.currentDeck.cards
                          ? this.props.currentDeck.cards.map((card, i) => {
                              return (
@@ -13,7 +14,7 @@ class ViewCards extends Component {
                                     />
                              )
                          })
-                         : 'null';
+                         : 'Please create cards for your deck!';
         return(
             <div>
                 <button>STUDY!</button>
