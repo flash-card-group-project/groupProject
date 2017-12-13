@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { log } from 'util';
 
 const initialState = {
     userData: {},
@@ -12,7 +13,7 @@ const initialState = {
         // cards: []
     }, //onclick deckCover, submit createDeck
     favorites: [], //on Home page land
-    userDecks: [], //on My Decks view
+    userDecks: [], // parent decks ONLY
     history: [],
     //on Home page land
     card: {
@@ -35,6 +36,10 @@ const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
+const GER_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
+
+
+
 
 export function getUser() {
     return {
@@ -200,15 +205,14 @@ export default function reducer(state = initialState, action) {
 
         case 'EDIT_DECK_FULFILLED':
             console.log('edit card testing', action.payload)
-            return Object.assign(
-                {}, 
-                state, 
-                {
+            return Object.assign({}, state, {
                     currentDeck: action.payload.data
-                }
+                    }
             )
-        case 'GET_CURRENT_DECK_FULLFILLED':
+        case 'GET_CURRENT_DECK_FULFILLED':
+        console.log(action)
             return Object.assign({}, state, {currentDeck: action.payload.data[0]})
+
         default: return state;
     }
 }

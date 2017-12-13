@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUser, getDecksHome, getFavorites } from '../../ducks/reducer';
+import { getCurrentDeck, getUser, getDecksHome, getFavorites } from '../../ducks/reducer';
 import '../Styles/_Search.scss';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
@@ -116,11 +116,13 @@ class DeckCoverM extends Component {
     };
 
     handleClick() {
-        
+        console.log('licking food')
+        this.props.getCurrentDeck(this.props.deckid);
     }
 
     render() {
-
+        // console.log("PROPS", this.props)
+        
         let privacy = this.state.publicStatus;
         let favorite = this.state.favoriteStatus;
         let myButtons = this.props.userData.userId === this.props.creatorID;
@@ -130,7 +132,7 @@ class DeckCoverM extends Component {
 
         return (
             <div className="deck-cover">
-            <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
+            <Link  onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
                     <div className="deck_found">
                         <div className="deck_name"> Name: {this.props.name}</div>
                         <div className="deck_category"> Category: {this.props.category}</div>
@@ -163,7 +165,7 @@ class DeckCoverM extends Component {
 };
 
 function mapStateToProps(state) {
-    // console.log(state, 'this is the state')
+    console.log(state, 'this is the state')
     return {
         userData: state.userData,
         userDecks: state.userDecks,
@@ -171,6 +173,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getUser, getDecksHome, getFavorites })(DeckCoverM);
+export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites })(DeckCoverM);
 
 // Kevin

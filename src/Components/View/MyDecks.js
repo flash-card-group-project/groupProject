@@ -15,34 +15,36 @@ class MyDecks extends Component {
         }
     }
     //get all parent decks
-    componentDidMount() {
-        // console.log(this.props);
-        axios.get('/api/user/decks')
-            .then(res => {
-                this.setState({
-                    allParentDecks: res.data
-                })
-            })
-    }
+    // componentDidMount() {
+    //     // console.log(this.props);
+    //     axios.get('/api/user/decks')
+    //         .then(res => {
+    //             this.setState({
+    //                 allParentDecks: res.data
+    //             })
+    //         })
+    // }
 
 
     render() {
-
-        let userDecks = this.state.allParentDecks.map((item, i) => {
-            return (
-
-                <div key={i}>
-                    <DeckCoverM
-                        name={item.deck_name}
-                        category={item.category}
-                        deckid={item.deck_id}
-                        public={item.public}
-                        userID={this.props.id}
-                        creatorID={item.creator_id} />
-                </div>
-
-            )
+        let parentArr = this.props.userDecks.filter((item) => {
+            return (item.parent_id === null)
         })
+        let userDecks = parentArr.map((item, i) => {
+
+            return (
+                <DeckCoverM
+                    key={i}
+                    name={item.deck_name}
+                    category={item.category}
+                    deckid={item.deck_id}
+                    public={item.public}
+                    userID={this.props.id}
+                    creatorID={item.creator_id}
+                />
+            )
+        }
+        )
 
         return (
             <div className='search_container'>
@@ -56,7 +58,8 @@ class MyDecks extends Component {
 
 function mapStateToProps(state) {
     return {
-        userData: state.userData
+        userData: state.userData,
+        userDecks: state.userDecks
     }
 }
 
