@@ -72,7 +72,7 @@ export function getCurrentDeck(deckID) {
 
 //createDeck erin 12/8
 export function createDeck(body) {
-    console.log('create deck redux');
+    console.log('create deck redux body', body);
     return {
         type: CREATE_DECK,
         payload: axios.post(`/api/create/deck`, body).then(res => res)
@@ -135,7 +135,7 @@ export function deleteCard() {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log(action.type);
+    console.log('action.type: ', action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
