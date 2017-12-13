@@ -30,16 +30,16 @@ module.exports = {
     },
 
 
-    getCurrentDeck: (req, res, next) => {
+    getCurrentDeck: async (req, res, next) => {
         const db = req.app.get('db');
 
-        db.get_current_deck([req.params.deck_id, req.user.id])
-            .then (deck => {
-                res.status(200).send(deck)
-            }).catch(err => console.log(err))
+        let deck = await db.get_current_deck([req.params.deck_id, req.user.id]);
+      
+      let cards = await db.cards.find({ parent_id: deck[0].deck_id })
+      deck[0].cards = cards;
+            res.status(200).send(deck)
     },
-
-    
+ 
 
 
 
