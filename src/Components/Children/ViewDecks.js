@@ -47,7 +47,7 @@ function mapStateToProps(state) {
     console.log(state.currentDeck.deck_id, 'state currentdeckID');
     console.log(subDecks, 'subDecks');
     //console.log(state.userDecks.parent_id !== state.currentDeck.deck_id);
-    console.log(state.currentDeck);
+    console.log("STATE.CURRENT DECK",state.currentDeck);
     return {
         userData: state.userData,
         subDecks: subDecks,

@@ -3,7 +3,7 @@ import { log } from 'util';
 
 const initialState = {
     userData: {},
-    currentUser: {}, //on Home page land
+    currentUser: {}, //on Home page land need to delete not being used
     currentDeck: {
         deck_id: null,
         deck_name: '',
@@ -11,7 +11,7 @@ const initialState = {
         deck_card: '',
         public: null,
         cards: [{
-            card_id: null,
+            card_id: null, 
             question: '',
             parent_id: null
         }]
@@ -20,15 +20,7 @@ const initialState = {
     userDecks: [], // parent decks ONLY
     history: [],
     //on Home page land
-    card: {
-        deck_id: 0,
-        question: '',
-        answer: '',
-        multiple1: '',
-        multiple2: '',
-        multiple3: '',
-        multiple4: ''
-    }
+    card:{}
 };
 
 const GET_DECKS = 'GET_DECKS';
@@ -84,7 +76,7 @@ export function getCurrentDeck(deckID) {
 
 //createDeck erin 12/8
 export function createDeck(body) {
-    console.log('create deck redux');
+    console.log('create deck redux body', body);
     return {
         type: CREATE_DECK,
         payload: axios.post(`/api/create/deck`, body).then(res => res)
@@ -147,7 +139,7 @@ export function deleteCard() {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log(action.type);
+    console.log('action.type: ', action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
