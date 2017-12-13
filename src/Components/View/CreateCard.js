@@ -9,7 +9,6 @@ class CreateCard extends Component {
         this.state = {
             questionInput: '',
             answerInput: ''
-
         }
 
         this.handleQuestion = this.handleQuestion.bind(this);
