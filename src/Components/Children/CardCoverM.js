@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer';
-import Modal from 'react-modal';
+import trashCan from '../Assets/delete-icon.png';
 
 class CardCoverM extends Component {
 
@@ -45,7 +45,9 @@ class CardCoverM extends Component {
                     </button>
                 </Link>
 
-                <button onClick={this.handleClickDelete}>
+                <button 
+                // onClick={this.handleClickDelete}
+                >
                     <img src='' alt='Delete' />
                 </button>
 
