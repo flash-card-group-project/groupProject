@@ -8,10 +8,12 @@ class ViewCards extends Component {
         console.log('CURRENT_DECK', this.props.currentDeck);
         const cardList = this.props.currentDeck.cards
             ? this.props.currentDeck.cards.map((card, i) => {
+                console.log(card)
                 return (
                     <CardCoverM
                         key={i}
                         question={card.question}
+                        cardID={card.card_id}
                     />
                 )
             })
@@ -22,6 +24,7 @@ class ViewCards extends Component {
                 <Link to={`/create-card/${this.props.currentDeck.deck_id}`}>
                     <button>Create Card</button>
                 </Link>
+
                 <div>
                     {cardList}
                 </div>

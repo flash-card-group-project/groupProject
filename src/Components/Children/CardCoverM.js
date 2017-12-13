@@ -1,8 +1,12 @@
+/* global location */
+/* eslint no-restricted-globals: ["off", "confirm"] */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDecksHome, getCurrentUser, getFavorites } from '../../ducks/reducer';
+import { getCurrentDeck, deleteCard } from '../../ducks/reducer';
+import editIcon from '../Assets/edit-icon.png';
 import trashCan from '../Assets/delete-icon.png';
 
 class CardCoverM extends Component {
@@ -11,44 +15,40 @@ class CardCoverM extends Component {
         super(props)
 
         this.state = {
-            card_question: '',
             deleteStatus: ''
         };
-        // this.handleClickDelete = this.handleClickDelete.bind(this);
+        this.handleClickDelete = this.handleClickDelete.bind(this);
     };
 
-    //handleClick will give an error about confirm -Kevin 12/8
+    //handleClick
 
-    // handleClickDelete() {
-    //     let deleteCard = confirm('Are you sure you want to delete this question?');
-    //     if (deleteCard === true) {
-    //         axios.delete('/api/delete/card').then(response => {
-
-    //         })
-    //     } else {
-    //         this.setState({
-    //             deleteStatus: 'Question was not deleted!'
-    //         })
-    //     }
-    // }
+    handleClickDelete() {
+        let deleteCard = confirm('Are you sure you want to delete this question?');
+        if (deleteCard === true) {
+            this.props.deleteCard(
+                this.props.cardID);
+            alert('The card was successfully deleted!');
+            this.props.getCurrentDeck()
+        } else {
+            alert('The card was NOT deleted!');
+        }
+    };
 
     render() {
         return (
             <div>
                 <p style={{ color: 'red' }}>{this.state.deleteStatus}</p>
                 <div>
-                    {this.state.card_question}
+                    {this.props.question}
                 </div>
                 <Link to='/viewer'>
                     <button>
-                        <img src='' alt='Edit' />
+                        <img src={editIcon} alt='Edit' />
                     </button>
                 </Link>
 
-                <button 
-                // onClick={this.handleClickDelete}
-                >
-                    <img src='' alt='Delete' />
+                <button onClick={this.handleClickDelete}>
+                    <img src={trashCan} alt='Delete' />
                 </button>
 
             </div>
@@ -57,12 +57,13 @@ class CardCoverM extends Component {
 };
 
 function mapStateToProps(state) {
+    console.log(state.currentDeck, 'this is from card cover, after delete')
     return {
         currentDeck: state.currentDeck
     }
 }
 
-export default connect(mapStateToProps, {})(CardCoverM);
+export default connect(mapStateToProps, { getCurrentDeck, deleteCard })(CardCoverM);
 
 
 // Kevin
