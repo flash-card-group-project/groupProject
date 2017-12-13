@@ -32,7 +32,8 @@ function mapStateToProps(state) {
     console.log("USERDATA", state.userData)
     return {
         favDecks: state.favDecks,
-        userData: state.userData
+        userData: state.userData,
+        currentDeck: {}
     }
 }
 

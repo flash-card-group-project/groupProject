@@ -28,8 +28,8 @@ class DeckViewerM extends Component {
         return (
             <div>
                 <div>
-                    <h2>{this.props.currentDeck.deck_name}Test</h2>
-                    <h3>{this.props.currentDeck.category}Test</h3>
+                    <h2>{this.props.currentDeck.deck_name}</h2>
+                    <h3>{this.props.currentDeck.category}</h3>
                 </div>
                 <div>
                     <ToggleButton
