@@ -38,7 +38,6 @@ class CreateCard extends Component {
     }
 
     render() {
-        console.log('STATE', this.state, this.currentDeck);
         return (
             <main className='create_card_bod'>
                 <section className='box1'>
