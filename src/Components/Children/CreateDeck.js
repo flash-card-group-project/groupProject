@@ -58,10 +58,12 @@ class CreateDeck extends Component {
         // createDeck(deck_name, category);
     }
     componentWillReceiveProps(nextProps){
-        if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
-            let newRoute = `/viewer/${nextProps.currentDeck.deck_id}`;
-            console.log('newRoute', newRoute)
-            return this.props.history.push(newRoute);
+        if (nextProps.match.path !== '/home') {
+            if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
+                let newRoute = `/viewer/${nextProps.currentDeck.deck_id}`;
+                console.log('newRoute', newRoute)
+                return this.props.history.push(newRoute);
+            }
         }
     }
     render() {
