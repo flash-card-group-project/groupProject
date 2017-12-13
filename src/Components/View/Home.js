@@ -29,6 +29,7 @@ class Home extends Component {
 
 function mapStateToProps(state) {
     console.log("HOME", state.userDecks)
+    console.log("USERDATA", state.userData)
     return {
         favDecks: state.favDecks,
         userData: state.userData
