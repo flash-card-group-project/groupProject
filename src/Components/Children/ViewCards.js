@@ -20,7 +20,9 @@ class ViewCards extends Component {
             : 'Please create cards for your deck!';
         return (
             <div>
-                <button>STUDY!</button>
+                <Link to={`/study`}>
+                    <button>STUDY!</button>
+                </Link>
                 <Link to={`/create-card/${this.props.currentDeck.deck_id}`}>
                     <button>Create Card</button>
                 </Link>
