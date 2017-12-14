@@ -3,6 +3,8 @@ import axios from 'axios';
 import { getUser } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import DeckCoverM from '../Children/DeckCoverM';
+import CreateDeck from '../Children/CreateDeck';
+
 
 
 
@@ -49,7 +51,7 @@ class MyDecks extends Component {
         return (
             <div className='search_container'>
                 <div> I will show the user-created Decks</div>
-
+                <CreateDeck/>
                 {userDecks}
             </div>
         )
