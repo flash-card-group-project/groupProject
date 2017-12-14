@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentDeck, getUser, getDecksHome, getFavorites } from '../../ducks/reducer';
+import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
 import '../Styles/_DeckCoverM.scss';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';

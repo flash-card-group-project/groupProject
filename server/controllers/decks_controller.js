@@ -173,7 +173,6 @@ module.exports = {
 
         db.delete_deck([req.params.deckId, req.user.id])
             .then(() => {
-                console.log("DECKid", req.params.deckId)
                 res.status(200).send(req.params.deckId)   
 
             }).catch((err) => res.status(500).send(err));

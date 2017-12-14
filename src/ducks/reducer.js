@@ -213,12 +213,14 @@ export default function reducer(state = initialState, action) {
             }
             )
         case 'GET_CURRENT_DECK_FULFILLED':
-            console.log(action)
+            // console.log(action)
             return Object.assign({}, state, { currentDeck: action.payload.data[0] })
 
         case 'DELETE_CARD_FULFILLED':
             console.log(action.payload)
+            
             let copyCurrentDeck = Object.assign({}, state.currentDeck)
+            console.log("CARDS COPY", copyCurrentDeck)
             copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
                 return item.card_id !== action.payload.data
             })
@@ -226,14 +228,11 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { currentDeck: copyCurrentDeck })
 
         case 'DELETE_DECK_FULFILLED':
-        console.log("REducer gets here", action.payload)
-        
-            let copyCurrentDeck2 = Object.assign({}, state.currentDeck)
-            copyCurrentDeck2.deck_id = copyCurrentDeck2.deck_id.filter(item => {
+            let copyUserDecks = Object.assign([...state.userDecks])
+            copyUserDecks = copyUserDecks.filter(item => {
                 return item.deck_id !== action.payload.data
             })
-            console.log(action.payload.data)
-            return Object.assign({}, state, { currentDeck: copyCurrentDeck2 })
+            return Object.assign({}, state, { userDecks: copyUserDecks })
 
         default: return state;
     }

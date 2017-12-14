@@ -70,7 +70,7 @@ class CardCoverM extends Component {
 
 function mapStateToProps(state) {
     
-    console.log(state.currentDeck, 'this is from card cover, after delete')
+    console.log(state.userDecks, 'user decks')
     return {
         currentDeck: state.currentDeck
     }

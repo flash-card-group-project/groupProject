@@ -12,7 +12,7 @@ class ViewDecks extends Component {
     } 
 
     render(){
-        console.log('CURRENT_DECK', this.props.currentDeck);
+        // console.log('CURRENT_DECK', this.props.currentDeck);
         const subDeckList = this.props.subDecks.length
         ? this.props.subDecks.map((deck, i) => {
             return (
