@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentDeck, getUser, getDecksHome, getFavorites } from '../../ducks/reducer';
+import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
 import '../Styles/_DeckCoverM.scss';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
@@ -109,15 +109,13 @@ class DeckCoverM extends Component {
 
         let confirmation = confirm("Are you sure you want to delete this deck?");
         if (confirmation) {
-            axios.delete(`/api/delete/deck/${this.props.deckid}`).then(() =>
-                alert('The deck has been deleted!'));
+            this.props.deleteDeck(this.props.deckid)
         } else {
             alert('The deck was NOT deleted!')
         }
     };
 
     handleClick() {
-        console.log('licking food')
         this.props.getCurrentDeck(this.props.deckid);
     }
 
@@ -174,6 +172,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites })(DeckCoverM);
+export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck })(DeckCoverM);
 
 // Kevin

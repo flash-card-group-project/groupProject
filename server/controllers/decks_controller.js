@@ -172,8 +172,9 @@ module.exports = {
         const db = req.app.get('db')
 
         db.delete_deck([req.params.deckId, req.user.id])
-            .then(deck => {
-                res.status(200).send("Deleted!")   
+            .then(() => {
+                res.status(200).send(req.params.deckId)   
+
             }).catch((err) => res.status(500).send(err));
     },
 
