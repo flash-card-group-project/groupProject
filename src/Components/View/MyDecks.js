@@ -40,7 +40,6 @@ class MyDecks extends Component {
 
         return (
             <div className='search_container'>
-                <div> I will show the user-created Decks</div>
                 <CreateDeck/>
                 {userDecks}
             </div>

@@ -41,8 +41,6 @@ class CreateCard extends Component {
     }
 
     render() {
-        console.log("create card", this.props.currentDeck)
-
         return (
             <main className='create_card_bod'>
                 <section className='box1'>

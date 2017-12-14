@@ -31,7 +31,7 @@ class Favorites extends Component {
 
         return (
             <div className='search_container'>
-                <div>This is the favorites section</div>
+                <div>Favorite some decks and they will appear here!</div>
                 {favorite}
             </div>
         )
