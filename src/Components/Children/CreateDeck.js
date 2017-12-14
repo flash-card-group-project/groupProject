@@ -105,7 +105,7 @@ class CreateDeck extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.openModal} className='home_btn'>Create Deck</button>
+                <button onClick={this.openModal} className='large_btn'>Create Deck</button>
                 <ReactModal
                     isOpen={this.state.modalisOpen}
                     onRequestClose={this.closeModal}
