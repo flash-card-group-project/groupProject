@@ -38,13 +38,11 @@ class CreateCard extends Component {
         this.props.createCard(body, this.props.match.params.deck_id)
         this.setState({questionInput:'',
                         answerInput:''})
-
-        console.log(this.state.answerInput)
     }
 
     render() {
         console.log("create card", this.props.currentDeck)
-        
+
         return (
             <main className='create_card_bod'>
                 <section className='box1'>
@@ -73,12 +71,9 @@ class CreateCard extends Component {
 }
 
 function mapStateToProps(state) {
-
-
     return {
         currentDeck: state.currentDeck
     };
 
 }
-
 export default connect(mapStateToProps, { createCard })(CreateCard);
