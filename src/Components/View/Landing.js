@@ -1,5 +1,6 @@
 import React from 'react';
 import Typist from 'react-typist';
+
 export default function Landing() {
     return (
         <main className='landing_body'>
