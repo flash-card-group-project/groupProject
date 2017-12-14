@@ -19,7 +19,11 @@ class CardCoverM extends Component {
         };
         this.handleClickDelete = this.handleClickDelete.bind(this);
     };
-
+    // componentDidMount(){
+    //     console.log("it gets HERE")
+    //     this.props.getDecksHome();
+        
+    // }
     // componentWillUpdate(){
 
     // }
@@ -66,6 +70,7 @@ class CardCoverM extends Component {
 };
 
 function mapStateToProps(state) {
+    
     console.log(state.currentDeck, 'this is from card cover, after delete')
     return {
         currentDeck: state.currentDeck

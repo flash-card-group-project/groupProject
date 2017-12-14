@@ -1,3 +1,4 @@
+
 module.exports = {
 
     getUserCard: (req, res, next) => {
@@ -56,7 +57,7 @@ module.exports = {
 
         db.delete_card([req.params.cardId])
             .then(() => {
-                res.status(200).send("Deleted!")
+                res.status(200).send(req.params.cardId)
             })
             .catch((err) => res.status(500).send(err));
     }

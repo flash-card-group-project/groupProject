@@ -23,7 +23,7 @@ class Home extends Component {
                 <Link to={'/favorites'}><button className='large_btn'>Favorites</button></Link>
             </main>
         )
-    }
+    } 
 }
 
 function mapStateToProps(state) {
