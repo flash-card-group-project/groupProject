@@ -6,8 +6,8 @@ import ViewDecks from '../Children/ViewDecks';
 import CardCoverM from '../Children/CardCoverM';
 
 class DeckViewerM extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             cardView: true
         }

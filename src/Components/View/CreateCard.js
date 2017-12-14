@@ -39,8 +39,9 @@ class CreateCard extends Component {
     }
 
     render() {
+        console.log("create card", this.props.currentDeck)
         return (
-            <form className='create_card_bod' onSubmit={this.handleSubmit}>
+            <main className='create_card_bod' >
                 <section className='box1'>
                     <textarea placeholder='please enter your question here..'
                         className='card2'
@@ -57,18 +58,18 @@ class CreateCard extends Component {
                         value={this.state.answerInput}
                         onChange={this.handleAnswer} />
                     <div className='btn_positioning'>
-                        <button  className='lrg_btn'
-                            onClick={this.sendCard}>Create Card</button>
+                        <button  className='lrg_btn' onClick={this.handleSubmit}>Create Card</button>
                         <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link>
 
                     </div>
                 </section>
-            </form>
+            </main>
         )
     }
 }
 
 function mapStateToProps(state) {
+
 
     return {
         currentDeck: state.currentDeck
