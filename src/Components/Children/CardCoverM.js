@@ -43,20 +43,26 @@ class CardCoverM extends Component {
 
     render() {
         return (
-            <div>
-                <p style={{ color: 'red' }}>{this.state.deleteStatus}</p>
-                <div>
-                    {this.props.question}
-                </div>
+            <div className="card-cover">
                 <Link to='/viewer'>
-                    <button>
-                        <img src={editIcon} alt='Edit' />
-                    </button>
+                    <div className="card-question">
+                        {this.props.question}
+                    </div>
                 </Link>
 
-                <button onClick={this.handleClickDelete}>
-                    <img src={trashCan} alt='Delete' />
-                </button>
+                <div className="card-buttons">
+                    <div className="card-cover-buttons">
+                        <button>
+                            <img src={editIcon} alt='Edit' />
+                        </button>
+                    </div>
+
+                    <div className="card-cover-buttons">
+                        <button onClick={this.handleClickDelete}>
+                            <img src={trashCan} alt='Delete' />
+                        </button>
+                    </div>
+                </div>
 
             </div>
         )
