@@ -29,7 +29,7 @@ class ViewDecks extends Component {
                 </div>
             )
         })
-        : 'null';
+        : 'Create a sub-deck for you deck.';
         return(
             <div>
                 <CreateDeck />
