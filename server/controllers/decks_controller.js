@@ -14,7 +14,6 @@ module.exports = {
 
         let decks = await db.get_user_decks([req.user.id]);  
         if (decks.length ) {
-            //decks.length > 0
             let deckIDs = decks.map(deck => deck.deck_id);
             await db.cards.find({ parent_id: deckIDs })
                 .then(cards => {
@@ -172,8 +171,9 @@ module.exports = {
         const db = req.app.get('db')
 
         db.delete_deck([req.params.deckId, req.user.id])
-            .then(deck => {
-                res.status(200).send("Deleted!")   
+            .then(() => {
+                res.status(200).send(req.params.deckId)   
+
             }).catch((err) => res.status(500).send(err));
     },
 

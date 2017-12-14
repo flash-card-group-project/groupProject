@@ -8,9 +8,7 @@ import CreateDeck from './CreateDeck';
 class ViewDecks extends Component {
     constructor(props) {
         super(props)
-
     }
-
     render() {
         const subDeckList = this.props.subDecks.length
             ? this.props.subDecks.map((deck, i) => {
