@@ -76,9 +76,13 @@ class CreateDeck extends Component {
     }
     handleClick(e) {
         this.handleValidate();
+        this.setState({
+            deck_name: '',
+            category: ''
+        })
     }
-    componentWillReceiveProps(nextProps){
-        if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined) {
             if (this.props.currentDeck.deck_id === nextProps.currentDeck.deck_id) {
                 return
             }
@@ -103,7 +107,7 @@ class CreateDeck extends Component {
                     <div>
                         <textarea type='text' name="deck" placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} required />
                         <textarea type='text' name="deck" placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} required />
-                        <p style={{ color: "red" , fontSize: '12px'}} >{this.state.errorAlert}</p>
+                        <p style={{ color: "red", fontSize: '12px' }} >{this.state.errorAlert}</p>
                     </div>
                     <div className="buttons">
                         <button className="cancel" onClick={this.closeModal} >Cancel</button>
