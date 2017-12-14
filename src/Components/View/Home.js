@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getDecksHome, getFavorites, getUser, createDeck } from '../../ducks/reducer';
 import CreateDeck from '../Children/CreateDeck';
 
-
 class Home extends Component {
   
     componentDidMount() {
@@ -12,7 +11,6 @@ class Home extends Component {
         this.props.getFavorites();
         this.props.getUser();
     }
-
 
     render() {
         return (
