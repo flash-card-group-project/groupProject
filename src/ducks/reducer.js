@@ -28,17 +28,32 @@ const GET_DECKS = 'GET_DECKS';
 const GET_USER = 'GET_USER';
 const GET_FAVORITES = 'GET_FAVORITES';
 const CREATE_DECK = 'CREATE_DECK';
-// const UPDATE_CURRENT_DECK = 'UPDATE_CURRENT_DECK';
 const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
 const GET_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
-// const DELETE_DECK = 'DELETE_DECK';
+const DELETE_DECK = 'DELETE_DECK';
 const DELETE_CARD = 'DELETE_CARD';
+const CLEAR_CURRENT_DECK = 'CLEAR_CURRENT_DECK';
 
-
-
+export function clearCurrentDeck() {
+    return {
+        type: CLEAR_CURRENT_DECK,
+        payload: {
+            deck_id: null,
+            deck_name: '',
+            category: '',
+            deck_card: '',
+            public: null,
+            cards: [{
+                card_id: null,
+                question: '',
+                parent_id: null
+            }]
+        }
+    }
+}
 
 export function getUser() {
     return {
@@ -56,7 +71,6 @@ export function getDecksHome() {
 }
 
 export function getFavorites() {
-    // console.log("ID:", userID)
     return {
         type: GET_FAVORITES,
         payload: axios.get(`/api/user/favorites`).then(res => res)
@@ -85,14 +99,7 @@ export function createDeck(body) {
         payload: axios.post(`/api/create/deck`, body).then(res => res)
     }
 }
-// // updateReduxDeck erin 12/8
-// export function updateReduxDeck(val){
-//     return {
-//         type: UPDATE_CURRENT_DECK,
-//         payload: val
-//     }
-// }
-//editDeck
+
 export function editDeck(deckId, body) {
     console.log('editDeck in redux');
     return {
@@ -125,17 +132,16 @@ export function createCard(body, deck_id) {
     }
 }
 
-//deleteDeck
-// export function deleteDeck() {
-//     return {
-//         type: DELETE_DECK,
-//         payload: axios.get('').then(res => res)
-//     }
-// }
+//DELETE DECK:
+export function deleteDeck(deck_id) {
+    return {
+        type: DELETE_DECK,
+        payload: axios.delete(`/api/delete/deck/${deck_id}`).then(res => res)
+    }
+}
 
 //deleteCard
 export function deleteCard(card_id) {
-    console.log('are we reaching the reducer')
     return {
         type: DELETE_CARD,
         payload: axios.delete(`/api/card/delete/${card_id}`).then(res => res)
@@ -143,7 +149,6 @@ export function deleteCard(card_id) {
 }
 
 export default function reducer(state = initialState, action) {
-    // console.log('ACTION TYPE: ', action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
@@ -167,6 +172,7 @@ export default function reducer(state = initialState, action) {
                     currentUser: action.payload.data
                 }
             )
+
         case 'GET_DECKS_FULFILLED':
             if (action.payload.data === 'No decks found.') {
                 return state;
@@ -179,6 +185,7 @@ export default function reducer(state = initialState, action) {
                     }
                 )
             }
+
         case 'GET_FAVORITES_FULFILLED':
             return Object.assign({}, state, {
                 favorites: action.payload.data
@@ -201,10 +208,7 @@ export default function reducer(state = initialState, action) {
             )
 
         case 'CREATE_CARD_FULFILLED':
-            console.log('will create card', action.payload);
-            console.log(state.currentDeck);
             let updatedDeck = Object.assign({}, state.currentDeck)
-            updatedDeck.cards = [];
             updatedDeck.cards = [...updatedDeck.cards, action.payload.data[0]]
             return Object.assign({}, state, {
                 currentDeck: updatedDeck
@@ -223,6 +227,12 @@ export default function reducer(state = initialState, action) {
 
         case 'GET_CURRENT_DECK_FULFILLED':
             console.log(action)
+            console.log('edit card testing', action.payload)
+            return Object.assign({}, state, {
+                currentDeck: action.payload.data
+            }
+            )
+        case 'GET_CURRENT_DECK_FULFILLED':
             return Object.assign({}, state, { currentDeck: action.payload.data[0] })
 
         case 'DELETE_CARD_FULFILLED':
@@ -234,6 +244,16 @@ export default function reducer(state = initialState, action) {
 
             return Object.assign({}, state, { currentDeck: copyCurrentDeck })
 
+        case 'DELETE_DECK_FULFILLED':
+            let copyUserDecks = Object.assign([...state.userDecks])
+            copyUserDecks = copyUserDecks.filter(item => {
+                return item.deck_id !== action.payload.data
+            })
+            return Object.assign({}, state, { userDecks: copyUserDecks })
+
+        case 'CLEAR_CURRENT_DECK':
+            return Object.assign({}, state, {currentDeck: action.payload});
+            
         default: return state;
     }
 }
