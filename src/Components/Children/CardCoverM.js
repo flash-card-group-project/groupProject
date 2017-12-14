@@ -19,7 +19,11 @@ class CardCoverM extends Component {
         };
         this.handleClickDelete = this.handleClickDelete.bind(this);
     };
-
+    // componentDidMount(){
+    //     console.log("it gets HERE")
+    //     this.props.getDecksHome();
+        
+    // }
     // componentWillUpdate(){
 
     // }
