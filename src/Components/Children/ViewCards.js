@@ -8,7 +8,7 @@ class ViewCards extends Component {
         console.log('CURRENT_CARD', this.props.currentDeck);
         const cardList = this.props.currentDeck.cards
             ? this.props.currentDeck.cards.map((card, i) => {
-                console.log(card)
+                // console.log(card)
                 return (
                     <CardCoverM
                         key={i}
