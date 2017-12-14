@@ -5,13 +5,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
-import '../Styles/_Search.scss';
+import { getCurrentDeck, getUser, getDecksHome, getFavorites } from '../../ducks/reducer';
+import '../Styles/_DeckCoverM.scss';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
 import favoriteIcon from '../Assets/favorite-icon.png';
 import emptyHeartIcon from '../Assets/empty-heart-icon.png';
 import trashCan from '../Assets/delete-icon.png';
+import editIcon from '../Assets/edit-icon.png';
 
 class DeckCoverM extends Component {
 
@@ -131,20 +132,20 @@ class DeckCoverM extends Component {
         return (
             <div className="deck-cover">
             <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
-                    <div className="deck_found">
-                        <div className="deck_name"> Name: {this.props.name}</div>
-                        <div className="deck_category"> Category: {this.props.category}</div>
+                    <div className="deck-content">
+                        <div className="deck-name">{this.props.name}</div>
+                        <div className="deck-category">{this.props.category}</div>
                     </div>
                 </Link>
                 {myButtons ? (
-                    <div className="boxes">
+                    <div className="box-buttons">
                         <div>
-                            <button className="box" onClick={this.privatePublicToggle}>{privacy ? <img src={publicIcon} alt='public' /> : <img src={privateIcon} alt='private' />}</button>
-                            <button className="box" onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
+                            <button className="cover-button" onClick={this.privatePublicToggle}>{privacy ? <img src={publicIcon} alt='public' /> : <img src={privateIcon} alt='private' />}</button>
+                            <button className="cover-button" onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
                         </div>
                         <div>
-                            <button className="box" onClick={this.editCard}>Edit</button>
-                            <button className="box" onClick={this.deleteDeck}><img src={trashCan} alt='Delete' /></button>
+                            <button className="cover-button" onClick={this.editCard}><img src={editIcon} alt='Edit' /></button>
+                            <button className="cover-button" onClick={this.deleteDeck}><img src={trashCan} alt='Delete' /></button>
                         </div>
                     </div>
                 ) : (

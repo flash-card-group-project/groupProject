@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { log } from 'util';
+import { updateReduxDeck } from './reducer';
 
 const initialState = {
     userData: {},
@@ -141,7 +142,7 @@ export function deleteCard(card_id) {
 }
 
 export default function reducer(state = initialState, action) {
-    // console.log('action.type: ', action.type);
+    // console.log('ACTION TYPE: ', action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
@@ -198,9 +199,12 @@ export default function reducer(state = initialState, action) {
                 }
             )
 
-        case 'CREATE_CARD':
+        case 'CREATE_CARD_FULFILLED':
             console.log('will create card', action.payload)
-            return Object.assign({}, state)
+            let updatedDeck=Object.assign({},state.currentDeck)
+            updatedDeck.cards=[...updatedDeck.cards,action.payload.data[0]]
+            return Object.assign({}, state,{
+                currentDeck:updatedDeck} )
 
         case 'EDIT_DECK_FULFILLED':
             console.log('edit card testing', action.payload)

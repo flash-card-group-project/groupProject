@@ -1,0 +1,34 @@
+.card-cover{
+    width: 90vw;
+    height: 99px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    margin: 5vw;
+    background: #fffff0;
+  }
+    
+.card-question {
+  width: 50vw;
+  height: 90px;
+//   border: 1px solid black;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-justify: center;
+}
+
+.card-buttons {
+  display: flex;
+  height: 60%;
+  width: 50vw;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+//   border: 1px solid black;
+ }
+
+ .card-cover-buttons{
+  margin: 3px;
+  background-color: transparent;
+  }
