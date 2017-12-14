@@ -6,31 +6,29 @@ import CreateDeck from './CreateDeck';
 
 
 class ViewDecks extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
 
-    } 
+    }
 
-    render(){
+    render() {
         const subDeckList = this.props.subDecks.length
-        ? this.props.subDecks.map((deck, i) => {
-            return (
-                <div>
-                <DeckCoverM 
-                   key = {i}
-                   name={deck.deck_name}
-                   category={deck.category}
-                   deckid={deck.deck_id}
-                   public={deck.public}
-                   userID={this.props.id}
-                   creatorID={deck.creator_id}
-                    />
-                
-                </div>
-            )
-        })
-        : 'Create a sub-deck for you deck.';
-        return(
+            ? this.props.subDecks.map((deck, i) => {
+                return (
+                    <div key={i}>
+                        <DeckCoverM
+                            name={deck.deck_name}
+                            category={deck.category}
+                            deckid={deck.deck_id}
+                            public={deck.public}
+                            userID={this.props.id}
+                            creatorID={deck.creator_id}
+                        />
+                    </div>
+                )
+            })
+            : 'Create a sub-deck for you deck.';
+        return (
             <div>
                 <CreateDeck />
                 <div>
@@ -45,16 +43,11 @@ function mapStateToProps(state) {
     let subDecks = state.userDecks.filter((deck, i) => {
         return deck.parent_id === state.currentDeck.deck_id;
     });
-    
-    // console.log(state.userDecks, 'USER DECKS');
-    // console.log(state.currentDeck.deck_id, 'state currentdeckID');
-    // console.log(subDecks, 'subDecks');
-    //console.log(state.userDecks.parent_id !== state.currentDeck.deck_id);
-    // console.log("STATE.CURRENT DECK",state.currentDeck);
+
     return {
         userData: state.userData,
         subDecks: subDecks,
-        currentDeck: state.currentDeck, 
+        currentDeck: state.currentDeck,
         userDecks: state.userDecks
     }
 }
