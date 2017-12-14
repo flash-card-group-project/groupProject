@@ -122,8 +122,9 @@ class DeckCoverM extends Component {
     };
 
     handleClick() {
-        console.log('licking food')
+        // console.log('licking food')
         this.props.getCurrentDeck(this.props.deckid);
+
     }
 
     render() {
@@ -173,7 +174,7 @@ class DeckCoverM extends Component {
 };
 
 function mapStateToProps(state) {
-    // console.log(state, 'this is the state')
+    console.log(state, 'this is the state')
     return {
         userData: state.userData,
         userDecks: state.userDecks,

@@ -44,6 +44,9 @@ class EditDeck extends Component {
             category: this.state.category
         }
         this.props.editDeck(this.props.deckid, body);
+        this.setState({
+            modalisOpen: false
+        })
     }
 
     render() {

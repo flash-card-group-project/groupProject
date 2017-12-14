@@ -12,7 +12,7 @@ const initialState = {
         deck_card: '',
         public: null,
         cards: [{
-            card_id: null, 
+            card_id: null,
             question: '',
             parent_id: null
         }]
@@ -21,7 +21,7 @@ const initialState = {
     userDecks: [], // parent decks ONLY
     history: [],
     //on Home page land
-    card:{}
+    card: {}
 };
 
 const GET_DECKS = 'GET_DECKS';
@@ -184,9 +184,10 @@ export default function reducer(state = initialState, action) {
                 favorites: action.payload.data
             })
 
-            case 'ADD_FAVORITE_DECK_FULFILLED':
+        case 'ADD_FAVORITE_DECK_FULFILLED':
             return Object.assign([], state, {
-                userData: action.payload.data}
+                userData: action.payload.data
+            }
             )
 
         case 'CREATE_DECK_FULFILLED':
@@ -202,30 +203,36 @@ export default function reducer(state = initialState, action) {
         case 'CREATE_CARD_FULFILLED':
             console.log('will create card', action.payload);
             console.log(state.currentDeck);
-            let updatedDeck=Object.assign({},state.currentDeck)
+            let updatedDeck = Object.assign({}, state.currentDeck)
             updatedDeck.cards = [];
-            updatedDeck.cards=[...updatedDeck.cards,action.payload.data[0]]
-            return Object.assign({}, state,{
-                currentDeck:updatedDeck} )
+            updatedDeck.cards = [...updatedDeck.cards, action.payload.data[0]]
+            return Object.assign({}, state, {
+                currentDeck: updatedDeck
+            })
 
         case 'EDIT_DECK_FULFILLED':
-            console.log('edit card testing', action.payload)
-            return Object.assign({}, state, {
-                    currentDeck: action.payload.data
-                    }
-            )
+            console.log('edit deck', action.payload)
+            let copyUserDecks = state.userDecks.map(deck => {
+                if (deck.deck_id === action.payload.data[0].deck_id) {
+                    return action.payload.data[0]
+                } else {
+                    return deck
+                }
+            })
+            return Object.assign({}, state, { userDecks: copyUserDecks })
+
         case 'GET_CURRENT_DECK_FULFILLED':
-        console.log(action)
-        return Object.assign({}, state, {currentDeck: action.payload.data[0]})
-        
+            console.log(action)
+            return Object.assign({}, state, { currentDeck: action.payload.data[0] })
+
         case 'DELETE_CARD_FULFILLED':
-        console.log(action.payload)
-        let copyCurrentDeck = Object.assign({}, state.currentDeck)
-           copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
-               return item.card_id!==action.payload.data
-           })
-           
-           return Object.assign({}, state, {currentDeck: copyCurrentDeck})
+            console.log(action.payload)
+            let copyCurrentDeck = Object.assign({}, state.currentDeck)
+            copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
+                return item.card_id !== action.payload.data
+            })
+
+            return Object.assign({}, state, { currentDeck: copyCurrentDeck })
 
         default: return state;
     }
