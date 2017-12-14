@@ -213,8 +213,9 @@ export default function reducer(state = initialState, action) {
         return Object.assign({}, state, {currentDeck: action.payload.data[0]})
         
         case 'DELETE_CARD_FULFILLED':
+        
         console.log(action.payload)
-            return Object.assign({}, state, {currentDeck: action.payload.data})
+            return Object.assign({}, state, {currentDeck: state.currentDeck.cards.filter(item => item.card_id !== action.payload.data)})
 
         default: return state;
     }
