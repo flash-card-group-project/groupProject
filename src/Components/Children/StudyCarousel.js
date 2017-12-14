@@ -9,9 +9,8 @@ class StudyCarousel extends Component {
         const cardList = this.props.currentDeck.cards
             ? this.props.currentDeck.cards.map((card, i) => {
                 return (
-                    <div>
+                    <div key={i}>
                         <StudyCard
-                            key={i}
                             question={card.question}
                             answer={card.answer}
                         />
