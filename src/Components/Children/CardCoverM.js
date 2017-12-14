@@ -32,10 +32,9 @@ class CardCoverM extends Component {
     //     this.props.getDecksHome();
     // }
     handleClickDelete() {
-        let deleteCard = confirm('Are you sure you want to delete this question?');
+        let deleteCard = confirm('Are you sure you want to delete this card?');
         if (deleteCard === true) {
-            this.props.deleteCard(this.props.cardID);
-            alert('The card was successfully deleted!');
+            this.props.deleteCard(this.props.cardID);  
         } else {
             alert('The card was NOT deleted!');
         }

@@ -11,7 +11,7 @@ const initialState = {
         deck_card: '',
         public: null,
         cards: [{
-            card_id: null, 
+            card_id: null,
             question: '',
             parent_id: null
         }]
@@ -20,7 +20,7 @@ const initialState = {
     userDecks: [], // parent decks ONLY
     history: [],
     //on Home page land
-    card:{}
+    card: {}
 };
 
 const GET_DECKS = 'GET_DECKS';
@@ -33,7 +33,7 @@ const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
 const GET_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
-// const DELETE_DECK = 'DELETE_DECK';
+const DELETE_DECK = 'DELETE_DECK';
 const DELETE_CARD = 'DELETE_CARD';
 
 
@@ -124,17 +124,16 @@ export function createCard(body, deck_id) {
     }
 }
 
-//deleteDeck
-// export function deleteDeck() {
-//     return {
-//         type: DELETE_DECK,
-//         payload: axios.get('').then(res => res)
-//     }
-// }
+//DELETE DECK:
+export function deleteDeck(deck_id) {
+    return {
+        type: DELETE_DECK,
+        payload: axios.delete(`/api/delete/deck/${deck_id}`).then(res => res)
+    }
+}
 
 //deleteCard
 export function deleteCard(card_id) {
-    console.log('are we reaching the reducer')
     return {
         type: DELETE_CARD,
         payload: axios.delete(`/api/card/delete/${card_id}`).then(res => res)
@@ -142,7 +141,7 @@ export function deleteCard(card_id) {
 }
 
 export default function reducer(state = initialState, action) {
-    console.log('action.type: ', action.type);
+    // console.log('action.type: ', action.type);
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
@@ -183,9 +182,10 @@ export default function reducer(state = initialState, action) {
                 favorites: action.payload.data
             })
 
-            case 'ADD_FAVORITE_DECK_FULFILLED':
+        case 'ADD_FAVORITE_DECK_FULFILLED':
             return Object.assign([], state, {
-                userData: action.payload.data}
+                userData: action.payload.data
+            }
             )
 
         case 'CREATE_DECK_FULFILLED':
@@ -205,21 +205,31 @@ export default function reducer(state = initialState, action) {
         case 'EDIT_DECK_FULFILLED':
             console.log('edit card testing', action.payload)
             return Object.assign({}, state, {
-                    currentDeck: action.payload.data
-                    }
+                currentDeck: action.payload.data
+            }
             )
         case 'GET_CURRENT_DECK_FULFILLED':
-        console.log(action)
-        return Object.assign({}, state, {currentDeck: action.payload.data[0]})
-        
+            console.log(action)
+            return Object.assign({}, state, { currentDeck: action.payload.data[0] })
+
         case 'DELETE_CARD_FULFILLED':
-        console.log(action.payload)
-        let copyCurrentDeck = Object.assign({}, state.currentDeck)
-           copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
-               return item.card_id!==action.payload.data
-           })
-           
-           return Object.assign({}, state, {currentDeck: copyCurrentDeck})
+            console.log(action.payload)
+            let copyCurrentDeck = Object.assign({}, state.currentDeck)
+            copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
+                return item.card_id !== action.payload.data
+            })
+
+            return Object.assign({}, state, { currentDeck: copyCurrentDeck })
+
+        case 'DELETE_DECK_FULFILLED':
+        console.log("REducer gets here", action.payload)
+        
+            let copyCurrentDeck2 = Object.assign({}, state.currentDeck)
+            copyCurrentDeck2.deck_id = copyCurrentDeck2.deck_id.filter(item => {
+                return item.deck_id !== action.payload.data
+            })
+            console.log(action.payload.data)
+            return Object.assign({}, state, { currentDeck: copyCurrentDeck2 })
 
         default: return state;
     }

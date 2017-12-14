@@ -12,10 +12,11 @@ class ViewDecks extends Component {
     } 
 
     render(){
+        console.log('CURRENT_DECK', this.props.currentDeck);
         const subDeckList = this.props.subDecks.length
         ? this.props.subDecks.map((deck, i) => {
             return (
-                <div>
+                <div key={i}>
                 <DeckCoverM 
                    key = {i}
                    name={deck.deck_name}
