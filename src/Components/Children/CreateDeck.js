@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import { withRouter } from 'react-router-dom';
-
 import { createDeck, getUser } from './../../ducks/reducer';
 
 class CreateDeck extends Component {
@@ -19,10 +18,10 @@ class CreateDeck extends Component {
             category: '',
             public: true,
             deck_card: 'deck',
-            parent_id: this.props.currentDeck.deck_id ? this.props.currentDeck.deck_id : null,
             modalisOpen: false,
             errorAlert: ''
         };
+        
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -33,18 +32,22 @@ class CreateDeck extends Component {
         this.handleValidate = this.handleValidate.bind(this);
         this.validateInput = this.validateInput.bind(this);
     }
+
     openModal() {
         this.setState({ modalisOpen: true });
     }
+
     closeModal() {
 
         this.setState({ modalisOpen: false });
     }
+
     handleUserInput(e) {
         this.setState({
             deck_name: e.target.value
         })
     }
+
     handleUserInput2(e) {
         this.setState({
             category: e.target.value
@@ -57,26 +60,31 @@ class CreateDeck extends Component {
             category: this.state.category,
             public: this.state.public,
             deck_card: this.state.deck_card,
-            parent_id: this.state.parent_id
+            parent_id: this.props.currentDeck.deck_id
         }
         this.props.createDeck(body, this.props.userData.userId);
         this.closeModal();
     }
+
     handleAlert() {
         this.setState({ errorAlert: "can't submit an empty deck" });
     }
+
     validateInput(categoryInput, nameInput) {
         return categoryInput.length > 0 && nameInput.length > 0 ?
             this.submitModalClick() : this.handleAlert();
     }
+
     handleValidate() {
         let categoryInput = this.state.category;
         let nameInput = this.state.deck_name;
         this.validateInput(categoryInput, nameInput);
     }
+
     handleClick(e) {
         this.handleValidate();
     }
+
     componentWillReceiveProps(nextProps){
         if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
             if (this.props.currentDeck.deck_id === nextProps.currentDeck.deck_id) {
@@ -89,6 +97,7 @@ class CreateDeck extends Component {
 
         }
     }
+
     render() {
         return (
             <div>
@@ -114,8 +123,8 @@ class CreateDeck extends Component {
         )
     }
 }
+
 function mapStateToProps(state) {
-    console.log('state from createDeck', state);
     return {
         currentDeck: state.currentDeck,
         userData: state.userData

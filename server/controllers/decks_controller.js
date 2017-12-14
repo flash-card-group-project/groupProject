@@ -14,7 +14,6 @@ module.exports = {
 
         let decks = await db.get_user_decks([req.user.id]);  
         if (decks.length ) {
-            //decks.length > 0
             let deckIDs = decks.map(deck => deck.deck_id);
             await db.cards.find({ parent_id: deckIDs })
                 .then(cards => {
