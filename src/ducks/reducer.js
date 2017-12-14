@@ -215,6 +215,18 @@ export default function reducer(state = initialState, action) {
             })
 
         case 'EDIT_DECK_FULFILLED':
+            console.log('edit deck', action.payload)
+            let copyUserDecks = state.userDecks.map(deck => {
+                if (deck.deck_id === action.payload.data[0].deck_id) {
+                    return action.payload.data[0]
+                } else {
+                    return deck
+                }
+            })
+            return Object.assign({}, state, { userDecks: copyUserDecks })
+
+        case 'GET_CURRENT_DECK_FULFILLED':
+            console.log(action)
             console.log('edit card testing', action.payload)
             return Object.assign({}, state, {
                 currentDeck: action.payload.data
