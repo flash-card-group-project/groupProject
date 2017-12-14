@@ -32,10 +32,9 @@ class CardCoverM extends Component {
     //     this.props.getDecksHome();
     // }
     handleClickDelete() {
-        let deleteCard = confirm('Are you sure you want to delete this question?');
+        let deleteCard = confirm('Are you sure you want to delete this card?');
         if (deleteCard === true) {
-            this.props.deleteCard(this.props.cardID);
-            alert('The card was successfully deleted!');
+            this.props.deleteCard(this.props.cardID);  
         } else {
             alert('The card was NOT deleted!');
         }
@@ -71,7 +70,7 @@ class CardCoverM extends Component {
 
 function mapStateToProps(state) {
     
-    console.log(state.currentDeck, 'this is from card cover, after delete')
+    console.log(state.userDecks, 'user decks')
     return {
         currentDeck: state.currentDeck
     }

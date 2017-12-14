@@ -33,6 +33,10 @@ const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
 const GET_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
+<<<<<<< HEAD
+=======
+const DELETE_DECK = 'DELETE_DECK';
+>>>>>>> master
 const DELETE_CARD = 'DELETE_CARD';
 const CLEAR_CURRENT_DECK = 'CLEAR_CURRENT_DECK';
 
@@ -131,17 +135,16 @@ export function createCard(body, deck_id) {
     }
 }
 
-//deleteDeck
-// export function deleteDeck() {
-//     return {
-//         type: DELETE_DECK,
-//         payload: axios.get('').then(res => res)
-//     }
-// }
+//DELETE DECK:
+export function deleteDeck(deck_id) {
+    return {
+        type: DELETE_DECK,
+        payload: axios.delete(`/api/delete/deck/${deck_id}`).then(res => res)
+    }
+}
 
 //deleteCard
 export function deleteCard(card_id) {
-    console.log('are we reaching the reducer')
     return {
         type: DELETE_CARD,
         payload: axios.delete(`/api/card/delete/${card_id}`).then(res => res)
@@ -231,7 +234,14 @@ export default function reducer(state = initialState, action) {
                 return item.card_id !== action.payload.data
             })
 
-            return Object.assign({}, state, { currentDeck: copyCurrentDeck });
+            return Object.assign({}, state, { currentDeck: copyCurrentDeck })
+
+        case 'DELETE_DECK_FULFILLED':
+            let copyUserDecks = Object.assign([...state.userDecks])
+            copyUserDecks = copyUserDecks.filter(item => {
+                return item.deck_id !== action.payload.data
+            })
+            return Object.assign({}, state, { userDecks: copyUserDecks })
 
         case 'CLEAR_CURRENT_DECK':
             return Object.assign({}, state, {currentDeck: action.payload});
