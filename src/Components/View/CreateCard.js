@@ -35,17 +35,22 @@ class CreateCard extends Component {
             multiple3: null,
             multiple4: null
         }
-        this.props.createCard(body, this.props.match.params.deck_id);
+        this.props.createCard(body, this.props.match.params.deck_id)
+        this.setState({questionInput:'',
+                        answerInput:''})
+
+        console.log(this.state.answerInput)
     }
 
     render() {
         console.log("create card", this.props.currentDeck)
+        
         return (
-            <main className='create_card_bod' >
+            <main className='create_card_bod'>
                 <section className='box1'>
                     <textarea placeholder='please enter your question here..'
-                        className='card2'
                         value={this.state.questionInput}
+                        className='card2'
                         onChange={this.handleQuestion} />
                     <div className='btn_positioning'>
                         <button className='lrg_btn'>MC</button>
@@ -54,13 +59,12 @@ class CreateCard extends Component {
                 </section>
                 <section className='box1'>
                     <textarea placeholder='please enter your answer here...'
-                        className='card2'
                         value={this.state.answerInput}
+                        className='card2'
                         onChange={this.handleAnswer} />
                     <div className='btn_positioning'>
-                        <button  className='lrg_btn' onClick={this.handleSubmit}>Create Card</button>
+                        <button  className='lrg_btn' onClick={this.handleSubmit} >Create Card</button>
                         <Link to={`/viewer/${this.props.currentDeck.deck_id}`}><button className='lrg_btn'>Back to Deck</button></Link>
-
                     </div>
                 </section>
             </main>
