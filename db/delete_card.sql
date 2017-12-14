@@ -1,2 +1,3 @@
 delete from cards 
-where card_id=$1;
+where card_id=$1
+returning *;

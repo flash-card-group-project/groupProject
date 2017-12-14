@@ -132,7 +132,7 @@ class DeckCoverM extends Component {
 
         return (
             <div className="deck-cover">
-            <Link  onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
+            <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
                     <div className="deck_found">
                         <div className="deck_name"> Name: {this.props.name}</div>
                         <div className="deck_category"> Category: {this.props.category}</div>
