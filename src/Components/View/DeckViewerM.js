@@ -5,6 +5,8 @@ import ToggleButton from 'react-toggle-button';
 import ViewCards from '../Children/ViewCards';
 import ViewDecks from '../Children/ViewDecks';
 import CardCoverM from '../Children/CardCoverM';
+import EditDeck from '../Children/EditDeck';
+
 
 class DeckViewerM extends Component {
     constructor(props) {
