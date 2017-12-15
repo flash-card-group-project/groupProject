@@ -5,7 +5,6 @@ import DeckCoverM from '../Children/DeckCoverM';
 
 class Favorites extends Component {
 
-
     componentDidMount() {
         this.props.getFavorites(this.props.userData.userId);
 
@@ -14,10 +13,11 @@ class Favorites extends Component {
     render() {
         let favorite = this.props.favorites.map((item, i) => {
             return (
-                <DeckCoverM />
+                <DeckCoverM 
+                    key = {i}
+                />
             )
         })
-
 
         return (
             <div className='search_container'>
@@ -28,7 +28,6 @@ class Favorites extends Component {
     }
 
 }
-
 
 function mapStateToProps(state) {
     console.log("Favorites", state)
