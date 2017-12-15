@@ -209,11 +209,19 @@ export default function reducer(state = initialState, action) {
                 currentDeck:updatedDeck} )
 
         case 'EDIT_DECK_FULFILLED':
-            console.log('edit card testing', action.payload)
-            return Object.assign({}, state, {
-                currentDeck: action.payload.data
-            }
-            )
+        console.log('edit DECK', action.payload)
+        console.log("PAYLOAD", action.payload.data) 
+
+            return Object.assign({}, state, {userDecks: action.payload.data})
+             
+
+    
+
+             
+
+           
+
+
         case 'GET_CURRENT_DECK_FULFILLED':
             // console.log(action)
             return Object.assign({}, state, { currentDeck: action.payload.data[0] })
