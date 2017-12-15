@@ -92,6 +92,7 @@ a:visited {
   text-align: center;
   line-height: 95px;
   background-image: url("https://www.bsrp.org/wp-content/uploads/2017/02/Artice-writing1.jpg");
+  opacity: .6;
   background-repeat: no-repeat; }
   .focal_point .focal_point, .focal_point button {
     width: 60vw;
@@ -126,7 +127,8 @@ a:visited {
 
 .title_md {
   font-size: 24px;
-  font-weight: 600; }
+  font-weight: 600;
+  z-index: 3; }
 
 .title_sml {
   font-size: 20px;
