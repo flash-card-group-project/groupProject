@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck, editDeck } from '../../ducks/reducer';
 import '../Styles/_DeckCoverM.scss';
-import EditDeck from './EditDeck';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
 import favoriteIcon from '../Assets/favorite-icon.png';
 import emptyHeartIcon from '../Assets/empty-heart-icon.png';
 import trashCan from '../Assets/delete-icon.png';
 import editIcon from '../Assets/edit-icon.png';
+import EditDeck from './EditDeck';
 
 class DeckCoverM extends Component {
 
