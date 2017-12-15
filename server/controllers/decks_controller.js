@@ -69,12 +69,9 @@ module.exports = {
         const db = req.app.get('db');
         let favArr = await db.get_fav_decks([req.user.id]);
         console.log(req.user.id, 'This is from the addToFavorites endpoint.');
-        // console.log(favArr[0].favorites);
         let newFavArr = favArr[0].favorites.concat([req.params.deckId]);
-        // console.log(newFavArr, "Hi");
         db.update_favorite_deck([newFavArr, req.user.id])
             .then(arr => {
-                // console.log("Favorite Array:", arr)
                 res.status(200).send(arr)
             })
             .catch(err => res.status(500).send("Bye")
@@ -86,12 +83,9 @@ module.exports = {
         console.log(req.user.id);
         let favArr = await db.get_fav_decks([req.user.id]);
         console.log(req.user)
-        // console.log(favArr[0].favorites);
         let newFavArr = favArr[0].favorites.filter(e => e !== Number(req.params.deckId));
-        // console.log(newFavArr, "Hi");
         db.update_favorite_deck([newFavArr, req.user.id])
             .then(arr => {
-                // console.log("Favorite Array:", arr)
                 res.status(200).send(arr)
             })
             .catch(err => res.status(500).send("Bye")
@@ -197,24 +191,4 @@ module.exports = {
                 res.status(200).send(favs)
             }).catch(err => console.log(err));
     },
-
-
-
-    // getStudy:(req, res, next) => {
-    //     const db = req.app.get('db')
-
-    //     db.get_study([])
-    //         .then(deck => {
-    //             res.status(200).send(deck)
-    //         }).catch(err => console.log(err));
-    // },
-
-    // getChildren: (req, res, next) => {
-    //     const db = req.app.get('db')
-
-    //     db.find_parent_decks()
-    //         .then(decks => {
-    //             res.status(200).send(decks)
-    //         }).catch(err => console.log(err));
-    // }
 }
