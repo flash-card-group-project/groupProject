@@ -209,18 +209,21 @@ export default function reducer(state = initialState, action) {
 
         case 'CREATE_CARD_FULFILLED':
             let updatedDeck = Object.assign({}, state.currentDeck)
-            updatedDeck.cards = [];
             updatedDeck.cards = [...updatedDeck.cards, action.payload.data[0]]
             return Object.assign({}, state, {
                 currentDeck: updatedDeck
             })
 
         case 'EDIT_DECK_FULFILLED':
-            console.log('edit card testing', action.payload)
-            return Object.assign({}, state, {
-                currentDeck: action.payload.data
-            }
-            )
+            let copyUserDecks = state.userDecks.map(deck => {
+                if (deck.deck_id === action.payload.data[0].deck_id) {
+                    return action.payload.data[0]
+                } else {
+                    return deck
+                }
+            })
+            return Object.assign({}, state, { userDecks: copyUserDecks })
+
         case 'GET_CURRENT_DECK_FULFILLED':
             return Object.assign({}, state, { currentDeck: action.payload.data[0] })
 
@@ -234,11 +237,11 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { currentDeck: copyCurrentDeck })
 
         case 'DELETE_DECK_FULFILLED':
-            let copyUserDecks = Object.assign([...state.userDecks])
-            copyUserDecks = copyUserDecks.filter(item => {
+            let copyUserDecks1 = Object.assign([...state.userDecks]);
+            copyUserDecks1 = copyUserDecks1.filter(item => {
                 return item.deck_id !== action.payload.data
-            })
-            return Object.assign({}, state, { userDecks: copyUserDecks })
+            });
+            return Object.assign({}, state, { userDecks: copyUserDecks1 });
 
         case 'CLEAR_CURRENT_DECK':
             return Object.assign({}, state, {currentDeck: action.payload});

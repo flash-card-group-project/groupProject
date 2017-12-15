@@ -66,7 +66,6 @@ export default class Search extends Component {
         });
         return (
             <div className='search_container'>
-                <div style={{ color: 'red' }}> I will be the Search component</div>
 
                 <div className='search_input' >
 
