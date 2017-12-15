@@ -14,7 +14,6 @@ import favoriteIcon from '../Assets/favorite-icon.png';
 import emptyHeartIcon from '../Assets/empty-heart-icon.png';
 import trashCan from '../Assets/delete-icon.png';
 import editIcon from '../Assets/edit-icon.png';
-import EditDeck from './EditDeck';
 
 class DeckCoverM extends Component {
 
