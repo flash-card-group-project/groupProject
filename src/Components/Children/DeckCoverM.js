@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
-import EditDeck from './EditDeck';
+import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck, editDeck } from '../../ducks/reducer';
 import '../Styles/_DeckCoverM.scss';
+import EditDeck from './EditDeck';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
 import favoriteIcon from '../Assets/favorite-icon.png';
@@ -122,6 +122,7 @@ class DeckCoverM extends Component {
 
     handleClick() {
         this.props.getCurrentDeck(this.props.deckid);
+
     }
 
     render() {
@@ -171,7 +172,7 @@ class DeckCoverM extends Component {
 };
 
 function mapStateToProps(state) {
-    // console.log(state, 'this is the state')
+    console.log(state, 'this is the state')
     return {
         userData: state.userData,
         userDecks: state.userDecks,
@@ -179,6 +180,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck })(DeckCoverM);
+export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck, editDeck })(DeckCoverM);
 
 // Kevin

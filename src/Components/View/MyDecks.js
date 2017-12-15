@@ -1,33 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { getUser } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import DeckCoverM from '../Children/DeckCoverM';
 import CreateDeck from '../Children/CreateDeck';
-
-
-
+import { clearCurrentDeck, getUser } from '../../ducks/reducer';
 
 class MyDecks extends Component {
+
+    componentDidMount() {
+        this.props.clearCurrentDeck();
+    }
+
     constructor() {
         super()
-
         this.state = {
             allParentDecks: []
         }
     }
-    //get all parent decks
-    // componentDidMount() {
-    //     // console.log(this.props);
-    //     axios.get('/api/user/decks')
-    //         .then(res => {
-    //             this.setState({
-    //                 allParentDecks: res.data
-    //             })
-    //         })
-    // }
-
-
+    
     render() {
         let parentArr = this.props.userDecks.filter((item) => {
             return (item.parent_id === null)
@@ -65,4 +55,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getUser })(MyDecks);
+export default connect(mapStateToProps, { getUser, clearCurrentDeck })(MyDecks);
