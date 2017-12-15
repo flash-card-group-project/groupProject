@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
+import EditDeck from './EditDeck';
 import '../Styles/_DeckCoverM.scss';
 import privateIcon from '../Assets/private-mode.png';
 import publicIcon from '../Assets/public-view-icon.png';
@@ -37,7 +38,6 @@ class DeckCoverM extends Component {
     componentDidMount() {
         let currentDeckID = this.props.deckid;
         let isFavorited = this.props.favorites.find(e => e.deck_id === currentDeckID);
-        // console.log(this.props.favorites.includes(currentDeckID));
         if (isFavorited) {
             this.setState({
                 favoriteStatus: true
@@ -46,31 +46,11 @@ class DeckCoverM extends Component {
             this.setState({
                 favoriteStatus: false
             })
-            // console.log(this.props.favorites)
         };
-        // if (this.props.favorites.includes(currentDeckID)) {
-        //     this.setState({
-        //         favoriteStatus: true
-        //     })
-        // } else {
-        //     this.setState({
-        //         favoriteStatus: false
-        //     })
-        // }
 
     };
 
-    // componentWillReceiveProps(nextProps) {
-    //     axios.get(`/api/decks/${nextProps.match.params.decks}`).then(response => {
-
-    //         this.setState({
-    //             deck_info: response.data
-    //         });
-    //     })
-    // };
-
     privatePublicToggle() {
-        // console.log(this.props)
         axios.put(`/api/decks/private-toggle/${this.props.deckid}`).then((res) => {
             if (this.state.publicStatus === true) {
                 this.setState({
@@ -85,7 +65,6 @@ class DeckCoverM extends Component {
     };
 
     favoriteToggle() {
-        // console.log(this.state)
         if (this.state.favoriteStatus) {
             axios.delete(`/api/delete/favorites/${this.props.deckid}`).then(() => {
                 this.props.getFavorites();
@@ -104,7 +83,7 @@ class DeckCoverM extends Component {
         }
     };
 
-    editDeck(){
+    editDeck() {
         this.setState({
             editDeck: true
         })
@@ -126,24 +105,19 @@ class DeckCoverM extends Component {
     }
 
     render() {
-        // console.log("PROPS", this.props)
-        
         let privacy = this.state.publicStatus;
         let favorite = this.state.favoriteStatus;
         let myButtons = this.props.userData.userId === this.props.creatorID;
-        // console.log(this.props.userData.userId);
-        // console.log(this.props.creatorID);
-        // console.log(myButtons);
 
         return (
             <div className="deck-cover">
-            <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
+                <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
                     <div className="deck-content">
                         <div className="deck-name">{this.props.name}</div>
                         <div className="deck-category">{this.props.category}</div>
                     </div>
                 </Link>
-                
+
                 {myButtons ? (
                     <div className="box-buttons">
                         <div>
@@ -151,8 +125,8 @@ class DeckCoverM extends Component {
                             <button className="cover-button" onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
                         </div>
                         <div>
-                            <EditDeck 
-                            deckid={this.props.deckid}/>
+                            <EditDeck
+                                deckid={this.props.deckid} />
                             <button className="cover-button" onClick={this.deleteDeck}><img src={trashCan} alt='Delete' /></button>
                         </div>
                     </div>
@@ -162,9 +136,6 @@ class DeckCoverM extends Component {
                             <button onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
                         </div>
                     )}
-
-
-
             </div>
 
         )
