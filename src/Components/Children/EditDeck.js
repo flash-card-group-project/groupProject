@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import {connect } from 'react-redux';
-
+import editIcon from '../Assets/edit-icon.png';
 import {editDeck} from './../../ducks/reducer';
 
 class EditDeck extends Component {
@@ -43,13 +43,16 @@ class EditDeck extends Component {
             deck_name: this.state.deck_name,
             category: this.state.category
         }
-        this.props.editDeck(this.props.match.params.deck_id, body);
+        this.props.editDeck(this.props.deckid, body);
+        this.setState({
+            modalisOpen: false
+        })
     }
 
     render() {
         return (
-            <div className="edit-deck">
-                <button onClick={this.openModal} className="edit-btn">Edit My Deck</button>
+            <div>
+                <button className="cover-button" onClick={this.openModal}><img src={editIcon} alt='Edit' /></button>
                 <ReactModal
                     isOpen={this.state.modalisOpen}
                     onRequestClose={this.closeModal}

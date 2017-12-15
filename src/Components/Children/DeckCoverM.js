@@ -22,12 +22,14 @@ class DeckCoverM extends Component {
         this.state = {
             publicStatus: this.props.public,
             favoriteStatus: null,
-            favoriteArr: this.props.favorites
+            favoriteArr: this.props.favorites,
+            editDeck: false
         };
         this.privatePublicToggle = this.privatePublicToggle.bind(this);
         this.favoriteToggle = this.favoriteToggle.bind(this);
         this.deleteDeck = this.deleteDeck.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.editDeck = this.editDeck.bind(this);
     };
 
 
@@ -101,9 +103,11 @@ class DeckCoverM extends Component {
         }
     };
 
-    // editDeck(){
-
-    // };
+    editDeck(){
+        this.setState({
+            editDeck: true
+        })
+    };
 
     deleteDeck() {
 
@@ -117,6 +121,7 @@ class DeckCoverM extends Component {
 
     handleClick() {
         this.props.getCurrentDeck(this.props.deckid);
+
     }
 
     render() {
@@ -137,6 +142,7 @@ class DeckCoverM extends Component {
                         <div className="deck-category">{this.props.category}</div>
                     </div>
                 </Link>
+                
                 {myButtons ? (
                     <div className="box-buttons">
                         <div>
@@ -144,7 +150,8 @@ class DeckCoverM extends Component {
                             <button className="cover-button" onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
                         </div>
                         <div>
-                            <button className="cover-button" onClick={this.editCard}><img src={editIcon} alt='Edit' /></button>
+                            <EditDeck 
+                            deckid={this.props.deckid}/>
                             <button className="cover-button" onClick={this.deleteDeck}><img src={trashCan} alt='Delete' /></button>
                         </div>
                     </div>
@@ -164,7 +171,7 @@ class DeckCoverM extends Component {
 };
 
 function mapStateToProps(state) {
-    // console.log(state, 'this is the state')
+    console.log(state, 'this is the state')
     return {
         userData: state.userData,
         userDecks: state.userDecks,
