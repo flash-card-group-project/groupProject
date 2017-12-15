@@ -69,12 +69,11 @@ module.exports = {
         const db = req.app.get('db');
         let favArr = await db.get_fav_decks([req.user.id]);
         console.log(req.user.id, 'This is from the addToFavorites endpoint.');
-        // console.log(favArr[0].favorites);
-        let newFavArr = favArr[0].favorites.concat([req.params.deckId]);
-        // console.log(newFavArr, "Hi");
+        let newFavArr = favArr[0].length 
+                        ? favArr[0].favorites.concat([req.params.deckId])
+                        : [Number(req.params.deckId)]
         db.update_favorite_deck([newFavArr, req.user.id])
             .then(arr => {
-                // console.log("Favorite Array:", arr)
                 res.status(200).send(arr)
             })
             .catch(err => res.status(500).send("Bye")
