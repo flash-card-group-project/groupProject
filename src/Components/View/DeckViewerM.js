@@ -46,7 +46,7 @@ class DeckViewerM extends Component {
                 <div className='toggle_bttn'>
                     <ToggleButton
                         trackStyle={{width:'100px',height:'30px'}}
-                        thumbAnimateRange={[1, 80]}
+                        thumbAnimateRange={[1,80]}
                         activeLabelStyle={{ width:'100px' }} 
                         inactiveLabelStyle={{ width:'50px' }}
                         value={this.state.cardView}
