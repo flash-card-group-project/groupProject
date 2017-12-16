@@ -6,8 +6,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDecksHome, deleteCard } from '../../ducks/reducer';
-import editIcon from '../Assets/edit-icon.png';
-import trashCan from '../Assets/delete-icon.png';
+import editIcon from '../Assets/editing.png';
+import trashCan from '../Assets/deleteIcon.png';
 
 class CardCoverM extends Component {
 

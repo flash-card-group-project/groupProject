@@ -1,44 +1,46 @@
 .deck-cover{
     width:90vw;
-    height:25vh; 
-    border: 1px solid black;
+    height:30vh; 
     display: flex;
-    align-items: center;      
-    justify-content: space-between;
-    margin: 5vw;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-around;     
     background:$deck;
+    margin:20px;
+    padding-top:15px;
   }
 
   .deck-content{
-    width: 50vw;
-    height: 100%;
-    line-height: 200%;
+    width:90%;
+    height:75%;
     justify-content: center;
-    text-align: left;
+    text-align: center;
+    font-size:1em;
+    line-height:20px;
+    border-radius: 3px;
+    text-overflow: scroll;
     font-family: sans-serif;
-    margin-left: 5%;
-    margin-bottom: 5px;
-    /* border: 1px solid black; */
+    .deck-content,h2{
+      color:whitesmoke;
+    }
   }
 
 
   .box-buttons {
-    width: 30%;
-    height:50%;
-    display: grid;
-    grid-template-columns: 30px 30px;
-    grid-template-rows: 30px;
-    grid-gap: 15px;
+    width:90%;
+    height:10%;
+    display: flex;
+    flex-direction:row;
     align-content: center;
     background:$deck;
     align-items: center;
     border:none;
-    
+    justify-content: center;
+    justify-content: space-around;
   }
 
-  .cover-button {
-    background-color: transparent;
-    margin: 3px;
-    border:none;
-    border-radius: 45%;
-  }
+  // .cover-button {
+  //   background-color: transparent;
+  //   border:none;
+  //   border-radius:25%;
+  // }

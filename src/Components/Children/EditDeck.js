@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import {connect } from 'react-redux';
-import editIcon from '../Assets/edit-icon.png';
+import editIcon from '../Assets/editing.png';
 import {editDeck} from './../../ducks/reducer';
 
 class EditDeck extends Component {
