@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
 import EditDeck from './EditDeck';
-import '../Styles/_DeckCoverM.scss';
 import privateCon from '../Assets/private.png';
 import publicCon from '../Assets/public.svg.png';
 import unfavorite from '../Assets/empty-heart.png';
@@ -120,16 +119,32 @@ class DeckCoverM extends Component {
                 </Link>
                 {myButtons ? (
                     <div className="box-buttons">
-                            <button className="cover-button" onClick={this.privatePublicToggle}>{privacy ? <img src={publicCon} alt='public' /> : <img src={privateCon} alt='private' />}</button>
-                            <button className="cover-button" onClick={this.favoriteToggle}>{favorite ? <img src={favoriteCon} alt="Fav'd" /> : <img src={unfavorite} alt="Not Fav'd" />}</button>
+                            <button  
+                            onClick={this.privatePublicToggle}>
+                            {privacy ? <img src={publicCon} alt='public' /> 
+                            : 
+                            <img src={privateCon} alt='private' />}
+                            </button>
+                            <button 
+                            onClick={this.favoriteToggle}>
+                            {favorite ? <img src={favoriteCon} alt="Fav'd" /> 
+                            : 
+                            <img src={unfavorite} alt="Not Fav'd" />}
+                            </button>
                             <EditDeck
                                 deckid={this.props.deckid} />
-                            <button className="cover-button" onClick={this.deleteDeck}><img src={deleteCon} alt='Delete' /></button>
+                            <button onClick={this.deleteDeck}>
+                            <img src={deleteCon} alt='Delete' />
+                            </button>
                     </div>
                 ) : (
                         <div>
 
-                            <button onClick={this.favoriteToggle}>{favorite ? <img src={favoriteCon} alt="Fav'd" /> : <img src={unfavorite} alt="Not Fav'd" />}</button>
+                            <button onClick={this.favoriteToggle}>
+                            {favorite ? <img src={favoriteCon} alt="Fav'd" /> 
+                            : 
+                            <img src={unfavorite} alt="Not Fav'd" />}
+                            </button>
                         </div>
                     )}
             </div>
