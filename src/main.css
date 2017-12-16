@@ -202,19 +202,37 @@ a:visited {
   justify-content: space-around;
   align-items: center; }
 
-.text_area {
-  width: 80%;
-  height: 30vh;
-  display: flex;
-  justify-content: space-between;
-  border: 2px solid red; }
-
-.modal_content {
+.text_area_container {
   width: 100%;
   height: 50vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid green; }
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center; }
+
+.text_area {
+  width: 90%;
+  height: 45%;
+  border: 2px solid #e9f1f7;
+  margin-bottom: 5px; }
+
+.text_area::placeholder {
+  font-size: 24px; }
+
+.buttons {
+  width: 90%;
+  height: 5vh;
+  display: flex;
+  margin-left: 15px;
+  justify-content: space-between; }
+
+.sml_btn {
+  width: 50%;
+  height: 100%;
+  font-size: 20px;
+  background: #139c9a;
+  border-radius: 3px; }
 
 .edit-deck {
   width: 90%;
