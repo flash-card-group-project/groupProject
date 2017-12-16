@@ -24,3 +24,12 @@
         font-size: $footerFontSize;
     }
   }
+
+@media (min-width: 850px) {
+
+    .footer{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+    }
+}
