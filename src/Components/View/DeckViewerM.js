@@ -7,7 +7,6 @@ import ViewDecks from '../Children/ViewDecks';
 import CardCoverM from '../Children/CardCoverM';
 import EditDeck from '../Children/EditDeck';
 
-
 class DeckViewerM extends Component {
     constructor(props) {
         super(props);
@@ -35,20 +34,31 @@ class DeckViewerM extends Component {
                       ? <ViewCards /> 
                       : <ViewDecks />;
         return (
-            <div>
-                <div>
-                    <h2>{this.props.currentDeck.deck_name}</h2>
-                    <h3>{this.props.currentDeck.category}</h3>
+            <div className='deck_viewer_m'>
+                <div className='dv_titles'>
+                    <h2>Deck Name 
+                        <p>{this.props.currentDeck.deck_name}</p>
+                    </h2>
+                    <h3>Category 
+                    <p>{this.props.currentDeck.category}</p>
+                    </h3>
                 </div>
-                <div>
+                <div className='toggle_bttn'>
                     <ToggleButton
+                        trackStyle={{width:'100px',height:'30px'}}
+                        thumbAnimateRange={[1,80]}
+                        activeLabelStyle={{ width:'100px' }} 
+                        inactiveLabelStyle={{ width:'50px' }}
                         value={this.state.cardView}
                         onToggle={this.toggleView}
                         inactiveLabel={'Decks'}
                         activeLabel={'Cards'}
+                        containerStyle={{display:'inline-block',width:'500px'}} 
                     />
                 </div>
+                <div className='info_displayer'>
                 {display}
+                </div>
             </div>
         )
     }

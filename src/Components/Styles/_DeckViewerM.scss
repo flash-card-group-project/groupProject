@@ -1,0 +1,41 @@
+.deck_viewer_m{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:$card;
+    overflow:scroll;
+}
+.dv_titles{
+    width:85%;
+    height:15%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:10px;
+    text-align:left;
+    line-height:20px;
+    background:$background;
+    margin-top:5px;
+    
+}
+.toggle_bttn{
+    width:30%;
+    height:5%;
+    margin-top:5px;
+    display:flex;
+    align-self:center;
+    justify-content:center;
+    align-items:center;
+
+}
+.info_displayer{
+    width:90%;
+    height:90%;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    padding:10px;
+}
