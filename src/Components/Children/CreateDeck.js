@@ -5,20 +5,20 @@ import { withRouter } from 'react-router-dom';
 import { createDeck, getUser } from './../../ducks/reducer';
 
 
-const customStyles={
-    content:{
-        position                   : 'absolute',
-        top                        : '40px',
-        left                       : '40px',
-        right                      : '40px',
-        bottom                     : '40px',
-        border                     : '1px solid #ccc',
-        background                 : '#fff',
-        overflow                   : 'auto',
-        WebkitOverflowScrolling    : 'touch',
-        borderRadius               : '4px',
-        outline                    : 'none',
-        padding                    : '20px'
+const customStyles = {
+    content: {
+        position: 'absolute',
+        top: '40px',
+        left: '40px',
+        right: '40px',
+        bottom: '40px',
+        border: '1px solid #ccc',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '20px'
     }
 }
 class CreateDeck extends Component {
@@ -34,7 +34,7 @@ class CreateDeck extends Component {
             modalisOpen: false,
             errorAlert: ''
         };
-        
+
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -98,8 +98,8 @@ class CreateDeck extends Component {
         this.handleValidate();
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined) {
             if (this.props.currentDeck.deck_id === nextProps.currentDeck.deck_id) {
                 return
             }
@@ -124,14 +124,16 @@ class CreateDeck extends Component {
                         describedby: "full_description"
                     }}
                     ariaHideApp={false}>
-                    <div className='text_area'>
-                        <textarea type='text' name="deck" placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} required />
-                        <textarea type='text' name="deck" placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} required />
-                        <p style={{ color: "red" , fontSize: '12px'}} >{this.state.errorAlert}</p>
-                    </div>
-                    <div className="buttons">
-                        <button className="cancel" onClick={this.closeModal} >Cancel</button>
-                        <button className="submit" onClick={this.handleClick} >Submit</button>
+                    <div className='modal_content'>
+                        <div className='text_area'>
+                            <textarea type='text' name="deck" placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} required />
+                            <textarea type='text' name="deck" placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} required />
+                            <p style={{ color: "red", fontSize: '12px' }} >{this.state.errorAlert}</p>
+                        </div>
+                        <div className="buttons">
+                            <button className="cancel" onClick={this.closeModal} >Cancel</button>
+                            <button className="submit" onClick={this.handleClick} >Submit</button>
+                        </div>
                     </div>
                 </ReactModal>
             </div>
