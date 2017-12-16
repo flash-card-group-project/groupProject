@@ -1,7 +1,3 @@
-//erin flesh out starting 12/7
-//functionality 12/8
-//debugged 12/11
-//route works 12/14
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
