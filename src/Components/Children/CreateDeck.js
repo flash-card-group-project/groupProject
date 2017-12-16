@@ -4,6 +4,23 @@ import ReactModal from 'react-modal';
 import { withRouter } from 'react-router-dom';
 import { createDeck, getUser } from './../../ducks/reducer';
 
+
+const customStyles={
+    content:{
+        position                   : 'absolute',
+        top                        : '40px',
+        left                       : '40px',
+        right                      : '40px',
+        bottom                     : '40px',
+        border                     : '1px solid #ccc',
+        background                 : '#fff',
+        overflow                   : 'auto',
+        WebkitOverflowScrolling    : 'touch',
+        borderRadius               : '4px',
+        outline                    : 'none',
+        padding                    : '20px'
+    }
+}
 class CreateDeck extends Component {
     constructor(props) {
         super(props)
@@ -101,11 +118,13 @@ class CreateDeck extends Component {
                 <ReactModal
                     isOpen={this.state.modalisOpen}
                     onRequestClose={this.closeModal}
+                    style={customStyles}
                     aria={{
                         labelledby: 'heading',
                         describedby: "full_description"
-                    }}>
-                    <div>
+                    }}
+                    ariaHideApp={false}>
+                    <div className='text_area'>
                         <textarea type='text' name="deck" placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} required />
                         <textarea type='text' name="deck" placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} required />
                         <p style={{ color: "red" , fontSize: '12px'}} >{this.state.errorAlert}</p>
