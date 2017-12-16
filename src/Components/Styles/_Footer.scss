@@ -3,7 +3,7 @@
     line-height: 70px;
     background-color: $darkShade;
     display: flex;
-    color: $highlight;
+    color: $background;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
     }
     .contact{
         margin-top: 5px;
-        color: $accent;
+        color: $buttons;
         font-size: $footerFontSize;
     }
   }

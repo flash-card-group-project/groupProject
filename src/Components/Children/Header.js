@@ -10,9 +10,8 @@ class Header extends Component {
         return (
             <section>
                 <AppBar
-                    title="FlashToolkit"
-                    // Shows the delete icon next to the title
-                    showMenuIconButton={false} // Shows the hamburger menu on the left of the title
+                    title="TeckDecks"
+                    showMenuIconButton={false} 
                     iconElementRight={
                         <IconMenu
                             iconButtonElement={
@@ -29,13 +28,11 @@ class Header extends Component {
                         </IconMenu>
                     }
                 />
-
             </section>
         )
     }
 }
 function mapStateToProps(state) {
-
     return {
         userData: state.userData
     }

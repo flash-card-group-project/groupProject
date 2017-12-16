@@ -53,13 +53,6 @@ export default class Search extends Component {
                         public={item.public}
                         userID={this.props.id}
                         creatorID={item.creator_id} />
-                    {/* <div className='deck_results' key={i}>
-                        <div className='deck_found' >
-                            <div className='deck_name'>DECK: {item.deck_name}</div>
-                            <div className='deck_category'> CATEGORY: {item.category}</div>
-                        </div>
-
-                    </div> */}
                 </div>
 
             )
