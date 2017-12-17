@@ -15,6 +15,8 @@ class Favorites extends Component {
             return (
                 <DeckCoverM 
                     key = {i}
+                    name={item.deck_name}
+                    category={item.category}
                 />
             )
         })
@@ -30,7 +32,7 @@ class Favorites extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("Favorites", state)
+    console.log("Favorites STATE", state)
     return {
         userData: state.userData,
         favorites: state.favorites
