@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+<<<<<<< HEAD
 import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck, editDeck } from '../../ducks/reducer';
 import EditDeck from './EditDeck';
 import '../Styles/_DeckCoverM.scss';
@@ -14,6 +15,16 @@ import favoriteIcon from '../Assets/favorite-icon.png';
 import emptyHeartIcon from '../Assets/empty-heart-icon.png';
 import trashCan from '../Assets/delete-icon.png';
 import editIcon from '../Assets/edit-icon.png';
+=======
+import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
+import EditDeck from './EditDeck';
+import privateCon from '../Assets/private.png';
+import publicCon from '../Assets/public.svg.png';
+import unfavorite from '../Assets/empty-heart.png';
+import deleteCon from '../Assets/deleteIcon.png';
+import editCon from '../Assets/editing.png';
+import favoriteCon from '../Assets/filledHeart.png';
+>>>>>>> cf24ebae22629ce41af93d20a7d9c061ce98070f
 
 class DeckCoverM extends Component {
 
@@ -110,6 +121,7 @@ class DeckCoverM extends Component {
 
         return (
             <div className="deck-cover">
+<<<<<<< HEAD
                 <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}>
                     <div className="deck-content">
                         <div className="deck-name">{this.props.name}</div>
@@ -128,11 +140,44 @@ class DeckCoverM extends Component {
                                 deckid={this.props.deckid} />
                             <button className="cover-button" onClick={this.deleteDeck}><img src={trashCan} alt='Delete' /></button>
                         </div>
+=======
+                <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`} className="deck-content">
+                    <div>
+                        <h2>Deck Name </h2>
+                        <p>{this.props.name}</p>
+                        <h2>Category </h2>
+                        <p>{this.props.category}</p>
+                    </div>
+                </Link>
+                {myButtons ? (
+                    <div className="box-buttons">
+                            <button  
+                            onClick={this.privatePublicToggle}>
+                            {privacy ? <img src={publicCon} alt='public' /> 
+                            : 
+                            <img src={privateCon} alt='private' />}
+                            </button>
+                            <button 
+                            onClick={this.favoriteToggle}>
+                            {favorite ? <img src={favoriteCon} alt="Fav'd" /> 
+                            : 
+                            <img src={unfavorite} alt="Not Fav'd" />}
+                            </button>
+                            <EditDeck
+                                deckid={this.props.deckid} />
+                            <button onClick={this.deleteDeck}>
+                            <img src={deleteCon} alt='Delete' />
+                            </button>
+>>>>>>> cf24ebae22629ce41af93d20a7d9c061ce98070f
                     </div>
                 ) : (
                         <div>
 
-                            <button onClick={this.favoriteToggle}>{favorite ? <img src={favoriteIcon} alt="Fav'd" /> : <img src={emptyHeartIcon} alt="Not Fav'd" />}</button>
+                            <button onClick={this.favoriteToggle}>
+                            {favorite ? <img src={favoriteCon} alt="Fav'd" /> 
+                            : 
+                            <img src={unfavorite} alt="Not Fav'd" />}
+                            </button>
                         </div>
                     )}
             </div>

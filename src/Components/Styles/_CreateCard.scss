@@ -14,20 +14,19 @@
     height:75%;
     padding:5px;
     margin-left:2px;
+    font-size:18px;
     background:whitesmoke;
 }
-// .med_btn{
-//     width:90px;
-//     height:40px;
-//     background: white;
-//     border-radius: 0;
-//     border:1px solid black;
-// }
+.card2::placeholder{
+    font-size:18px;
+}
+
 .lrg_btn{
     width:150px;
     height:40px;
     background: white;
     border-radius: 0;
+    font-size:14px;
     border:1px solid black;
 }
 .btn_positioning{

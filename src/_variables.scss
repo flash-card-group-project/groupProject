@@ -1,33 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald');
-@import url('https://fonts.googleapis.com/css?family=Oswald:300');
+@import url('https://fonts.googleapis.com/css?family=Alegreya|Pangolin');
 
 //titles or fonts
 $footerFontSize: 20px;
 
-//buttons 
-$buttonHeight: 150px;
-$buttonWidth: 175px;
-// $largeButtonFont:
-
 //colors
-$darkShade: #3581b8;
-$mediumShade: #dee2d6;
-$lightShade: #ebe9e9;
-$highlight: #f3f8f2;
-$accent: #fcb07e;
+$buttons:#309bc5;
+$background:#bfd1e5;
+$deck:#6b668d;
+$card:#e9f1f7;
+$darkShade:#4c6085;
 
-//header 
-
-//footer
-
-//cards
-$questionFont: 'Oswald', sans-serif;
-// $answerFont: 
-
-//decks
-$titleInputDeckWidth: 250px;
-$titleInputDeckHeight: 250px;
-$deckBorder: 3px solid black;
-$inputBoxBorder: 1px solid black;
-
-//favorites
+//cards         
+$font:'pangolin';
+$titles:'alegreya'

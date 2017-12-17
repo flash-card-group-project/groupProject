@@ -1,13 +1,25 @@
-//erin flesh out starting 12/7
-//functionality 12/8
-//debugged 12/11
-//route works 12/14
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 import { withRouter } from 'react-router-dom';
 import { createDeck, getUser } from './../../ducks/reducer';
 
+
+const customStyles = {
+    content: {
+        position: 'absolute',
+        top: '80px',
+        left: '40px',
+        right: '40px',
+        bottom: '150px',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '10px'
+    }
+}
 class CreateDeck extends Component {
     constructor(props) {
         super(props)
@@ -21,7 +33,7 @@ class CreateDeck extends Component {
             modalisOpen: false,
             errorAlert: ''
         };
-        
+
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -85,8 +97,8 @@ class CreateDeck extends Component {
         this.handleValidate();
     }
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined){
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.currentDeck.deck_id !== null && nextProps.currentDeck.deck_id !== undefined) {
             if (this.props.currentDeck.deck_id === nextProps.currentDeck.deck_id) {
                 return
             }
@@ -105,18 +117,37 @@ class CreateDeck extends Component {
                 <ReactModal
                     isOpen={this.state.modalisOpen}
                     onRequestClose={this.closeModal}
+                    style={customStyles}
                     aria={{
                         labelledby: 'heading',
                         describedby: "full_description"
-                    }}>
-                    <div>
-                        <textarea type='text' name="deck" placeholder="What do you want to call your deck?" value={this.state.deck_name} className="title-input" onChange={this.handleUserInput} required />
-                        <textarea type='text' name="deck" placeholder="What category is this in?" value={this.state.category} className="category-input" onChange={this.handleUserInput2} required />
-                        <p style={{ color: "red" , fontSize: '12px'}} >{this.state.errorAlert}</p>
-                    </div>
-                    <div className="buttons">
-                        <button className="cancel" onClick={this.closeModal} >Cancel</button>
-                        <button className="submit" onClick={this.handleClick} >Submit</button>
+                    }}
+                    ariaHideApp={false}>
+                    <div className='modal_content'>
+                        <div className='text_area_container'>
+                            <textarea 
+                            type='text'
+                            name="deck" 
+                            className='text_area'
+                            placeholder="What do you want to call your deck?" 
+                            value={this.state.deck_name}
+                            onChange={this.handleUserInput} required 
+                            />
+                            <textarea 
+                            type='text' 
+                            name="deck" 
+                            className='text_area'
+                            placeholder="What category is this in?" 
+                            value={this.state.category} 
+                             onChange={this.handleUserInput2} 
+                             required 
+                             />
+                            <p style={{ color: "red", fontSize: '12px' }} >{this.state.errorAlert}</p>
+                        </div>
+                        <div className="buttons">
+                            <button className="cancel" onClick={this.closeModal} className='sml_btn'>Cancel</button>
+                            <button className="submit" onClick={this.handleClick} className='sml_btn'>Submit</button>
+                        </div>
                     </div>
                 </ReactModal>
             </div>

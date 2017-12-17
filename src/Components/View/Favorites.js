@@ -20,11 +20,11 @@ class Favorites extends Component {
                 />
             )
         })
-
         return (
-            <div className='search_container'>
-                <div>Favorite some decks and they will appear here!</div>
-                {favorite}
+            <div>
+                <div className='search_container'>
+                    {favorite}
+                </div>
             </div>
         )
     }

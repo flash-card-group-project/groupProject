@@ -1,15 +1,18 @@
 .home_body{
     width:100%;
-    height:130vh;
+    height:70vh;
     display: flex;
     flex-direction:column;
     justify-content: space-around;
     align-items: center;
+    background:$card;
 }
 
 .large_btn{
     width:90vw;
-    height:20vh; 
-    border:1px solid black;
-    font-size:22px;
+    height:10vh; 
+    border-radius:3px;
+    font-size:24px;
+    background:$buttons;
+    font-family:$titles;
 }
