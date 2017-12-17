@@ -205,16 +205,18 @@ a:visited {
   height: 75%;
   padding: 5px;
   margin-left: 2px;
+  font-size: 18px;
   background: whitesmoke; }
 
 .card2::placeholder {
-  font-size: 20px; }
+  font-size: 18px; }
 
 .lrg_btn {
   width: 150px;
   height: 40px;
   background: white;
   border-radius: 0;
+  font-size: 14px;
   border: 1px solid black; }
 
 .btn_positioning {
@@ -238,10 +240,11 @@ a:visited {
   width: 90%;
   height: 45%;
   border: 2px solid #e9f1f7;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  font-size: 18px; }
 
 .text_area::placeholder {
-  font-size: 24px; }
+  font-size: 18px; }
 
 .buttons {
   width: 90%;
