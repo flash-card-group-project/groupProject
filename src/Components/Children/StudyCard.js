@@ -10,7 +10,7 @@ export default class StudyCard extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(){
+    handleClick() {
         this.setState({
             question: !this.state.question
         })
@@ -21,19 +21,27 @@ export default class StudyCard extends Component {
         if (this.state.question === true) {
             return (
                 <div>
-                    <div>
-                        {this.props.question}
+                    <div className='card-cover'>
+                        <div className='card-question'>
+                            {this.props.question}
+                        </div>
                     </div>
-                    <button onClick={this.handleClick} >Flip</button>
+                    <div className='flip_btn_section'>
+                        <button onClick={this.handleClick} className='flip_btn'>See Answer</button>
+                    </div>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <div>
-                        {this.props.answer}
+                    <div className='card-cover'>
+                        <div className='card-question'>
+                            {this.props.answer}
+                        </div>
                     </div>
-                    <button onClick={this.handleClick} >Flip</button>
+                    <div className='flip_btn_section'>
+                        <button onClick={this.handleClick} className='flip_btn'>See Question</button>
+                    </div>
                 </div>
             )
         }

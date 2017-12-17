@@ -13,16 +13,16 @@ class Favorites extends Component {
     render() {
         let favorite = this.props.favorites.map((item, i) => {
             return (
-                <DeckCoverM 
-                    key = {i}
+                <DeckCoverM
+                    key={i}
                 />
             )
         })
-
         return (
-            <div className='search_container'>
-                <div>Favorite some decks and they will appear here!</div>
-                {favorite}
+            <div>
+                <div className='search_container'>
+                    {favorite}
+                </div>
             </div>
         )
     }

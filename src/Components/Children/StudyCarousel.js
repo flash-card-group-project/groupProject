@@ -19,7 +19,7 @@ class StudyCarousel extends Component {
             })
             : <h3>'Please create cards for this deck.'</h3>;
         return (
-            <div>
+            <div className='carousel'>
                 <Carousel>
                     {cardList}
                 </Carousel>

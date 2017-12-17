@@ -18,7 +18,7 @@ class CardCoverM extends Component {
     handleClickDelete() {
         let deleteCard = confirm('Are you sure you want to delete this card?');
         if (deleteCard === true) {
-            this.props.deleteCard(this.props.cardID);  
+            this.props.deleteCard(this.props.cardID);
         } else {
             alert('The card was NOT deleted!');
         }
@@ -32,22 +32,16 @@ class CardCoverM extends Component {
                         {this.props.question}
                     </div>
                 </Link>
-
-                <div className="card-buttons">
-                    <div className="card-cover-buttons">
-                        <button onClick={this.handleClickDelete}>
-                            <img src={trashCan} alt='Delete' />
-                        </button>
-                    </div>
-                </div>
-
+                <button onClick={this.handleClickDelete}>
+                    <img src={trashCan} alt='Delete' />
+                </button>
             </div>
         )
     }
 };
 
 function mapStateToProps(state) {
-    
+
     console.log(state.userDecks, 'user decks')
     return {
         currentDeck: state.currentDeck

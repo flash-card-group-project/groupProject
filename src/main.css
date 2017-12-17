@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald");
-@import url("https://fonts.googleapis.com/css?family=Oswald:300");
 @import url("https://fonts.googleapis.com/css?family=Alegreya|Pangolin");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -98,7 +96,7 @@ a:visited {
     width: 60vw;
     height: 10vh;
     border: none;
-    background: #e9f1f7;
+    background: whitesmoke;
     border-radius: 5px;
     font-size: 1em; }
 
@@ -163,10 +161,27 @@ a:visited {
   padding-top: 20px;
   background: #e9f1f7; }
 
+.search_input {
+  width: 100%;
+  height: 7vh;
+  background: #e9f1f7;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 10px;
+  padding-bottom: 5px; }
+  .search_input .search_input, .search_input input {
+    width: 50%;
+    font-size: 15px;
+    margin-right: 5px; }
+  .search_input .search_input, .search_input button {
+    width: 25%;
+    font-size: 15px;
+    background: #bfd1e5; }
+
 .search_container {
   width: 100%;
   height: 100vh;
-  padding-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,7 +267,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background: #685fa5;
+  background: #6b668d;
   margin: 20px;
   padding-top: 15px;
   border-radius: 3px; }
@@ -283,32 +298,40 @@ body {
 
 .card-cover {
   width: 90vw;
-  height: 15vh;
+  height: 20vh;
   display: flex;
   align-items: center;
-  border: 1px solid black;
   margin: 5vw;
-  background: #fffff0; }
+  background: #f6f6f0;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #cfcfc0; }
 
 .card-question {
-  width: 50vw;
+  width: 75vw;
   height: 90px;
   display: flex;
   align-items: center;
-  text-align: center;
-  text-justify: center; }
+  text-align: left;
+  padding-left: 10px;
+  line-height: 20px; }
 
-.card-buttons {
+.carousel {
+  width: 100%;
+  height: 70vh;
+  background: #e9f1f7; }
+
+.flip_btn_section {
+  width: 100%;
+  height: 20vh;
   display: flex;
-  height: 60%;
-  width: 50vw;
-  align-items: center;
-  justify-content: center;
-  background: transparent; }
+  justify-content: center; }
 
-.card-cover-buttons {
-  margin: 3px;
-  background-color: transparent; }
+.flip_btn {
+  width: 45%;
+  height: 25%;
+  background: #bfd1e5;
+  font-size: 20px; }
 
 .deck_viewer_m {
   width: 100%;
@@ -329,7 +352,7 @@ body {
   padding: 10px;
   text-align: left;
   line-height: 20px;
-  background: #685fa5;
+  background: #6b668d;
   margin-top: 5px;
   border-radius: 3px;
   text-align: center; }
@@ -354,7 +377,7 @@ body {
   padding: 10px; }
 
 .card_viewer_options {
-  width: 90vw;
+  width: 93vw;
   height: 10vh;
   border-radius: 3px;
   font-size: 24px;

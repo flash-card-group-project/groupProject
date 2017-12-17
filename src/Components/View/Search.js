@@ -58,15 +58,11 @@ export default class Search extends Component {
             )
         });
         return (
-            <div className='search_container'>
-
-                <div className='search_input' >
-
+            <div>
+                <div className='search_input'>
                     <input type='text' placeholder='Search for decks' value={this.state.userInput} onChange={(e) => this.handleChange(e.target.value)} />
                     <button type='submit' onClick={() => this.handleClick(this.state.userInput)}>Find Decks</button>
-
                 </div>
-
                 <div className='search_container'>
                     {filteredDecks.length >= 0 ?
                         (<div className='search_results' >Search Results: {filteredDecks.length}
