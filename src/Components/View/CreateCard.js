@@ -48,10 +48,6 @@ class CreateCard extends Component {
                         value={this.state.questionInput}
                         className='card2'
                         onChange={this.handleQuestion} />
-                    <div className='btn_positioning'>
-                        <button className='lrg_btn'>MC</button>
-                        <button className='lrg_btn'>URL</button>
-                    </div>
                 </section>
                 <section className='box1'>
                     <textarea placeholder='please enter your answer here...'

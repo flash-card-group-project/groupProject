@@ -198,22 +198,30 @@ a:visited {
 
 .create_card_bod {
   width: 100%;
-  height: 110vh;
-  background: gray; }
+  height: 100vh;
+  background: #e9f1f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
-.box1 {
-  width: 100%;
-  height: 50%;
-  margin-bottom: 5px;
-  background: lightgray; }
+.box1:nth-child(1) {
+  width: 95%;
+  height: 45%; }
+
+.box1:nth-child(2) {
+  width: 95%;
+  height: 45%;
+  border-radius: 3px;
+  background: #bfd1e5; }
 
 .card2 {
-  width: 95%;
-  height: 75%;
-  padding: 5px;
-  margin-left: 2px;
+  width: 94%;
+  height: 70%;
+  padding: 10px;
   font-size: 18px;
-  background: whitesmoke; }
+  background: whitesmoke;
+  border-radius: 3px; }
 
 .card2::placeholder {
   font-size: 18px; }
@@ -224,7 +232,8 @@ a:visited {
   background: white;
   border-radius: 0;
   font-size: 14px;
-  border: 1px solid black; }
+  border: 1px solid black;
+  border-radius: 3px; }
 
 .btn_positioning {
   width: 100%;
