@@ -38,9 +38,9 @@ class MyDecks extends Component {
         })
 
         return (
-            <div className='user_decks'>
+            <div className='my_decks_bod'>
                 <CreateDeck/>
-                <div>
+                <div className='user_decks'>
                 {userDecks}
                 </div>
             </div>
@@ -49,6 +49,7 @@ class MyDecks extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log('state from myDecks', state);
     return {
         userData: state.userData,
         userDecks: state.userDecks
