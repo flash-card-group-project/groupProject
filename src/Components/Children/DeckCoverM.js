@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck } from '../../ducks/reducer';
+import { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck , editDeck} from '../../ducks/reducer';
 import EditDeck from './EditDeck';
 import privateCon from '../Assets/private.png';
 import publicCon from '../Assets/public.svg.png';
@@ -162,6 +162,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck })(DeckCoverM);
+export default connect(mapStateToProps, { getCurrentDeck, getUser, getDecksHome, getFavorites, deleteDeck, editDeck })(DeckCoverM);
 
 // Kevin
