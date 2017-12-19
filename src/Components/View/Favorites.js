@@ -22,7 +22,7 @@ class Favorites extends Component {
         })
         return (
             <div>
-                <div className='search_container'>
+                <div className='user_decks'>
                     {favorite}
                 </div>
             </div>

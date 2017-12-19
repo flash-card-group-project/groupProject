@@ -148,7 +148,8 @@ a:visited {
   border-radius: 3px;
   font-size: 24px;
   background: #309bc5;
-  font-family: "alegreya"; }
+  font-family: "alegreya";
+  margin-bottom: 5px; }
 
 .my_decks_bod {
   width: 100%;
@@ -334,23 +335,6 @@ body {
   padding-left: 10px;
   line-height: 20px; }
 
-.carousel {
-  width: 100%;
-  height: 70vh;
-  background: #e9f1f7; }
-
-.flip_btn_section {
-  width: 100%;
-  height: 20vh;
-  display: flex;
-  justify-content: center; }
-
-.flip_btn {
-  width: 45%;
-  height: 25%;
-  background: #bfd1e5;
-  font-size: 20px; }
-
 .deck_viewer_m {
   width: 100%;
   display: flex;
@@ -381,6 +365,7 @@ body {
   width: 30%;
   height: 5%;
   margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   align-self: center;
   justify-content: center;
@@ -393,8 +378,7 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 10px;
-  border: 1px dotted green; }
+  padding: 10px; }
 
 .card_viewer_options {
   width: 93vw;
@@ -415,4 +399,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 3px; }
+
+.carousel {
+  width: 100%;
+  height: 70vh;
+  background: #e9f1f7; }
+
+.bottom_of_carousel {
+  width: 100%;
+  height: 30vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.flip_btn_section {
+  width: 100%;
+  height: 10vh;
+  margin-top: 30px;
+  display: flex; }
+
+.flip_btn {
+  width: 50%;
+  height: 20%;
+  font-size: 30px;
+  background: #bfd1e5;
   border-radius: 3px; }
