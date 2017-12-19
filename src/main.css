@@ -148,18 +148,25 @@ a:visited {
   border-radius: 3px;
   font-size: 24px;
   background: #309bc5;
-  font-family: "alegreya"; }
+  font-family: "alegreya";
+  margin-bottom: 5px; }
 
-.user_decks {
+.my_decks_bod {
+  width: 100%;
+  background: #e9f1f7;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  padding-top: 10px; }
+
+.user_decks {
+  width: 100%;
+  height: 110vh;
   text-align: center;
   overflow: scroll;
-  padding-top: 20px;
-  background: #e9f1f7; }
+  padding-top: 10px;
+  background: #e9f1f7;
+  overflow: scroll; }
 
 .search_input {
   width: 100%;
@@ -191,22 +198,30 @@ a:visited {
 
 .create_card_bod {
   width: 100%;
-  height: 110vh;
-  background: gray; }
+  height: 100vh;
+  background: #e9f1f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
-.box1 {
-  width: 100%;
-  height: 50%;
-  margin-bottom: 5px;
-  background: lightgray; }
+.box1:nth-child(1) {
+  width: 95%;
+  height: 45%; }
+
+.box1:nth-child(2) {
+  width: 95%;
+  height: 45%;
+  border-radius: 3px;
+  background: #bfd1e5; }
 
 .card2 {
-  width: 95%;
-  height: 75%;
-  padding: 5px;
-  margin-left: 2px;
+  width: 94%;
+  height: 70%;
+  padding: 10px;
   font-size: 18px;
-  background: whitesmoke; }
+  background: whitesmoke;
+  border-radius: 3px; }
 
 .card2::placeholder {
   font-size: 18px; }
@@ -217,7 +232,8 @@ a:visited {
   background: white;
   border-radius: 0;
   font-size: 14px;
-  border: 1px solid black; }
+  border: 1px solid black;
+  border-radius: 3px; }
 
 .btn_positioning {
   width: 100%;
@@ -319,23 +335,6 @@ body {
   padding-left: 10px;
   line-height: 20px; }
 
-.carousel {
-  width: 100%;
-  height: 70vh;
-  background: #e9f1f7; }
-
-.flip_btn_section {
-  width: 100%;
-  height: 20vh;
-  display: flex;
-  justify-content: center; }
-
-.flip_btn {
-  width: 45%;
-  height: 25%;
-  background: #bfd1e5;
-  font-size: 20px; }
-
 .deck_viewer_m {
   width: 100%;
   display: flex;
@@ -366,14 +365,16 @@ body {
   width: 30%;
   height: 5%;
   margin-top: 5px;
+  margin-bottom: 5px;
   display: flex;
   align-self: center;
   justify-content: center;
   align-items: center; }
 
 .info_displayer {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -398,4 +399,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 3px; }
+
+.carousel {
+  width: 100%;
+  height: 70vh;
+  background: #e9f1f7; }
+
+.bottom_of_carousel {
+  width: 100%;
+  height: 30vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.flip_btn_section {
+  width: 100%;
+  height: 10vh;
+  margin-top: 30px;
+  display: flex; }
+
+.flip_btn {
+  width: 50%;
+  height: 20%;
+  font-size: 30px;
+  background: #bfd1e5;
   border-radius: 3px; }
