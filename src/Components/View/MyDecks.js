@@ -49,6 +49,7 @@ class MyDecks extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log('state from myDecks', state);
     return {
         userData: state.userData,
         userDecks: state.userDecks

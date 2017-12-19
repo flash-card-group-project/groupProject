@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import {connect } from 'react-redux';
 import editIcon from '../Assets/editing.png';
-import {editDeck} from './../../ducks/reducer';
+import {editDeck, getCurrentDeck, getDecksHome} from './../../ducks/reducer';
 
 const customStyles = {
     content: {
@@ -53,15 +53,20 @@ class EditDeck extends Component {
             category: e.target.value
         })
     }
-    handleClick(e){
+    handleClick = async (e) => {
         let body = {
             deck_name: this.state.deck_name,
             category: this.state.category
         }
-        this.props.editDeck(this.props.deckid, body);
+        await this.props.editDeck(this.props.deckid, body);
         this.setState({
             modalisOpen: false
         })
+        this.props.getDecksHome();
+        // this.props.getCurrentDeck(this.props.deckid);
+    }
+    componentDidMount(){
+        this.props.getCurrentDeck();
     }
 
     render() {
@@ -79,12 +84,12 @@ class EditDeck extends Component {
                      ariaHideApp={false}>
                     <div className='text_area_container'>
                         <textarea 
-                        placeholder="Insert deck's new name" 
+                        placeholder= 'make me the value'
                         className='text_area'
                         value={this.state.deck_name} 
                         onChange={this.handleUserInput}/>
                         <textarea 
-                        placeholder="Insert deck's new category" 
+                        placeholder='make me the value'
                         className='text_area'
                         value={this.state.category} 
                         onChange={this.handleUserInput2}/>
@@ -105,4 +110,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {editDeck})(EditDeck);
+export default connect(mapStateToProps, {editDeck, getCurrentDeck, getDecksHome})(EditDeck);
