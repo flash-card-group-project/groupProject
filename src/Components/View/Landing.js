@@ -5,9 +5,9 @@ export default function Landing() {
     return (
         <main className='landing_body'>
             <section className='focal_point'>
-                <h1 className='title_bg'>Flash Toolkit</h1>
+                <h1 className='title_bg'>Tech Decks</h1>
                 <Typist>
-                    <h2 className='title_md'>Create, Study, Shuffle, Repeat</h2>
+                    <h2 className='title_md'>Because, One does not simply walk into Mordor</h2>
                 </Typist>
                 <a href={process.env.REACT_APP_LOGIN}><button>Sign In / Register</button></a>
             </section>

@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import {connect } from 'react-redux';
-import editIcon from '../Assets/edit-icon.png';
+import editIcon from '../Assets/editing.png';
 import {editDeck} from './../../ducks/reducer';
 
+const customStyles = {
+    content: {
+        position: 'absolute',
+        top: '80px',
+        left: '40px',
+        right: '40px',
+        bottom: '150px',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '10px'
+    }
+}
 class EditDeck extends Component {
     constructor(props) {
         super(props)
@@ -56,17 +71,27 @@ class EditDeck extends Component {
                 <ReactModal
                     isOpen={this.state.modalisOpen}
                     onRequestClose={this.closeModal}
+                    style={customStyles}
                     aria={{
                         labelledby: 'heading',
                         describedby: 'full_description'
-                    }} >
-                    <div>
-                        <textarea placeholder="Insert deck's new name" className="title-update" value={this.state.deck_name} onChange={this.handleUserInput}/>
-                        <textarea placeholder="Insert deck's new category" className="category-update" value={this.state.category} onChange={this.handleUserInput2}/>
+                            }}
+                     ariaHideApp={false}>
+                    <div className='text_area_container'>
+                        <textarea 
+                        placeholder="Insert deck's new name" 
+                        className='text_area'
+                        value={this.state.deck_name} 
+                        onChange={this.handleUserInput}/>
+                        <textarea 
+                        placeholder="Insert deck's new category" 
+                        className='text_area'
+                        value={this.state.category} 
+                        onChange={this.handleUserInput2}/>
                     </div>
-                    <div>
-                        <button onClick={this.closeModal}>Cancel</button>
-                        <button onClick={this.handleClick} >Update</button>
+                    <div  className="buttons">
+                        <button onClick={this.closeModal} className='sml_btn'>Cancel</button>
+                        <button onClick={this.handleClick} className='sml_btn'>Update</button>
                     </div>
                 </ReactModal>
             </div>

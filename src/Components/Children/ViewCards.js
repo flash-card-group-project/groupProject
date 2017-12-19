@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom';
 
 class ViewCards extends Component {
     render() {
-        // console.log('CURRENT_DECK', this.props.currentDeck);
         const cardList = this.props.currentDeck.cards
             ? this.props.currentDeck.cards.map((card, i) => {
-                // console.log(card)
                 return (
                     <CardCoverM
                         key={i}
@@ -20,13 +18,15 @@ class ViewCards extends Component {
             : 'Please create cards for your deck!';
         return (
             <div>
-                <Link to={`/study`}>
-                    <button>STUDY!</button>
+                <div className='card_viewer_options'>
+                <Link to={`/study`} className='option_section'>
+                    STUDY!
                 </Link>
-                <Link to={`/create-card/${this.props.currentDeck.deck_id}`}>
-                    <button>Create Card</button>
+                <Link to={`/create-card/${this.props.currentDeck.deck_id}`}
+                className='option_section'>
+                    Create Card
                 </Link>
-
+                </div>
                 <div>
                     {cardList}
                 </div>

@@ -164,26 +164,17 @@ export default function reducer(state = initialState, action) {
             return state;
 
         case 'GET_CURRENT_USER_FULFILLED':
-
-            return Object.assign(
-                {},
-                state,
-                {
-                    currentUser: action.payload.data
-                }
-            )
+            return Object.assign({}, state, {
+                currentUser: action.payload.data
+            })
 
         case 'GET_DECKS_FULFILLED':
-            if (action.payload.data === 'No decks found.') {
+            if (action.payload.data === 'No decks found') {
                 return state;
             } else {
-                return Object.assign(
-                    {},
-                    state,
-                    {
-                        userDecks: action.payload.data
-                    }
-                )
+                return Object.assign({}, state, {
+                    userDecks: action.payload.data
+                })
             }
 
         case 'GET_FAVORITES_FULFILLED':
@@ -194,8 +185,7 @@ export default function reducer(state = initialState, action) {
         case 'ADD_FAVORITE_DECK_FULFILLED':
             return Object.assign([], state, {
                 userData: action.payload.data
-            }
-            )
+            })
 
         case 'CREATE_DECK_FULFILLED':
             console.log('reducer: ', action.payload.data)
@@ -244,8 +234,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { userDecks: copyUserDecks1 });
 
         case 'CLEAR_CURRENT_DECK':
-            return Object.assign({}, state, {currentDeck: action.payload});
-            
+            return Object.assign({}, state, { currentDeck: action.payload });
+
         default: return state;
     }
 }
