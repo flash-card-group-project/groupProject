@@ -16,6 +16,11 @@ class CreateCard extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
+
+    componentDidMount() {
+        
+    }
+
     handleQuestion(e) {
         this.setState({
             questionInput: e.target.value

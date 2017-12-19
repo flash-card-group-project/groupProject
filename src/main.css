@@ -257,7 +257,8 @@ a:visited {
     justify-content: space-around;
     margin-top: -250px;
     font-family: "Oswald", sans-serif;
-    margin-top: 50px; }
+    margin-top: 50px;
+    margin-right: auto; }
   .study_desc > div {
     margin-bottom: 25px;
     margin-left: 25px;
