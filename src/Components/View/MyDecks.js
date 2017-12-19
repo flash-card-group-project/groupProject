@@ -22,7 +22,7 @@ class MyDecks extends Component {
         let parentArr = this.props.userDecks.filter((item) => {
             return (item.parent_id === null)
         })
-    
+
         let userDecks = parentArr.map((item, i) => {
             return (
                 <DeckCoverM
