@@ -1,0 +1,11 @@
+.user_decks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    overflow: scroll;
+    padding-top:20px;
+    background: $card;
+}

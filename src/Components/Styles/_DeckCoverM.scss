@@ -1,44 +1,43 @@
+body{
+  font-family: $titles;
+}
+
 .deck-cover{
-    width: 90vw;
-    height: 99px;
-    border: 1px solid black;
+    width:90vw;
+    height:20vh; 
     display: flex;
-    align-items: center;      
-    justify-content: space-between;
-    margin: 5vw;
-    background: #fffff0;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-around;     
+    background:$deck;
+    margin:20px;
+    padding-top:15px;
+    border-radius:3px;
   }
 
   .deck-content{
-    width: 50vw;
-    height: 100%;
-    line-height: 200%;
+    width:90%;
+    height:75%;
     justify-content: center;
-    text-align: left;
-    font-family: sans-serif;
-    margin-left: 5%;
-    margin-bottom: 5px;
-    /* border: 1px solid black; */
-  }
-
-  .deck-name{
-    
-  }
-
-  .deck-category {
-
+    text-align: center;
+    font-size:1em;
+    line-height:20px;
+    border-radius: 3px;
+    text-overflow: scroll;
+    font-family: $font;
+    .deck-content,h2{
+      color:whitesmoke;
+    }
   }
 
   .box-buttons {
-    /* width: 35vw; */
-    margin-right: 3%;
+    width:90%;
+    height:10%;
+    display: flex;
+    flex-direction:row;
+    align-content: center;
+    align-items: center;
+    border:none;
     justify-content: center;
-    align-items: right;
-    background-color: transparent;
-    /* border: 1px solid black; */
-  }
-
-  .cover-button {
-    background-color: transparent;
-    margin: 3px;
+    justify-content: space-around;
   }
