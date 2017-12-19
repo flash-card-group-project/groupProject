@@ -37,9 +37,9 @@ class MyDecks extends Component {
         })
 
         return (
-            <div className='user_decks'>
+            <div className='my_decks_bod'>
                 <CreateDeck/>
-                <div>
+                <div className='user_decks'>
                 {userDecks}
                 </div>
             </div>
