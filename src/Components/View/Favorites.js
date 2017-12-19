@@ -15,14 +15,16 @@ class Favorites extends Component {
             return (
                 <DeckCoverM 
                     key = {i}
+                    name={item.deck_name}
+                    category={item.category}
                 />
             )
         })
-
         return (
-            <div className='search_container'>
-                <div>Favorite some decks and they will appear here!</div>
-                {favorite}
+            <div>
+                <div className='user_decks'>
+                    {favorite}
+                </div>
             </div>
         )
     }
@@ -30,7 +32,7 @@ class Favorites extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("Favorites", state)
+    console.log("Favorites STATE", state)
     return {
         userData: state.userData,
         favorites: state.favorites

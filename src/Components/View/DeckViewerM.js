@@ -36,22 +36,20 @@ class DeckViewerM extends Component {
         return (
             <div className='deck_viewer_m'>
                 <div className='dv_titles'>
-                    <h2>Deck Name 
+                    <h2>Deck Name </h2>
                         <p>{this.props.currentDeck.deck_name}</p>
-                    </h2>
-                    <h3>Category 
+                    <h2>Category </h2>
                     <p>{this.props.currentDeck.category}</p>
-                    </h3>
                 </div>
                 <div className='toggle_bttn'>
                     <ToggleButton
                         trackStyle={{width:'100px',height:'30px'}}
                         thumbAnimateRange={[1,80]}
-                        activeLabelStyle={{ width:'100px' }} 
-                        inactiveLabelStyle={{ width:'50px' }}
+                        activeLabelStyle={{ width:'50px'}} 
+                        inactiveLabelStyle={{ width:'100px'}}
                         value={this.state.cardView}
                         onToggle={this.toggleView}
-                        inactiveLabel={'Decks'}
+                        inactiveLabel={'Sub-Decks'}
                         activeLabel={'Cards'}
                         containerStyle={{display:'inline-block',width:'500px'}} 
                     />

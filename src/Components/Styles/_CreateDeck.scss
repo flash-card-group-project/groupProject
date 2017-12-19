@@ -1,4 +1,3 @@
-
 .text_area_container{
     width:100%;
     height:50vh;
@@ -13,9 +12,10 @@
     height:45%;
     border:2px solid $card;
     margin-bottom:5px;
+    font-size:18px;
 }
 .text_area::placeholder{
-    font-size:24px;
+    font-size:18px;
 }
 
 .buttons{

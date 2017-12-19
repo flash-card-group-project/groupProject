@@ -95,6 +95,10 @@ class CreateDeck extends Component {
 
     handleClick(e) {
         this.handleValidate();
+        this.setState({
+            deck_name: '',
+            category: ''
+        })
     }
 
     componentWillReceiveProps(nextProps) {

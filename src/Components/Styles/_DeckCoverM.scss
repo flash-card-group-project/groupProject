@@ -1,6 +1,10 @@
+body{
+  font-family: $titles;
+}
+
 .deck-cover{
     width:90vw;
-    height:30vh; 
+    height:20vh; 
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -8,6 +12,7 @@
     background:$deck;
     margin:20px;
     padding-top:15px;
+    border-radius:3px;
   }
 
   .deck-content{
@@ -19,7 +24,7 @@
     line-height:20px;
     border-radius: 3px;
     text-overflow: scroll;
-    font-family: sans-serif;
+    font-family: $font;
     .deck-content,h2{
       color:whitesmoke;
     }
@@ -31,7 +36,6 @@
     display: flex;
     flex-direction:row;
     align-content: center;
-    background:$deck;
     align-items: center;
     border:none;
     justify-content: center;

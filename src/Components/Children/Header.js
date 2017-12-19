@@ -9,11 +9,12 @@ class Header extends Component {
     render() {
         return (
             <section>
-                <AppBar
+                <AppBar className='nav_background'
                     title="TeckDecks"
                     showMenuIconButton={false} 
                     iconElementRight={
                         <IconMenu
+                            
                             iconButtonElement={
                                 <IconButton><ContentFilter /></IconButton>
                             }

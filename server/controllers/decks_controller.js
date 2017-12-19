@@ -64,13 +64,16 @@ module.exports = {
 
 
 
-    // this controller uses the same sql query (update_favorite_deck) as add_favorites (above)
+    // this controller uses the same sql query (update_favorite_deck) as add_favorites (above). NATALIA: this code works! Please don't alter!
     addToFavorites: async (req, res, next) => {
         const db = req.app.get('db');
+
         let favArr = await db.get_fav_decks([req.user.id]);
-        let newFavArr = favArr[0].length 
+        
+        let newFavArr = favArr[0].favorites.length
                         ? favArr[0].favorites.concat([req.params.deckId])
-                        : [Number(req.params.deckId)]
+                        : favArr[0].favorites.push([req.params.deckId])
+       
         db.update_favorite_deck([newFavArr, req.user.id])
             .then(arr => {
                 res.status(200).send(arr)
