@@ -43,7 +43,7 @@
     height: 35vh;
     flex-direction: column;
     line-height: 210%;
-    font-family: $questionFont;
+    font-family: $font;
     margin-top: 100px;
 
 }
@@ -62,7 +62,7 @@
     align-items: center;
     flex-direction: column;
     line-height: 210%;
-    font-family: $questionFont;
+    font-family: $font;
     margin-top: 250px;
     margin-bottom: 300px;
 }
@@ -158,7 +158,7 @@
         flex-direction: row;
         line-height: 210%;
         width: 80vw;
-        font-family: $questionFont;
+        font-family: $font;
         justify-content: space-around;
     }
 
@@ -176,7 +176,7 @@
         width: 80vw;
         flex-direction: column;
         line-height: 210%;
-        font-family: $questionFont;
+        font-family: $font;
         margin-top: -35px;
         margin-bottom: -35px;
         justify-content: space-around;
@@ -212,9 +212,10 @@
         flex-direction: row;
         justify-content: space-around;
         margin-top: -250px;
-        font-family: $questionFont;
+        font-family: $font;
         margin-top: 50px;
         margin-right: auto;
+        margin-left: auto;
     }
     
     .study_desc > div {
