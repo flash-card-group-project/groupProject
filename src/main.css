@@ -126,14 +126,8 @@ a:visited {
   font-weight: 800; }
 
 .title_md {
-<<<<<<< HEAD
-  font-size: 24px;
-  font-weight: 600;
-  z-index: 3; }
-=======
   font-size: 30px;
   font-weight: 700; }
->>>>>>> cf24ebae22629ce41af93d20a7d9c061ce98070f
 
 .title_sml {
   font-size: 25px;
