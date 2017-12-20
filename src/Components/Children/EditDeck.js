@@ -42,13 +42,13 @@ class EditDeck extends Component {
         this.setState({ modalisOpen: false });
     }
     handleUserInput(e){
-        console.log('deck name', this.state.deck_name);
+        // console.log('deck name', this.state.deck_name);
         this.setState({
             deck_name: e.target.value
         })
     }
     handleUserInput2(e){
-        console.log('category', this.state.category);
+        // console.log('category', this.state.category);
         this.setState({
             category: e.target.value
         })
@@ -103,7 +103,7 @@ class EditDeck extends Component {
     }
 }
 function mapStateToProps(state){
-    console.log('state from editDeck', state);
+    // console.log('state from editDeck', state);
     return{
         currentDeck: state.currentDeck
     }

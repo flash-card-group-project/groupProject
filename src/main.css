@@ -473,6 +473,9 @@ a:visited {
   background: #309bc5;
   border-radius: 3px; }
 
+.sml_btn:nth-child(1) {
+  background: #ec4a2d; }
+
 body {
   font-family: "alegreya"; }
 

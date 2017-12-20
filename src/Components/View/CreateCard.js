@@ -70,7 +70,7 @@ class CreateCard extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("current deck",state.currentDeck);
+    // console.log("current deck",state.currentDeck);
     return {
         currentDeck: state.currentDeck
     };

@@ -34,7 +34,7 @@ export default class Search extends Component {
     componentDidMount() {
         axios.get('/api/public/decks')
             .then(res => {
-                console.log(res, "RESPONSE SEARCH")
+                // console.log(res, "RESPONSE SEARCH")
                 this.setState({
                     allPublicDecks: res.data
                 })

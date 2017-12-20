@@ -84,9 +84,9 @@ module.exports = {
 
     deleteFromFavorites: async (req, res, next) => {
         const db = req.app.get('db');
-        console.log(req.user.id);
+        // console.log(req.user.id);
         let favArr = await db.get_fav_decks([req.user.id]);
-        console.log(req.user)
+        // console.log(req.user)
         let newFavArr = favArr[0].favorites.filter(e => e !== Number(req.params.deckId));
         db.update_favorite_deck([newFavArr, req.user.id])
             .then(arr => {
@@ -168,7 +168,7 @@ module.exports = {
         db.create_deck([deck_name, category, deck_card, req.user.id, parent_id])
             .then(deck => {
                 deck[0].cards = [];
-                console.log(deck);
+                // console.log(deck);
                 res.status(200).send(deck[0])
             })
             .catch((err) => {

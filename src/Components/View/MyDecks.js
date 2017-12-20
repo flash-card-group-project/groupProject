@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import DeckCoverM from '../Children/DeckCoverM';
 import CreateDeck from '../Children/CreateDeck';
@@ -49,7 +48,7 @@ class MyDecks extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state from myDecks', state);
+    // console.log('state from myDecks', state);
     return {
         userData: state.userData,
         userDecks: state.userDecks
