@@ -194,11 +194,13 @@ export default function reducer(state = initialState, action) {
                 {},
                 state,
                 {
-                    currentDeck: action.payload.data[0]
+                    currentDeck: action.payload.data
                 }
             )
 
         case 'CREATE_CARD_FULFILLED':
+        console.log('current deck ',state.currentDeck)
+        console.log("action",action.payload.data)
             let updatedDeck = Object.assign({}, state.currentDeck)
             updatedDeck.cards = [...updatedDeck.cards, action.payload.data]
             return Object.assign({}, state, {

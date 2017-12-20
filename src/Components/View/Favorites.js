@@ -23,6 +23,9 @@ class Favorites extends Component {
         })
         return (
             <div>
+                <div className='favorites_banner'>
+                    <h2 className='favorites_title'>Your Favorites</h2>
+                </div>
                 <div className='user_decks'>
                     {favorite}
                 </div>

@@ -41,3 +41,28 @@ body{
     justify-content: center;
     justify-content: space-around;
   }
+
+  //from the favorites i will add the banner here//
+
+  .favorites_banner{
+    width:100%;
+    height:15vh;
+    background: $card;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .favorites_title{
+    width:90vw;
+    height:10vh; 
+    border-radius:3px;
+    font-size:24px;
+    background:$buttons;
+    font-family:$titles;
+    margin-bottom:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

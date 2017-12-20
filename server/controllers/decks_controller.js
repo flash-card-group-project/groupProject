@@ -158,7 +158,9 @@ module.exports = {
 
         db.create_deck([deck_name, category, deck_card, req.user.id, parent_id])
             .then(deck => {
-                res.status(200).send(deck)
+                deck[0].cards = [];
+                console.log(deck);
+                res.status(200).send(deck[0])
             })
             .catch((err) => {
                 res.status(500).send(err)
