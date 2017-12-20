@@ -73,11 +73,6 @@ a:visited {
     color: #309bc5;
     font-size: 20px; }
 
-@media (min-width: 850px) {
-  .footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center; } }
 .nav_background {
   background: #4c6085 !important; }
 
