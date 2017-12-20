@@ -1,8 +1,14 @@
 .landing_body{
     width:100%;
-    height:280vh;
+    height:325vh;
     text-align: center;
     background:$card;
+}
+
+@media (max-width: 321px) {
+    .landing_body {
+        height: 360vh;
+    }
 }
 
 .focal_point{
@@ -10,7 +16,7 @@
     display: flex;
     position:relative;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     padding:20px;
     text-align: center;
     background-image: url('./background2.jpg');
@@ -23,10 +29,18 @@
         border-radius: 5px;
         font-size:1em;
     }
+    .title_bg {
+        padding-top: 40px;
+        font-family: $modern, Tahoma, helvetica;
+    }
+    .title_md {
+        // margin-top: -45px;
+    }
 }
 
+
 .steps{
-    height:150vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,12 +54,14 @@
 .create_deck_desc {
     display: flex;
     width: 80vw;
-    height: 35vh;
+    height: 175%;
     flex-direction: column;
     line-height: 210%;
-    font-family: $font;
+    font-family: $titles;
+    background: $landingcard;
     margin-top: 100px;
-
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .create_deck_desc > div {
@@ -58,37 +74,42 @@
 .create_card_desc {
     display: flex;
     width: 80vw;
-    height: 35vh;
+    height: 175%;
     align-items: center;
     flex-direction: column;
     line-height: 210%;
-    font-family: $font;
-    margin-top: 250px;
-    margin-bottom: 300px;
-}
-
-.create_card_desc > div {
+    font-family: $titles;
+    margin-top: 25px;
+    background: $landingcard;
     margin-bottom: 25px;
+    padding-top: 25px;
 }
 
 .create_card_desc > div > .img_card {
     border-radius: 0%;
+    margin-bottom: -15px;
 }
 
 .answer_desc {
     position: relative;
-    bottom: 117px;
+    bottom: 103px;
     word-wrap: break-word;
     width: 300px;
-    line-height: 100%;
+    line-height: 160%;
+    font-family: $font;
 }
 
 .study_desc {
     width: 80vw;
-    height: 25vh;
+    height: 25%;
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-bottom: 150px;
+    font-family: $titles;
+    line-height: 210%;
+    background: $landingcard;
+    padding-top: 25px;   
+    padding-bottom: 25px;
 }
 
 .study_desc > div {
@@ -96,8 +117,8 @@
 }
 
 .img_card{
-    width:300px;
-    height:180px;
+    width:250px;
+    height:150px;
     margin-left: auto;
     margin-right: auto;
     order: 2;
@@ -105,14 +126,17 @@
 }
 
 .description_card{
-    width:300px;
-    height:180px;
+    width:250px;
+    height:150px;
     background:white;
     display: flex;
     align-items: center;
     justify-content: center;
     border:1px solid black;
     margin-bottom: 25px; 
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $font;
 }
 
 .title_bg{
@@ -132,7 +156,7 @@
 
 @media (min-width:850px) {
     .landing_body {
-        height: 250vh;
+        height: 1750px;
     }
 
     .focal_point {
@@ -143,7 +167,6 @@
 
     .steps{
         display: flex;
-        height: 150vh;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -158,8 +181,24 @@
         flex-direction: row;
         line-height: 210%;
         width: 80vw;
-        font-family: $font;
+        height: 200px;
+        font-family: $titles;
         justify-content: space-around;
+        .img_card {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        div {
+            margin-top: 65px;
+        }
+        div > p {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        div > h2 {
+            margin-left: auto;
+        }
     }
 
     .create_deck_desc > div {
@@ -174,21 +213,23 @@
         display: flex;
         flex-direction: row !important;
         width: 80vw;
+        height: 400px;
         flex-direction: column;
         line-height: 210%;
-        font-family: $font;
-        margin-top: -35px;
-        margin-bottom: -35px;
+        font-family: $titles;
+        margin-bottom: 0px;
         justify-content: space-around;
+       
     }
     
-    .create_card_desc > .card_desc {
-        margin-bottom: 25px;
+    .create_card_desc {
+        .card_desc {
+        margin-left: 20px;
         margin-right: 25px;
         margin-bottom: 150px;
         order: 1;
+        }
     }
-
     .card_example {
         order: 2;
     }
@@ -199,28 +240,30 @@
     
     .answer_desc {
         position: relative;
-        bottom: 117px;
+        bottom: 106px;
         word-wrap: break-word;
         width: 300px;
-        line-height: 100%;
+        line-height: 90%;
     }
 
     .study_desc {
         width: 80vw;
-        height: 25vh;
+        height: 175px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         margin-top: -250px;
-        font-family: $font;
+        font-family: $titles;
         margin-top: 50px;
         margin-right: auto;
         margin-left: auto;
     }
     
     .study_desc > div {
+        width: 60%;
         margin-bottom: 25px;
-        margin-left: 25px;
+        margin-left: auto;
+        margin-right: auto;
         order: 2;
     }
 
@@ -229,13 +272,13 @@
     }
 
     .img_card{
-        width:300px;
-        height:180px;
+        width:275px;
+        height:165px;
         order: 1;
     }
     .description_card{
-        width:300px;
-        height:180px;
+        width:275px;
+        height:165px;
         background:white;
         display: flex;
         align-items: center;
@@ -247,6 +290,7 @@
     .title_bg{
         font-size:40px;
         font-weight:800;
+        font-family: $titles !important;
     }
     .title_md{
         font-size:30px;
