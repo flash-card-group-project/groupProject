@@ -21,8 +21,8 @@ export default class StudyCard extends Component {
         if (this.state.question === true) {
             return (
                 <div>
-                    <div className='card-cover'>
-                        <div className='card-question'>
+                    <div className='card-cover-study'>
+                        <div>
                             {this.props.question}
                         </div>
                     </div>
@@ -36,8 +36,8 @@ export default class StudyCard extends Component {
         } else {
             return (
                 <div>
-                    <div className='card-cover'>
-                        <div className='card-question'>
+                    <div className='card-cover-study'>
+                        <div>
                             {this.props.answer}
                         </div>
                     </div>
