@@ -12,7 +12,7 @@ export default function Landing() {
                 </Typist>
                 <a href={process.env.REACT_APP_LOGIN}><button>Sign In / Register</button></a>
             </section>
-            <section className='steps'>
+            <article className='steps'>
                 <h2 className='title_md'>Getting Started</h2>
                 <div className="create_deck_desc">
                     <img src={cardDeck} alt='deck_image' className='img_card' />
@@ -35,12 +35,12 @@ export default function Landing() {
                 <section className="study_desc">
                     <div>
                         <h2 className='title_sml'>Study</h2>
-                        <p> Once your deck is filled up with you custom-made cards, you can study them by viewing each card one at a time.
+                        <p> Once your deck is filled up with your custom-made cards, you can study them by viewing each card one at a time.
                     </p>
                     </div>
                     <img src='https://www.simplebackpain.com/images/computeruser.jpg' alt='study_image' className='img_card' />
                 </section>
-            </section>
+            </article>
         </main>
     )
 }
