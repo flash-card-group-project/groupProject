@@ -170,10 +170,9 @@ module.exports = {
     deleteDeck: (req, res, next) => {
         const db = req.app.get('db')
 
-        db.delete_deck([req.params.deckId, req.user.id])
+        db.delete_deck([req.params.deckId])
             .then(() => {
                 res.status(200).send(req.params.deckId)   
-
             }).catch((err) => res.status(500).send(err));
     },
 
@@ -186,15 +185,5 @@ module.exports = {
             .then(deck => {
                 res.status(200).send(deck)
             }).catch((err) => res.status(500).send(err));
-    },
-
-    getFavorites: (req, res, next) => {
-        const db = req.app.get('db')
-        const { params } = req;
-
-        db.get_favorites([params.id])
-            .then(favs => {
-                res.status(200).send(favs)
-            }).catch(err => console.log(err));
-    },
+    }
 }
