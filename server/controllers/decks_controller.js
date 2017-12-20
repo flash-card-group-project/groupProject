@@ -99,14 +99,23 @@ module.exports = {
 
 
     //all Decks to search through:
-    getAllPublicDecks: (req, res, next) => {
+    getAllPublicDecksAndCards: (req, res, next) => {
         const db = req.app.get('db')
-
-        db.get_all_decks()
+       
+        db.get_public_decks_and_cards([req.params.deck_id])
             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => res.status(500).send(err));
 
+    },
+
+    getPublicDecks: (req, res, next) => {
+        const db = req.app.get('db')
+       
+        db.get_public_decks()
+            .then(decks => {
+                res.status(200).send(decks)
+            }).catch(err => res.status(500).send(err));
     },
 
     privateToggle: (req, res, next) => {

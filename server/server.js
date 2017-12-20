@@ -94,9 +94,10 @@ app.get('/auth/logout', (req, res) => {
 //endpoints by erin tues 12-5
 
 //////// DECKS ENDPOINTS //////////
-app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
-//Decks by category ==> by userInput
-// app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
+//decks and cards
+app.get('/api/all/decks', decksCtrl.getAllPublicDecksAndCards);
+//all public decks
+app.get('/api/public/decks', decksCtrl.getPublicDecks);
 //Decks and subdecks
 app.get('/api/user/decks', decksCtrl.getUserDecks);
 //get current deck; the deck you click on
@@ -115,7 +116,6 @@ app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 app.post('/api/add/favorites/:deckId', decksCtrl.addToFavorites);
 //DELETE from favorites based on deck id
 app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
-
 
 
 

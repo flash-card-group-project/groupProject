@@ -6,5 +6,5 @@
 
 -- The command below this comment only gets decks, not cards.
 select * from decks
-where deck_id=$1
-and creator_id=$2;
+where deck_id=$1;
+-- and creator_id=$2;

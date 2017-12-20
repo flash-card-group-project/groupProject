@@ -640,3 +640,16 @@ body {
   font-size: 30px;
   background: #bfd1e5;
   border-radius: 3px; }
+
+.card-cover-study {
+  width: 90vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background: #f6f6f0;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #cfcfc0;
+  overflow: scroll; }

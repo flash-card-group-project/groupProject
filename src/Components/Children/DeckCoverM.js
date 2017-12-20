@@ -154,7 +154,7 @@ class DeckCoverM extends Component {
 };
 
 function mapStateToProps(state) {
-    console.log(state, 'this is the state')
+    // console.log(state, 'this is the state')
     return {
         userData: state.userData,
         userDecks: state.userDecks,
