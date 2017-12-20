@@ -101,7 +101,6 @@ module.exports = {
     //all Decks to search through:
     getAllPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
-
         db.get_all_decks()
             .then(decks => {
                 res.status(200).send(decks)
