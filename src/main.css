@@ -354,6 +354,12 @@ a:visited {
   justify-content: space-between;
   overflow: scroll; }
 
+.search_results {
+  width: 100%;
+  height: 25px;
+  padding: 5px;
+  text-align: center; }
+
 .create_card_bod {
   width: 100%;
   height: 100vh;
@@ -472,6 +478,26 @@ body {
   border: none;
   justify-content: center;
   justify-content: space-around; }
+
+.favorites_banner {
+  width: 100%;
+  height: 15vh;
+  background: #e9f1f7;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.favorites_title {
+  width: 90vw;
+  height: 10vh;
+  border-radius: 3px;
+  font-size: 24px;
+  background: #309bc5;
+  font-family: "alegreya";
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .card-cover {
   width: 90vw;

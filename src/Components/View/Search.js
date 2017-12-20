@@ -30,7 +30,7 @@ export default class Search extends Component {
         })
     }
 
-    //get decks by category
+    //get decks by deck_name
     componentDidMount() {
         axios.get('/api/all/decks')
             .then(res => {
@@ -66,7 +66,7 @@ export default class Search extends Component {
                 <div className='search_container'>
                     {filteredDecks.length >= 0 ?
                         (<div className='search_results' >Search Results: {filteredDecks.length}
-                            <div className='results'>{filteredDecks}</div>
+                            <div>{filteredDecks}</div>
                         </div>) : null
                     }
                 </div>
