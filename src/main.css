@@ -499,6 +499,8 @@ body {
   text-overflow: scroll;
   font-family: "pangolin"; }
   .deck-content .deck-content, .deck-content h2 {
+    color: black; }
+  .deck-content .deck-content, .deck-content p {
     color: whitesmoke; }
 
 .box-buttons {

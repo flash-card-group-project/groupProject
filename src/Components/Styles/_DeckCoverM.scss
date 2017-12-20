@@ -26,6 +26,9 @@ body{
     text-overflow: scroll;
     font-family: $font;
     .deck-content,h2{
+      color:black;
+    }
+    .deck-content,p{
       color:whitesmoke;
     }
   }
