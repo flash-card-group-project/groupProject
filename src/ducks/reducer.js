@@ -109,20 +109,20 @@ export function editDeck(deckId, body) {
 }
 
 //editCard
-export function editCard() {
-    return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
-    }
-}
+// export function editCard() {
+//     return {
+//         type: GET_DECKS,
+//         payload: axios.get('').then(res => res)
+//     }
+// }
 
 //searchDecks
-export function searchDecks() {
-    return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
-    }
-}
+// export function searchDecks() {
+//     return {
+//         type: GET_DECKS,
+//         payload: axios.get('').then(res => res)
+//     }
+// }
 
 //createCard
 export function createCard(body, deck_id) {
@@ -149,6 +149,7 @@ export function deleteCard(card_id) {
 }
 
 export default function reducer(state = initialState, action) {
+    console.log(action.payload, "ACTION.PAYLOAD")
     switch (action.type) {
         case 'GET_USER_PENDING':
             return state;
@@ -199,7 +200,7 @@ export default function reducer(state = initialState, action) {
 
         case 'CREATE_CARD_FULFILLED':
             let updatedDeck = Object.assign({}, state.currentDeck)
-            updatedDeck.cards = [...updatedDeck.cards, action.payload.data[0]]
+            updatedDeck.cards = [...updatedDeck.cards, action.payload.data]
             return Object.assign({}, state, {
                 currentDeck: updatedDeck
             })

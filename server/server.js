@@ -115,10 +115,7 @@ app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 app.post('/api/add/favorites/:deckId', decksCtrl.addToFavorites);
 //DELETE from favorites based on deck id
 app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
-// //Study decks
-// // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
-// //Get Children???
-// app.get('/api/users/decks/:userId', decksCtrl.getSudy);
+
 
 
 
@@ -126,7 +123,7 @@ app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
 //Get User card
 app.get('/api/user/card', cardsCtrl.getUserCard);
 //Get Card
-app.get('/api/card/:cardId', cardsCtrl.getCard);
+// app.get('/api/card/:cardId', cardsCtrl.getCard);
 //Create a new Card
 app.post('/api/create/card/:deck_id', cardsCtrl.createCard);
 //Delete a Card

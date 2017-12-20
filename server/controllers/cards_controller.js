@@ -14,18 +14,18 @@ module.exports = {
         })
     },
 
-    getCard: (req, res, next) => {
-        const db = req.app.get('db')
-        console.log("gets here")
+    // getCard: (req, res, next) => {
+    //     const db = req.app.get('db')
+    //     console.log("gets here")
 
-        db.get_card([params.id])
-            .then(card => {
-                res.status(200).send(card)
-            })
-            .catch((err) => {
-                res.status(500).send(err)
-            })
-    },
+    //     db.get_card([params.id])
+    //         .then(card => {
+    //             res.status(200).send(card)
+    //         })
+    //         .catch((err) => {
+    //             res.status(500).send(err)
+    //         })
+    // },
 
     createCard: (req, res, next) => {
         const db = req.app.get('db');
