@@ -63,7 +63,6 @@ class EditDeck extends Component {
             modalisOpen: false
         })
         this.props.getDecksHome();
-        // this.props.getCurrentDeck(this.props.deckid);
     }
     componentDidMount(){
         this.props.getCurrentDeck();

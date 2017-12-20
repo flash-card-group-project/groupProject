@@ -26,11 +26,10 @@ export default class StudyCard extends Component {
                             {this.props.question}
                         </div>
                     </div>
-                    <div  className='bottom_of_carousel'>
-                    <div  className='flip_btn'>
-                        <button onClick={this.handleClick}>See Answer</button>
-                    </div>
-                    <div className='flip_btn_section' />
+                    <div className='bottom_of_carousel'>
+                        <div className='flip_btn'>
+                            <button onClick={this.handleClick}>See Answer</button>
+                        </div>
                     </div>
                 </div>
             )
@@ -43,10 +42,9 @@ export default class StudyCard extends Component {
                         </div>
                     </div>
                     <div className='bottom_of_carousel'>
-                        <div  className='flip_btn'>
+                        <div className='flip_btn'>
                             <button onClick={this.handleClick}>See Question</button>
                         </div>
-                        {/* <div className='flip_btn_section' /> */}
                     </div>
                 </div>
             )
