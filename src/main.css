@@ -84,16 +84,20 @@ a:visited {
 
 .landing_body {
   width: 100%;
-  height: 280vh;
+  height: 325vh;
   text-align: center;
   background: #e9f1f7; }
+
+@media (max-width: 321px) {
+  .landing_body {
+    height: 360vh; } }
 
 .focal_point {
   height: 65vh;
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 20px;
   text-align: center;
   background-image: url("./background2.jpg");
@@ -105,9 +109,12 @@ a:visited {
     background: whitesmoke;
     border-radius: 5px;
     font-size: 1em; }
+  .focal_point .title_bg {
+    padding-top: 40px;
+    font-family: "sans-serif", Tahoma, helvetica; }
 
 .steps {
-  height: 150vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -120,11 +127,14 @@ a:visited {
 .create_deck_desc {
   display: flex;
   width: 80vw;
-  height: 35vh;
+  height: 175%;
   flex-direction: column;
   line-height: 210%;
-  font-family: "pangolin";
-  margin-top: 100px; }
+  font-family: "alegreya";
+  background: #cedce6;
+  margin-top: 100px;
+  padding-top: 25px;
+  padding-bottom: 25px; }
 
 .create_deck_desc > div {
   order: 1;
@@ -135,54 +145,63 @@ a:visited {
 .create_card_desc {
   display: flex;
   width: 80vw;
-  height: 35vh;
+  height: 175%;
   align-items: center;
   flex-direction: column;
   line-height: 210%;
-  font-family: "pangolin";
-  margin-top: 250px;
-  margin-bottom: 300px; }
-
-.create_card_desc > div {
-  margin-bottom: 25px; }
+  font-family: "alegreya";
+  margin-top: 25px;
+  background: #cedce6;
+  margin-bottom: 25px;
+  padding-top: 25px; }
 
 .create_card_desc > div > .img_card {
-  border-radius: 0%; }
+  border-radius: 0%;
+  margin-bottom: -15px; }
 
 .answer_desc {
   position: relative;
-  bottom: 117px;
+  bottom: 103px;
   word-wrap: break-word;
   width: 300px;
-  line-height: 100%; }
+  line-height: 160%;
+  font-family: "pangolin"; }
 
 .study_desc {
   width: 80vw;
-  height: 25vh;
+  height: 25%;
   display: flex;
   flex-direction: column;
-  margin-top: 100px; }
+  margin-bottom: 150px;
+  font-family: "alegreya";
+  line-height: 210%;
+  background: #cedce6;
+  padding-top: 25px;
+  padding-bottom: 25px; }
 
 .study_desc > div {
   margin-bottom: 25px; }
 
 .img_card {
-  width: 300px;
-  height: 180px;
+  width: 250px;
+  height: 150px;
   margin-left: auto;
   margin-right: auto;
   order: 2;
   border-radius: 50%; }
 
 .description_card {
-  width: 300px;
-  height: 180px;
+  width: 250px;
+  height: 150px;
   background: white;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "pangolin"; }
 
 .title_bg {
   font-size: 40px;
@@ -200,12 +219,11 @@ a:visited {
 
 @media (min-width: 850px) {
   .landing_body {
-    height: 250vh; }
+    height: 1750px; }
   .focal_point {
     background-size: 100% auto; }
   .steps {
     display: flex;
-    height: 150vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -218,8 +236,20 @@ a:visited {
     flex-direction: row;
     line-height: 210%;
     width: 80vw;
-    font-family: "pangolin";
+    height: 200px;
+    font-family: "alegreya";
     justify-content: space-around; }
+    .create_deck_desc .img_card {
+      margin-top: 10px;
+      margin-left: 20px; }
+    .create_deck_desc div {
+      margin-top: 65px; }
+    .create_deck_desc div > p {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto; }
+    .create_deck_desc div > h2 {
+      margin-left: auto; }
   .create_deck_desc > div {
     order: 2;
     margin-left: 35px;
@@ -230,14 +260,14 @@ a:visited {
     display: flex;
     flex-direction: row !important;
     width: 80vw;
+    height: 400px;
     flex-direction: column;
     line-height: 210%;
-    font-family: "pangolin";
-    margin-top: -35px;
-    margin-bottom: -35px;
+    font-family: "alegreya";
+    margin-bottom: 0px;
     justify-content: space-around; }
-  .create_card_desc > .card_desc {
-    margin-bottom: 25px;
+  .create_card_desc .card_desc {
+    margin-left: 20px;
     margin-right: 25px;
     margin-bottom: 150px;
     order: 1; }
@@ -247,34 +277,36 @@ a:visited {
     border-radius: 0%; }
   .answer_desc {
     position: relative;
-    bottom: 117px;
+    bottom: 106px;
     word-wrap: break-word;
     width: 300px;
-    line-height: 100%; }
+    line-height: 90%; }
   .study_desc {
     width: 80vw;
-    height: 25vh;
+    height: 175px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: -250px;
-    font-family: "pangolin";
+    font-family: "alegreya";
     margin-top: 50px;
     margin-right: auto;
     margin-left: auto; }
   .study_desc > div {
+    width: 60%;
     margin-bottom: 25px;
-    margin-left: 25px;
+    margin-left: auto;
+    margin-right: auto;
     order: 2; }
   .study_desc > img {
     order: 1; }
   .img_card {
-    width: 300px;
-    height: 180px;
+    width: 275px;
+    height: 165px;
     order: 1; }
   .description_card {
-    width: 300px;
-    height: 180px;
+    width: 275px;
+    height: 165px;
     background: white;
     display: flex;
     align-items: center;
@@ -282,7 +314,8 @@ a:visited {
     border: 1px solid black; }
   .title_bg {
     font-size: 40px;
-    font-weight: 800; }
+    font-weight: 800;
+    font-family: "alegreya" !important; }
   .title_md {
     font-size: 30px;
     font-weight: 700;
