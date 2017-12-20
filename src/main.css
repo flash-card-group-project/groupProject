@@ -387,6 +387,12 @@ a:visited {
   justify-content: space-between;
   overflow: scroll; }
 
+.search_results {
+  width: 100%;
+  height: 25px;
+  padding: 5px;
+  text-align: center; }
+
 .create_card_bod {
   width: 100%;
   height: 100vh;
@@ -493,6 +499,8 @@ body {
   text-overflow: scroll;
   font-family: "pangolin"; }
   .deck-content .deck-content, .deck-content h2 {
+    color: black; }
+  .deck-content .deck-content, .deck-content p {
     color: whitesmoke; }
 
 .box-buttons {
@@ -506,6 +514,26 @@ body {
   justify-content: center;
   justify-content: space-around; }
 
+.favorites_banner {
+  width: 100%;
+  height: 15vh;
+  background: #e9f1f7;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.favorites_title {
+  width: 90vw;
+  height: 10vh;
+  border-radius: 3px;
+  font-size: 24px;
+  background: #309bc5;
+  font-family: "alegreya";
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .card-cover {
   width: 90vw;
   height: 20vh;
@@ -515,16 +543,19 @@ body {
   background: #f6f6f0;
   border-radius: 3px;
   padding: 5px;
-  border: 1px solid #cfcfc0; }
+  border: 1px solid #cfcfc0;
+  overflow: scroll; }
 
 .card-question {
   width: 75vw;
   height: 90px;
   display: flex;
   align-items: center;
-  text-align: left;
   padding-left: 10px;
-  line-height: 20px; }
+  line-height: 20px;
+  overflow: scroll;
+  justify-content: center;
+  font-size: 20px; }
 
 .deck_viewer_m {
   width: 100%;
@@ -550,6 +581,8 @@ body {
   border-radius: 3px;
   text-align: center; }
   .dv_titles .dv_titles, .dv_titles h2 {
+    color: black; }
+  .dv_titles .dv_titles, .dv_titles p {
     color: whitesmoke; }
 
 .toggle_bttn {
@@ -611,3 +644,16 @@ body {
   font-size: 30px;
   background: #bfd1e5;
   border-radius: 3px; }
+
+.card-cover-study {
+  width: 90vw;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  background: #f6f6f0;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #cfcfc0;
+  overflow: scroll; }
