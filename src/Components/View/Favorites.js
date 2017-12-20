@@ -17,12 +17,13 @@ class Favorites extends Component {
                     key = {i}
                     name={item.deck_name}
                     category={item.category}
+                    deckid={item.deck_id}
                 />
             )
         })
         return (
             <div>
-                <div className='search_container'>
+                <div className='user_decks'>
                     {favorite}
                 </div>
             </div>

@@ -16,6 +16,11 @@ class CreateCard extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
+
+    componentDidMount() {
+        
+    }
+
     handleQuestion(e) {
         this.setState({
             questionInput: e.target.value
@@ -48,10 +53,6 @@ class CreateCard extends Component {
                         value={this.state.questionInput}
                         className='card2'
                         onChange={this.handleQuestion} />
-                    <div className='btn_positioning'>
-                        <button className='lrg_btn'>MC</button>
-                        <button className='lrg_btn'>URL</button>
-                    </div>
                 </section>
                 <section className='box1'>
                     <textarea placeholder='please enter your answer here...'

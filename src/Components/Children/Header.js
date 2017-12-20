@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <section>
                 <AppBar className='nav_background'
-                    title="TeckDecks"
+                    title="Tech Decks"
                     showMenuIconButton={false} 
                     iconElementRight={
                         <IconMenu
