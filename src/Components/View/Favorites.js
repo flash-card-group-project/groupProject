@@ -17,6 +17,7 @@ class Favorites extends Component {
                     key = {i}
                     name={item.deck_name}
                     category={item.category}
+                    deckid={item.deck_id}
                 />
             )
         })
