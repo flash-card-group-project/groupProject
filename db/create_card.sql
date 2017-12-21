@@ -1,6 +1,5 @@
 insert into cards(
     parent_id,
-    creator_id,
     question,
     answer, 
     multiple1,
@@ -15,6 +14,6 @@ $3,
 $4,
 $5,
 $6,
-$7,
-$8)
+$7
+)
 returning *;

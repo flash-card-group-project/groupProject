@@ -6,7 +6,7 @@ import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
   
-    componentDidMount() {
+    componentWillMount() {
         this.props.getDecksHome();
         this.props.getFavorites();
         this.props.getUser();

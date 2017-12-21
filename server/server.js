@@ -94,8 +94,8 @@ app.get('/auth/logout', (req, res) => {
 //endpoints by erin tues 12-5
 
 //////// DECKS ENDPOINTS //////////
-//decks and cards
-app.get('/api/all/decks', decksCtrl.getAllPublicDecksAndCards);
+
+
 //all public decks
 app.get('/api/public/decks', decksCtrl.getPublicDecks);
 //Decks and subdecks
@@ -120,14 +120,12 @@ app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
 
 
 ////////////CARDS ENDPOINTS ///////////////////
-//Get User card
-// app.get('/api/user/card', cardsCtrl.getUserCard);
 //Create a new Card
 app.post('/api/create/card/:deck_id', cardsCtrl.createCard);
 //Delete a Card
 app.delete('/api/card/delete/:cardId', cardsCtrl.deleteCard);
 //Edit Card
-app.put('/api/card/edit/:cardId', cardsCtrl.editCard);
+// app.put('/api/card/edit/:cardId', cardsCtrl.editCard);
 
 
 

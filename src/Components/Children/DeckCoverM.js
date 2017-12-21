@@ -11,7 +11,6 @@ import privateCon from '../Assets/private.png';
 import publicCon from '../Assets/public.svg.png';
 import unfavorite from '../Assets/empty-heart.png';
 import deleteCon from '../Assets/deleteIcon.png';
-// import editCon from '../Assets/editing.png';
 import favoriteCon from '../Assets/filledHeart.png';
 
 class DeckCoverM extends Component {

@@ -31,9 +31,7 @@ module.exports = {
 
     getCurrentDeck: async (req, res, next) => {
         const db = req.app.get('db');
-
-        let deck = await db.get_current_deck([req.params.deck_id, req.user.id]);
-      
+        let deck = await db.get_current_deck([req.params.deck_id]);
       let cards = await db.cards.find({ parent_id: deck[0].deck_id })
       deck[0].cards = cards;
             res.status(200).send(deck)
@@ -97,17 +95,6 @@ module.exports = {
     },
 
 
-
-    //all Decks to search through:
-    getAllPublicDecksAndCards: (req, res, next) => {
-        const db = req.app.get('db')
-       
-        db.get_public_decks_and_cards([req.params.deck_id])
-            .then(decks => {
-                res.status(200).send(decks)
-            }).catch(err => res.status(500).send(err));
-
-    },
 
     getPublicDecks: (req, res, next) => {
         const db = req.app.get('db')
