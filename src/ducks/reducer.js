@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { log } from 'util';
-import { updateReduxDeck } from './reducer';
+// import { log } from 'util';
+// import { updateReduxDeck } from './reducer';
 
 const initialState = {
     userData: {},
@@ -32,7 +32,6 @@ const CREATE_CARD = 'CREATE_CARD';
 const ADD_FAVORITE_DECK = 'ADD_FAVORITE_DECK';
 const EDIT_DECK = 'EDIT_DECK';
 const GET_CURRENT_DECK = 'GET_CURRENT_DECK';
-const GET_USER_CREATED_DECKS = 'GET_USER_CREATED_DECKS';
 const DELETE_DECK = 'DELETE_DECK';
 const DELETE_CARD = 'DELETE_CARD';
 const CLEAR_CURRENT_DECK = 'CLEAR_CURRENT_DECK';
@@ -93,7 +92,7 @@ export function getCurrentDeck(deckID) {
 
 //createDeck erin 12/8
 export function createDeck(body) {
-    console.log('create deck redux body', body);
+    // console.log('create deck redux body', body);
     return {
         type: CREATE_DECK,
         payload: axios.post(`/api/create/deck`, body).then(res => res)
@@ -101,26 +100,10 @@ export function createDeck(body) {
 }
 
 export function editDeck(deckId, body) {
-    console.log('editDeck in redux');
+    // console.log('editDeck in redux');
     return {
         type: EDIT_DECK,
         payload: axios.put(`/api/deck/edit/${deckId}`, body).then(res => res)
-    }
-}
-
-//editCard
-export function editCard() {
-    return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
-    }
-}
-
-//searchDecks
-export function searchDecks() {
-    return {
-        type: GET_DECKS,
-        payload: axios.get('').then(res => res)
     }
 }
 
@@ -188,20 +171,16 @@ export default function reducer(state = initialState, action) {
             })
 
         case 'CREATE_DECK_FULFILLED':
-            console.log('reducer: ', action.payload.data)
-            return Object.assign(
-                {},
-                state,
-                {
+            return Object.assign({}, state, {
                     currentDeck: action.payload.data
                 }
             )
 
         case 'CREATE_CARD_FULFILLED':
-        console.log('current deck ',state.currentDeck)
-        console.log("action",action.payload.data)
+        // console.log('current deck ',state.currentDeck)
+        // console.log("action",action.payload.data)
             let updatedDeck = Object.assign({}, state.currentDeck)
-            updatedDeck.cards = [...updatedDeck.cards, action.payload.data[0]]
+            updatedDeck.cards = [...updatedDeck.cards, action.payload.data]
             return Object.assign({}, state, {
                 currentDeck: updatedDeck
             })

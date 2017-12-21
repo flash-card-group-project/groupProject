@@ -3,7 +3,7 @@ module.exports = {
 
     getUserCard: (req, res, next) => {
         const db = req.app.get('db');
-        console.log(req.body);
+        // console.log(req.body);
 
         db.get_user_card([req.params.id])
         .then(card => {
@@ -12,19 +12,6 @@ module.exports = {
         .catch((err) => {
             res.status(500).send(err)
         })
-    },
-
-    getCard: (req, res, next) => {
-        const db = req.app.get('db')
-        console.log("gets here")
-
-        db.get_card([params.id])
-            .then(card => {
-                res.status(200).send(card)
-            })
-            .catch((err) => {
-                res.status(500).send(err)
-            })
     },
 
     createCard: (req, res, next) => {

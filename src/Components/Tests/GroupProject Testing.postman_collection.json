@@ -1,0 +1,194 @@
+{
+	"info": {
+		"name": "GroupProject Testing",
+		"_postman_id": "7df8e56f-4953-0f07-e69c-bd2a997bb1ea",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET all public decks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75bff40f-114c-45a6-b2f8-015ab1e6d846",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"The records should come in as an Array\", () => {",
+							"    let data = pm.response.json();",
+							"    ",
+							"    let result = Array.isArray(data);",
+							"    pm.expect(result).to.be.true;",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/all/decks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"all",
+						"decks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET Decks must be public",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00c50191-fda4-43e6-94a0-54aab7d9587e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"All decks should be public \", ()=> {",
+							"     let data = pm.response.json();",
+							"     ",
+							"     for (var i=0; i< data.length; i++){",
+							"        let result = data[i].public===true",
+							"        pm.expect(result).to.be.true",
+							"     }",
+							"})",
+							" "
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/all/decks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"all",
+						"decks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET all decks must have an id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d61c7b4-8dda-4fd2-80a8-4353671c4223",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"All decks must have an ID\", ()=> {",
+							"     let data = pm.response.json();",
+							"     ",
+							"     for (var i=0; i< data.length; i++){",
+							"        let result = data[i].deck_id !== null",
+							"        pm.expect(result).not.to.equal(null)",
+							"     }",
+							"})",
+							" "
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/all/decks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"all",
+						"decks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET all decks must have a name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d26a362-bf8b-481c-9f07-f34af56ce338",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"All decks must have a NAME\", ()=> {",
+							"     let data = pm.response.json();",
+							"     ",
+							"     for (var i=0; i< data.length; i++){",
+							"        let result = data[i].deck_name !== null",
+							"        pm.expect(result).not.to.equal(null)",
+							"     }",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/all/decks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"all",
+						"decks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

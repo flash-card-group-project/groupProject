@@ -149,8 +149,8 @@ class CreateDeck extends Component {
                             <p style={{ color: "red", fontSize: '12px' }} >{this.state.errorAlert}</p>
                         </div>
                         <div className="buttons">
-                            <button className="cancel" onClick={this.closeModal} className='sml_btn'>Cancel</button>
-                            <button className="submit" onClick={this.handleClick} className='sml_btn'>Submit</button>
+                            <button className="cancel sml_btn" onClick={this.closeModal} >Cancel</button>
+                            <button className="submit sml_btn" onClick={this.handleClick} >Submit</button>
                         </div>
                     </div>
                 </ReactModal>

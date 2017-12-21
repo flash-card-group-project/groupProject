@@ -11,7 +11,7 @@ import privateCon from '../Assets/private.png';
 import publicCon from '../Assets/public.svg.png';
 import unfavorite from '../Assets/empty-heart.png';
 import deleteCon from '../Assets/deleteIcon.png';
-import editCon from '../Assets/editing.png';
+// import editCon from '../Assets/editing.png';
 import favoriteCon from '../Assets/filledHeart.png';
 
 class DeckCoverM extends Component {
@@ -154,7 +154,7 @@ class DeckCoverM extends Component {
 };
 
 function mapStateToProps(state) {
-    console.log(state, 'this is the state')
+    // console.log(state, 'this is the state')
     return {
         userData: state.userData,
         userDecks: state.userDecks,

@@ -35,10 +35,10 @@ class CreateCard extends Component {
         let body = {
             question: this.state.questionInput,
             answer: this.state.answerInput,
-            multiple1: null,
-            multiple2: null,
-            multiple3: null,
-            multiple4: null
+            multiple1: '',
+            multiple2: '',
+            multiple3: '',
+            multiple4: ''
         }
         this.props.createCard(body, this.props.match.params.deck_id)
         this.setState({questionInput:'',
@@ -70,7 +70,7 @@ class CreateCard extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("current deck",state.currentDeck);
+    // console.log("current deck",state.currentDeck);
     return {
         currentDeck: state.currentDeck
     };
