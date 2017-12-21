@@ -31,9 +31,7 @@ module.exports = {
 
     getCurrentDeck: async (req, res, next) => {
         const db = req.app.get('db');
-
-        let deck = await db.get_current_deck([req.params.deck_id, req.user.id]);
-      
+        let deck = await db.get_current_deck([req.params.deck_id]);
       let cards = await db.cards.find({ parent_id: deck[0].deck_id })
       deck[0].cards = cards;
             res.status(200).send(deck)
@@ -84,9 +82,9 @@ module.exports = {
 
     deleteFromFavorites: async (req, res, next) => {
         const db = req.app.get('db');
-        console.log(req.user.id);
+        // console.log(req.user.id);
         let favArr = await db.get_fav_decks([req.user.id]);
-        console.log(req.user)
+        // console.log(req.user)
         let newFavArr = favArr[0].favorites.filter(e => e !== Number(req.params.deckId));
         db.update_favorite_deck([newFavArr, req.user.id])
             .then(arr => {
@@ -99,13 +97,23 @@ module.exports = {
 
 
     //all Decks to search through:
-    getAllPublicDecks: (req, res, next) => {
+    getAllPublicDecksAndCards: (req, res, next) => {
         const db = req.app.get('db')
-        db.get_all_decks()
+       
+        db.get_public_decks_and_cards([req.params.deck_id])
             .then(decks => {
                 res.status(200).send(decks)
             }).catch(err => res.status(500).send(err));
 
+    },
+
+    getPublicDecks: (req, res, next) => {
+        const db = req.app.get('db')
+       
+        db.get_public_decks()
+            .then(decks => {
+                res.status(200).send(decks)
+            }).catch(err => res.status(500).send(err));
     },
 
     privateToggle: (req, res, next) => {
@@ -158,7 +166,7 @@ module.exports = {
         db.create_deck([deck_name, category, deck_card, req.user.id, parent_id])
             .then(deck => {
                 deck[0].cards = [];
-                console.log(deck);
+                // console.log(deck);
                 res.status(200).send(deck[0])
             })
             .catch((err) => {
@@ -169,10 +177,9 @@ module.exports = {
     deleteDeck: (req, res, next) => {
         const db = req.app.get('db')
 
-        db.delete_deck([req.params.deckId, req.user.id])
+        db.delete_deck([req.params.deckId])
             .then(() => {
                 res.status(200).send(req.params.deckId)   
-
             }).catch((err) => res.status(500).send(err));
     },
 
@@ -185,15 +192,5 @@ module.exports = {
             .then(deck => {
                 res.status(200).send(deck)
             }).catch((err) => res.status(500).send(err));
-    },
-
-    getFavorites: (req, res, next) => {
-        const db = req.app.get('db')
-        const { params } = req;
-
-        db.get_favorites([params.id])
-            .then(favs => {
-                res.status(200).send(favs)
-            }).catch(err => console.log(err));
-    },
+    }
 }

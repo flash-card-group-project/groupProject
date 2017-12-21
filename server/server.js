@@ -94,9 +94,10 @@ app.get('/auth/logout', (req, res) => {
 //endpoints by erin tues 12-5
 
 //////// DECKS ENDPOINTS //////////
-app.get('/api/all/decks', decksCtrl.getAllPublicDecks);
-//Decks by category ==> by userInput
-// app.get(`api/decks/?q=${req.query.term}`, decksCtrl.decksByCategory);
+//decks and cards
+app.get('/api/all/decks', decksCtrl.getAllPublicDecksAndCards);
+//all public decks
+app.get('/api/public/decks', decksCtrl.getPublicDecks);
 //Decks and subdecks
 app.get('/api/user/decks', decksCtrl.getUserDecks);
 //get current deck; the deck you click on
@@ -115,18 +116,12 @@ app.get('/api/user/favorites', decksCtrl.getFavoriteDecks);
 app.post('/api/add/favorites/:deckId', decksCtrl.addToFavorites);
 //DELETE from favorites based on deck id
 app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
-// //Study decks
-// // app.get('/api/deck/study/:deckId', decksCtrl.getStudy);
-// //Get Children???
-// app.get('/api/users/decks/:userId', decksCtrl.getSudy);
 
 
 
 ////////////CARDS ENDPOINTS ///////////////////
 //Get User card
 app.get('/api/user/card', cardsCtrl.getUserCard);
-//Get Card
-app.get('/api/card/:cardId', cardsCtrl.getCard);
 //Create a new Card
 app.post('/api/create/card/:deck_id', cardsCtrl.createCard);
 //Delete a Card

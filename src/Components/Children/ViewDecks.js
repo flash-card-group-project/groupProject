@@ -6,9 +6,7 @@ import CreateDeck from './CreateDeck';
 
 
 class ViewDecks extends Component {
-    constructor(props) {
-        super(props)
-    }
+  
     render() {
         const subDeckList = this.props.subDecks.length
             ? this.props.subDecks.map((deck, i) => {
@@ -20,7 +18,7 @@ class ViewDecks extends Component {
                             deckid={deck.deck_id}
                             public={deck.public}
                             userID={this.props.id}
-                            creatorID={deck.creator_id}
+                            creatorID={deck.creator_id} 
                         />
                     </div>
                 )

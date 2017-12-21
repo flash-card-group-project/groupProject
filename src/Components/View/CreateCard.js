@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { createCard } from '../../ducks/reducer';
-import { connect } from 'react-redux';
+import { createCard} from '../../ducks/reducer';
+import { connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class CreateCard extends Component {
-    constructor(props) {
-        super(props)
+    
+    constructor() {
+        super()
         this.state = {
             questionInput: '',
             answerInput: ''
@@ -17,9 +18,6 @@ class CreateCard extends Component {
 
     }
 
-    componentDidMount() {
-        
-    }
 
     handleQuestion(e) {
         this.setState({
@@ -35,10 +33,10 @@ class CreateCard extends Component {
         let body = {
             question: this.state.questionInput,
             answer: this.state.answerInput,
-            multiple1: null,
-            multiple2: null,
-            multiple3: null,
-            multiple4: null
+            multiple1: '',
+            multiple2: '',
+            multiple3: '',
+            multiple4: ''
         }
         this.props.createCard(body, this.props.match.params.deck_id)
         this.setState({questionInput:'',
@@ -76,4 +74,4 @@ function mapStateToProps(state) {
     };
 
 }
-export default connect(mapStateToProps, { createCard })(CreateCard);
+export default connect(mapStateToProps, {createCard })(CreateCard);

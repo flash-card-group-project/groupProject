@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDecksHome, getFavorites, getUser, createDeck, clearCurrentDeck } from '../../ducks/reducer';
+import { getDecksHome, getFavorites, getUser, clearCurrentDeck } from '../../ducks/reducer';
 import CreateDeck from '../Children/CreateDeck';
 
 class Home extends Component {
@@ -14,7 +14,7 @@ class Home extends Component {
     }
 
     render() {
-        console.log('Clear_Current_Deck', this.props.currentDeck);
+        // console.log('Clear_Current_Deck', this.props.currentDeck);
         return (
             <main className='home_body'>
                 <h2 className='title_sml welcome_background'>Welcome, {this.props.userData.first_name}!</h2>

@@ -2,8 +2,6 @@
 /* eslint no-restricted-globals: ["off", "confirm"] */
 
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getDecksHome, deleteCard } from '../../ducks/reducer';
 import trashCan from '../Assets/deleteIcon.png';
@@ -27,11 +25,9 @@ class CardCoverM extends Component {
     render() {
         return (
             <div className="card-cover">
-                <Link to='/viewer'>
                     <div className="card-question">
                         {this.props.question}
                     </div>
-                </Link>
                 <button onClick={this.handleClickDelete}>
                     <img src={trashCan} alt='Delete' />
                 </button>
@@ -42,7 +38,7 @@ class CardCoverM extends Component {
 
 function mapStateToProps(state) {
 
-    console.log(state.userDecks, 'user decks')
+    // console.log(state.userDecks, 'user decks')
     return {
         currentDeck: state.currentDeck
     }
