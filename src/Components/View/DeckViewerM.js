@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentDeck,getDecksHome, getFavorites, getUser } from '../../ducks/reducer';
+import {getDecksHome, getFavorites, getUser } from '../../ducks/reducer';
 import ToggleButton from 'react-toggle-button';
 import ViewCards from '../Children/ViewCards';
 import ViewDecks from '../Children/ViewDecks';
@@ -20,7 +20,6 @@ class DeckViewerM extends Component {
         this.props.getDecksHome();
         this.props.getFavorites();
         this.props.getUser();
-        this.props.getCurrentDeck();
     }
 
     toggleView() {
@@ -70,6 +69,6 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { getCurrentDeck,getDecksHome, getFavorites, getUser })(DeckViewerM);
+export default connect(mapStateToProps, {getDecksHome, getFavorites, getUser })(DeckViewerM);
 
 // Mark - Dec 8 - Connecting to redux and finishing functionality.

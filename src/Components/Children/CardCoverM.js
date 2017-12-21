@@ -38,7 +38,7 @@ class CardCoverM extends Component {
 
 function mapStateToProps(state) {
 
-    // console.log(state.userDecks, 'user decks')
+  console.log(state.userDecks, 'user decks')
     return {
         currentDeck: state.currentDeck
     }

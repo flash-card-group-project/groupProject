@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createCard} from '../../ducks/reducer';
+import { getCurrentDeck,createCard} from '../../ducks/reducer';
 import { connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +17,10 @@ class CreateCard extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-
+    componentDidMount() {
+       this.props.getCurrentDeck();
+    }
+    
 
     handleQuestion(e) {
         this.setState({
@@ -74,4 +77,4 @@ function mapStateToProps(state) {
     };
 
 }
-export default connect(mapStateToProps, {createCard })(CreateCard);
+export default connect(mapStateToProps, {getCurrentDeck,createCard })(CreateCard);
