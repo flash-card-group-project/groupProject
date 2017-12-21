@@ -1,18 +1,18 @@
 
 module.exports = {
 
-    getUserCard: (req, res, next) => {
-        const db = req.app.get('db');
-        // console.log(req.body);
+    // getUserCard: (req, res, next) => {
+    //     const db = req.app.get('db');
+    //     // console.log(req.body);
 
-        db.get_user_card([req.params.id])
-        .then(card => {
-            res.status(200).send(card)
-        })
-        .catch((err) => {
-            res.status(500).send(err)
-        })
-    },
+    //     db.get_user_card([req.params.id])
+    //     .then(card => {
+    //         res.status(200).send(card)
+    //     })
+    //     .catch((err) => {
+    //         res.status(500).send(err)
+    //     })
+    // },
 
     createCard: (req, res, next) => {
         const db = req.app.get('db');

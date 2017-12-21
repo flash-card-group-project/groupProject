@@ -121,7 +121,7 @@ app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
 
 ////////////CARDS ENDPOINTS ///////////////////
 //Get User card
-app.get('/api/user/card', cardsCtrl.getUserCard);
+// app.get('/api/user/card', cardsCtrl.getUserCard);
 //Create a new Card
 app.post('/api/create/card/:deck_id', cardsCtrl.createCard);
 //Delete a Card
