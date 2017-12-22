@@ -36,10 +36,14 @@ class DeckViewerM extends Component {
         return (
             <div className='deck_viewer_m'>
                 <div className='dv_titles'>
-                    <h2>Deck Name </h2>
+                    <div className='titles'>
+                    <h2>Deck Name: </h2>
                         <p>{this.props.currentDeck.deck_name}</p>
-                    <h2>Category </h2>
+                    </div> 
+                    <div className='titles'>   
+                    <h2>Category:  </h2>
                     <p>{this.props.currentDeck.category}</p>
+                    </div>
                 </div>
                 <div className='toggle_bttn'>
                     <ToggleButton
