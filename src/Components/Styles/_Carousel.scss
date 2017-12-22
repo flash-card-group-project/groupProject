@@ -33,3 +33,26 @@
     overflow: scroll;
 }
 
+// Flip Animation: only works on the first flip
+// .container:hover .card-cover-study{
+//   transform: rotateX(180deg);
+// }
+// .container{
+//   position: relative;
+// }
+// .card-cover-study{
+//   transition: 0.6s;
+//   transform-style: preserve-3d;
+// }
+
+// .front{
+//   background-color: rgb(245, 215, 215);
+//   z-index: 2;
+// }
+
+// .back{
+//   transform: rotateX(180deg);
+//   background-color: rgb(202, 202, 243);
+  
+// }
+
