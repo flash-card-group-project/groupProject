@@ -199,7 +199,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { currentDeck: action.payload.data[0] })
 
         case 'DELETE_CARD_FULFILLED':
-            console.log(action.payload)
+            // console.log(action.payload)
             let copyCurrentDeck = Object.assign({}, state.currentDeck)
             copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
                 return item.card_id !== action.payload.data[0].card_id
