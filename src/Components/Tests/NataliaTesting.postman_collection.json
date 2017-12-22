@@ -12,7 +12,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "75bff40f-114c-45a6-b2f8-015ab1e6d846",
+						"id": "e39bb16c-39e0-449f-af11-6edbadff5542",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
@@ -34,7 +34,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/api/all/decks",
+					"raw": "http://localhost:8080/api/public/decks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -42,7 +42,7 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"all",
+						"public",
 						"decks"
 					]
 				},
@@ -56,7 +56,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "00c50191-fda4-43e6-94a0-54aab7d9587e",
+						"id": "2e9563c7-078a-434d-968f-f563051cd43c",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
@@ -81,7 +81,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/api/all/decks",
+					"raw": "http://localhost:8080/api/public/decks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -89,7 +89,7 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"all",
+						"public",
 						"decks"
 					]
 				},
@@ -128,7 +128,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/api/all/decks",
+					"raw": "http://localhost:8080/api/public/decks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -136,7 +136,7 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"all",
+						"public",
 						"decks"
 					]
 				},
@@ -174,7 +174,7 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://localhost:8080/api/all/decks",
+					"raw": "http://localhost:8080/api/public/decks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -182,8 +182,51 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"all",
+						"public",
 						"decks"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET a deck by ID should return only 1 deck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4663a34f-0485-441f-8409-27232bcdee11",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"    pm.test(\"Only 1 deck should be returned when searching by ID\", ()=> {",
+							"     let data = pm.response.json();",
+							"     pm.expect(data.length).to.be.eql(1);",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/deck/currentDeck/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"deck",
+						"currentDeck",
+						"6"
 					]
 				},
 				"description": ""
