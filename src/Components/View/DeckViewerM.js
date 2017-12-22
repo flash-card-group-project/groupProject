@@ -63,7 +63,7 @@ class DeckViewerM extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("deckviewere",state.currentDeck)
+    // console.log("deckviewere",state.currentDeck)
     return {
         currentDeck: state.currentDeck        
     };
