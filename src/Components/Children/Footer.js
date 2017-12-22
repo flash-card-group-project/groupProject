@@ -9,7 +9,7 @@ class Footer extends Component{
         return (
             <div className="footer" >
                 <div className="logo" >
-                <h3>Logo here</h3>
+                <h3>Tech Decks</h3>
                 </div>
                 <div className="social-links">
                     <img src={fbIcon} alt="facebook" className="fb-icon"/>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { log } from 'util';
-// import { updateReduxDeck } from './reducer';
+import { updateReduxDeck } from './reducer';
 
 const initialState = {
     userData: {},
@@ -180,7 +180,7 @@ export default function reducer(state = initialState, action) {
         // console.log('current deck ',state.currentDeck)
         // console.log("action",action.payload.data)
             let updatedDeck = Object.assign({}, state.currentDeck)
-            updatedDeck.cards = [...updatedDeck.cards, action.payload.data]
+            updatedDeck.cards = [...updatedDeck.cards, action.payload.data[0]]
             return Object.assign({}, state, {
                 currentDeck: updatedDeck
             })
@@ -199,10 +199,10 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { currentDeck: action.payload.data[0] })
 
         case 'DELETE_CARD_FULFILLED':
-            console.log(action.payload)
+            // console.log(action.payload)
             let copyCurrentDeck = Object.assign({}, state.currentDeck)
             copyCurrentDeck.cards = copyCurrentDeck.cards.filter(item => {
-                return item.card_id !== action.payload.data
+                return item.card_id !== action.payload.data[0].card_id
             })
 
             return Object.assign({}, state, { currentDeck: copyCurrentDeck })

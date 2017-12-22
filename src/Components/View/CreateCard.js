@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { createCard } from '../../ducks/reducer';
-import { connect } from 'react-redux';
+import {createCard} from '../../ducks/reducer';
+import { connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class CreateCard extends Component {
-    constructor(props) {
-        super(props)
+    
+    constructor() {
+        super()
         this.state = {
             questionInput: '',
             answerInput: ''
@@ -17,9 +18,7 @@ class CreateCard extends Component {
 
     }
 
-    componentDidMount() {
-        
-    }
+    
 
     handleQuestion(e) {
         this.setState({
@@ -76,4 +75,4 @@ function mapStateToProps(state) {
     };
 
 }
-export default connect(mapStateToProps, { createCard })(CreateCard);
+export default connect(mapStateToProps, {createCard })(CreateCard);

@@ -11,7 +11,6 @@ import privateCon from '../Assets/private.png';
 import publicCon from '../Assets/public.svg.png';
 import unfavorite from '../Assets/empty-heart.png';
 import deleteCon from '../Assets/deleteIcon.png';
-// import editCon from '../Assets/editing.png';
 import favoriteCon from '../Assets/filledHeart.png';
 
 class DeckCoverM extends Component {
@@ -109,12 +108,14 @@ class DeckCoverM extends Component {
 
         return (
             <div className="deck-cover">
-                <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`} className="deck-content">
-                    <div>
-                        <h2>Deck Name </h2>
-                        <p>{this.props.name}</p>
-                        <h2>Category </h2>
-                        <p>{this.props.category}</p>
+                <Link onClick={this.handleClick} to={`/viewer/${this.props.deckid}`}   className="deck-content">
+                    <div className='titles'>
+                        <h2>Deck Name:</h2>
+                        <p> {this.props.name}</p>
+                        </div>
+                    <div className='titles'>
+                        <h2>Category: </h2>
+                        <p> {this.props.category}</p>
                     </div>
                 </Link>
                 {myButtons ? (
