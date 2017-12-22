@@ -83,12 +83,12 @@ class EditDeck extends Component {
                      ariaHideApp={false}>
                     <div className='text_area_container'>
                         <textarea 
-                        placeholder= 'make me the value'
+                        placeholder= 'new deck name'
                         className='text_area'
                         value={this.state.deck_name} 
                         onChange={this.handleUserInput}/>
                         <textarea 
-                        placeholder='make me the value'
+                        placeholder='new deck category'
                         className='text_area'
                         value={this.state.category} 
                         onChange={this.handleUserInput2}/>
