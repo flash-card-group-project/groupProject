@@ -25,4 +25,21 @@ const functions = require('./functions')
             let result = functions.searchForObject();
             expect(result).toBe('object')
         })
+
+      
+        
      });
+
+       //ana's tests 
+
+       describe('Cards within decks',()=>{
+           test('parent id to be true',()=>{
+               let result=functions.getCardParentId();
+               expect(typeof(result)).toBe('number')
+           })
+           test('cards come in an array',()=>{
+               let result=functions.cardsFormat();
+               expect(Array.isArray(result))
+           })
+       })
+

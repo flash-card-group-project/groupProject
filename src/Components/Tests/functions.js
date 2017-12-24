@@ -22,6 +22,22 @@ module.exports={
             return item.public===true;
         })
         return typeof(publicDecks);
+    },
+
+
+    //ana tests
+    getCardParentId:()=>{
+        let result=data[0].cards[0].parent_id;
+        return result
+    },
+    cardsFormat:()=>{
+        console.log('data',data[0].cards[0].parent_id)
+        let cardsArray=data.map((deck)=>{
+            deck.cards
+        })
+        return cardsArray;
     }
+
+
 
 }
