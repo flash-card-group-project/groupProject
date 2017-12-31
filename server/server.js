@@ -120,7 +120,6 @@ app.delete('/api/delete/favorites/:deckId', decksCtrl.deleteFromFavorites);
 
 
 ////////////CARDS ENDPOINTS ///////////////////
-
 //Create a new Card
 app.post('/api/create/card/:deck_id', cardsCtrl.createCard);
 //Delete a Card

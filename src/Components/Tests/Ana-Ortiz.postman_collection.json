@@ -1,0 +1,139 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Flash-Card-Project",
+		"_postman_id": "43e4c726-2a0c-9581-9dc7-8346a81b7292",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/user/decks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\",function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/user/decks",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/create/deck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"let res = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test('Deck has correct info ', function() {",
+							"    let newDeck = {",
+							"   \"deck_name\":\"anatomy\", ",
+							"  \"category\":\"bones\",",
+							"  \"deck_card\":\"deck\", ",
+							"   \"parent_id\":null",
+							"  };",
+							"  let correctDeckInfo = true;",
+							"  for (let prop in newDeck) {",
+							"      if (newDeck[prop] !== res[prop]) correctDeckInfo = false;",
+							"  }",
+							"    pm.expect(correctDeckInfo).to.equal(true);  ",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000/api/create/deck",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"deck_name\":\"anatomy\", \n  \"category\":\"bones\",\n  \"deck_card\":\"deck\", \n   \"parent_id\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000//api/create/card/360",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"let res = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test('Card has correct info ', function() {",
+							"    let newCard = {",
+							"  \t\"question\":\"What is the meaning of life? \", ",
+							"\t\"answer\":\"42\", ",
+							"\t\"multiple1\":null, ",
+							"\t\"multiple2\":null, ",
+							"\t\"multiple3\":null, ",
+							"\t\"multiple4\":null",
+							"  };",
+							"  let correctCardInfo = true;",
+							"  for (let prop in newCard) {",
+							"      if (newCard[prop] !== res[0][prop]) correctCardInfo = false;",
+							"  }",
+							"    pm.expect(correctCardInfo).to.equal(true);  ",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:3000//api/create/card/360",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"question\":\"What is the meaning of life? \", \n\t\"answer\":\"42\", \n\t\"multiple1\":null, \n\t\"multiple2\":null, \n\t\"multiple3\":null, \n\t\"multiple4\":null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
