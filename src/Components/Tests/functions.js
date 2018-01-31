@@ -1,6 +1,7 @@
 const data = require('./data.js');
 //Natalia's
 module.exports = {
+    
     searchForDecks: (input) => {
         let found = data.filter(item => {
             let name = item.deck_name.toLowerCase();
@@ -47,5 +48,16 @@ module.exports = {
             deck.cards
         })
         return cardsArray;
+    },
+
+
+    //erin tests
+    decks: [],
+
+    createDeck: () => {
+        let newDeck = decks.push((deck) => {
+            deck.decks
+        })
+        return newDeck;
     }
 }

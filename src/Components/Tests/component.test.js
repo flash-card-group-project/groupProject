@@ -55,3 +55,11 @@ describe(`Cards within decks`, () => {
     })
 })
 
+//erin's tests
+
+describe('Create deck', () => {
+    test('createDeck is an array', () => {
+        let result = functions.decks;
+        expect(Array.isArray(result));
+    })
+})
