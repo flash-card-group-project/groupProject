@@ -53,11 +53,32 @@ module.exports = {
 
     //erin tests
     decks: [],
+    userDeck: [{
+        deck_name: '',
+        deck_category: '',
+        creatorId: null
+    }],
 
-    createDeck: () => {
-        let newDeck = decks.push((deck) => {
-            deck.decks
+    createDeck: function(decks) {
+        let newDeck = this.decks.push((deck) => {
+            this.decks.deck;
         })
+        this.decks.length += 1;
         return newDeck;
+    },
+    giveDeckName: function(input){
+        let userInput = input.toLowerCase();
+        this.userDeck.deck_name = userInput;
+    },
+    giveDeckCreator: function(deck){
+        let creatorId = 3;
+        let newUserDeck = Object.defineProperty(this.userDeck, 'creatorId', {
+            value: creatorId
+        });
+        return newUserDeck;
+    },
+    createDeckCategory: function(input){
+        let catInput = input.toLowerCase();
+        this.userDeck.deck_category = catInput;
     }
 }
