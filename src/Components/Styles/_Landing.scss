@@ -1,6 +1,5 @@
 .landing_body{
     width:100%;
-    height:325vh;
     text-align: center;
     background:$card;
 }
@@ -33,11 +32,15 @@
         padding-top: 40px;
         font-family: $modern, Tahoma, helvetica;
     }
-    .title_md {
-        // margin-top: -45px;
-    }
 }
 
+.demo_creds{
+    width:100%;
+    height:120px;
+    border:2px dotted black;
+    margin-bottom:20px;
+    line-height: 25px;
+}
 
 .steps{
     height: auto;
@@ -47,7 +50,6 @@
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    margin-top: 100px;
     padding:5px;
 }
 
