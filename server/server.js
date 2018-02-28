@@ -40,7 +40,7 @@ passport.use(new Auth0Strategy({
     const userData = profile._json;
     db.find_user([userData.identities[0].user_id])
         .then((user) => {
-            // console.log(user)
+            // console.log('USER',userData)
             if (user[0]) {
                 return done(null, user[0].id);
             } else {

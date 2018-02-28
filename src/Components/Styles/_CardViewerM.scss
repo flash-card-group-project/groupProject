@@ -1,18 +1,17 @@
 .card_viewer_options{
-    width:93vw;
+    width:100%;
     height:10vh; 
     border-radius:3px;
     font-size:24px;
     background:$card;
     display:flex;
     justify-content:center;
-    justify-content:space-between;
+    justify-content:space-around;
     align-items:center;
-    margin-left:20px;
 }
 
 .option_section{
-    width:45%;
+    width:40.5%;
     height:80%;
     background:$buttons;
     display:flex;
