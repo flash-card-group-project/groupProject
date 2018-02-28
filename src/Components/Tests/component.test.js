@@ -1,4 +1,3 @@
-
 const functions = require('./functions')
 //Natalia's
 describe("Search component", () => {
@@ -55,3 +54,44 @@ describe(`Cards within decks`, () => {
     })
 })
 
+//erin's tests
+
+describe('Create deck', () => {
+    afterEach(() => {
+        deck = []
+        // deck.length = 0;
+    })
+    test('createDeck returns an array', () => {
+        let result = functions.createDeck();
+        expect(Array.isArray(result));
+    })
+    test('Array length should be more than 1 when createDeck is run', () =>{
+        functions.createDeck();
+
+        let result = functions.decks.length;
+        //trying to assign a variable for the expect
+        let moreThan1 = (result >= 1);
+        expect(moreThan1).toBe(true); 
+    }),
+    test('userDecks should have a string type on deck_name', () => {
+        functions.giveDeckName('user deck name');
+
+        let result = functions.userDeck.deck_name;
+
+        expect(typeof(result)).toBe('string');
+    }),
+    test('a new deck should have a creatorid', () => {
+        functions.giveDeckCreator();
+
+        let result = functions.userDeck.hasOwnProperty('creatorId');
+
+        expect(result).toBe(true);
+    }),
+    test('deck_category of userDeck should be a string', () => {
+        functions.createDeckCategory('The Best Category');
+
+        let result = functions.userDeck.deck_category;
+
+        expect(typeof(result)).toBe('string');
+    })
+})
