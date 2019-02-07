@@ -3,7 +3,6 @@ Welcome To Tech Decks!
 You can clone this repo here: 
 https://github.com/flash-card-group-project/groupProject.git
 
-Official Link : http://techdecks.info/
 
 Video Walk Through: https://youtu.be/fYjKgzvFgyw
 
